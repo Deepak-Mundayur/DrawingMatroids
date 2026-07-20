@@ -180,14 +180,14 @@ function realization_matrix_to_coordinates(
         throw(ArgumentError("Realization matrix has size $(size(A)); expected ($r, $n)."))
 
     maximum(abs.(imag.(ComplexF64.(A)))) <= real_tol ||
-        throw(NoRealDrawingPointError("The supplied realization matrix is not numerically real."))
+        error("The supplied realization matrix is not numerically real.")
 
     Ar = Matrix{Float64}(real.(A))
     reps = reduction.representatives
 
     candidates = Matrix{Float64}[Matrix{Float64}(I, r, r)]
     for _ in 1:_DEFAULT_CHART_ATTEMPTS
-        push!(candidates, _random_invertible_matrix(r, rng; tol=_DEFAULT_CHART_TOL))
+        push!(candidates, _random_invertible_matrix(r, rng))
     end
 
     for G in candidates
@@ -209,9 +209,9 @@ function realization_matrix_to_coordinates(
         return _fit_coordinates_to_bounds(coords, bounds)
     end
 
-    throw(NoRealDrawingPointError(
+    error(
         "Could not find a real affine chart containing every nonloop point."
-    ))
+    )
 end
 
 function _matrix_from_user_input(data, reduction::DrawingReduction)

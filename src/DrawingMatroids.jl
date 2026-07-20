@@ -39,9 +39,7 @@ export visualization, matroid_visualize
 export DrawingResult,
        DrawingCollectionResult,
        DrawingValidation,
-       InitializationResult,
-       NotComplexRealizableError,
-       NoRealDrawingPointError
+       InitializationResult
 
 export validation_summary,
        drawing_reduction

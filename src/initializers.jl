@@ -26,35 +26,87 @@ end
 function _matching_components_or_nonrealizable(RS, target; tol::Real=1e-7)
     matches = _matching_components(RS, target; tol=tol)
 
-    isempty(matches) && throw(NotComplexRealizableError(
-        "No computed top-rank component of the nonbasis variety has generic labeled matroid equal to the parent matroid. " *
-        "DrawingMatroids therefore declares the parent matroid not realizable over C, with X_M contained in " *
-        "the degenerate top-rank locus tilde(Z_M)."
-    ))
+    isempty(matches) && error(
+    "No computed top-rank component of the nonbasis variety has generic labeled matroid equal to the parent matroid. " *
+    "DrawingMatroids therefore declares the parent matroid not realizable over C, with X_M contained in " *
+    "the degenerate top-rank locus tilde(Z_M)."
+    )
 
     return matches
 end
 
 function _component_real_matrix(C, target; real_tol::Real=1e-7, matroid_tol::Real=1e-7)
+    parent_space = RealizationSpaces.parent(C)
+    homogeneous = RealizationSpaces.is_homogeneous_space(parent_space)
     points = HomotopyContinuation.solutions(RealizationSpaces.witness_set(C))
 
+    # First inspect the stored witness points.
     for point_index in eachindex(points)
-        A = RealizationSpaces.witness_point(C; point=point_index)
-        if maximum(abs.(imag.(ComplexF64.(A)))) <= real_tol
+        A = ComplexF64.(RealizationSpaces.witness_point(C; point=point_index))
+
+        # A real projective point may have a common complex phase.
+        if homogeneous && !isempty(A)
+            pivot = argmax(abs.(A))
+
+            if abs(A[pivot]) > real_tol
+                A .*= conj(A[pivot]) / abs(A[pivot])
+            end
+        end
+
+        threshold = Float64(real_tol) * max(1.0, maximum(abs.(A)))
+
+        if maximum(abs.(imag.(A))) <= threshold
             Ar = Matrix{Float64}(real.(A))
-            RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol) && return Ar
+
+            if RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol)
+                return Ar
+            end
         end
     end
 
+    W = RealizationSpaces.witness_set(C)
+    sample_tol = max(Float64(real_tol), 1e-5)
+
     try
-        A = RealizationSpaces.sample(C; real_point=true)
-        sample_real_tol = max(Float64(real_tol), 1e-5)
-        if maximum(abs.(imag.(ComplexF64.(A)))) <= sample_real_tol
-            Ar = Matrix{Float64}(real.(A))
-            RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol) && return Ar
+        for _ in 1:1000
+            result = HomotopyContinuation.solve(W.F, W.R; start_subspace=W.L,
+                target_subspace= RealizationSpaces.random_real_linear_space(W),
+                show_progress=false,
+            )
+
+            for path_result in result.path_results
+                solution = ComplexF64.(path_result.solution)
+
+                if homogeneous && !isempty(solution)
+                    pivot = argmax(abs.(solution))
+
+                    if abs(solution[pivot]) > sample_tol
+                        solution .*= (conj(solution[pivot]) / abs(solution[pivot])
+                        )
+                    end
+                end
+
+                threshold = sample_tol * max(1.0, maximum(abs.(solution)))
+
+                maximum(abs.(imag.(solution))) <= threshold ||
+                    continue
+
+                A = ComplexF64.(RealizationSpaces.representation(parent_space)(real.(solution)))
+
+                maximum(abs.(imag.(A))) <= threshold ||
+                    continue
+
+                Ar = Matrix{Float64}(real.(A))
+
+                if RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol)
+                    return Ar
+                end
+            end
         end
-    catch
-        # Try another matching component before reporting that no real point was found.
+    catch err
+        @warn("Real-slice sampling failed for a matching component",
+            exception=(err, catch_backtrace()),
+        )
     end
 
     return nothing
@@ -117,9 +169,9 @@ function nid_initial_coordinates(
         )
     end
 
-    throw(NoRealDrawingPointError(
-        "The matroid has a matching complex realization component, but no numerically real witness or sample was found."
-    ))
+    error(
+    "The matroid has a matching complex realization component, but no numerically real witness or sample was found."
+    )
 end
 
 function component_initial_coordinates(
@@ -133,9 +185,9 @@ function component_initial_coordinates(
     target = reduction.relabeled.matroid
     A = _component_real_matrix(C, target; real_tol=real_tol, matroid_tol=matroid_tol)
 
-    isnothing(A) && throw(NoRealDrawingPointError(
+    isnothing(A) && error(
         "The requested RealizationComponent has no numerically real witness or real sample suitable for drawing."
-    ))
+    )
 
     return realization_matrix_to_coordinates(
         A,

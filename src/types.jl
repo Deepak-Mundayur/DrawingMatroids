@@ -1,15 +1,3 @@
-struct NotComplexRealizableError <: Exception
-    message::String
-end
-
-Base.showerror(io::IO, err::NotComplexRealizableError) = print(io, err.message)
-
-struct NoRealDrawingPointError <: Exception
-    message::String
-end
-
-Base.showerror(io::IO, err::NoRealDrawingPointError) = print(io, err.message)
-
 struct RelabeledMatroidData
     original
     matroid
