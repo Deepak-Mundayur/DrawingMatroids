@@ -66,3 +66,32 @@ struct DrawingCollectionResult
     plot
     filename::Union{Nothing,String}
 end
+
+Base.@kwdef struct DrawingOptions
+    # Constrained optimization
+    dt::Float64 = 0.01
+    max_steps::Int = 300
+    k_p::Float64 = 10.0
+    k_wall::Float64 = 50.0
+
+    # Initial projection
+    projection_tol::Float64 = 1e-10
+    projection_max_iters::Int = 100
+
+    # Numerical validation
+    validation_tol::Float64 = 1e-7
+    collision_tol::Float64 = 1e-6
+    real_tol::Float64 = 1e-7
+
+    # Rémi
+    remi_preprocess::Bool = true
+    remi_verbosity::Int = 0
+    remi_threads::Int = Base.Threads.nthreads()
+
+    # Rendering
+    fps::Int = 15
+    title::String = "DrawingMatroids.jl"
+    framestyle::Symbol = :box
+    show_boundary::Bool = true
+    show_labels::Bool = true
+end

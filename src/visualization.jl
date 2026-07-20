@@ -13,36 +13,21 @@ end
 
 function _rank_two_initialization(
     reduction::DrawingReduction;
-    strategy::Symbol,
-    start_point,
-    source_component,
-    bounds,
-    real_tol,
-    matroid_tol,
-    rng,
-)
+    strategy::Symbol, start_point,
+    source_component, bounds,
+    real_tol, matroid_tol, rng)
+
     simple = reduction.simple_matroid
     point_count = length(simple)
     diagnostics = Dict{Symbol,Any}()
     component_index = nothing
 
     coordinates = if strategy == :user
-        user_input_to_coordinates(
-            start_point,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            rng=rng,
-        )
+        user_input_to_coordinates(start_point, reduction; bounds=bounds, real_tol=real_tol, rng=rng)
     elseif strategy == :nid
-        data = nid_initial_coordinates(
-            reduction.relabeled.matroid,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            matroid_tol=matroid_tol,
-            rng=rng,
-        )
+        data = nid_initial_coordinates(reduction.relabeled.matroid, reduction;
+            bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol,
+            rng=rng)
         component_index = data.component_index
         merge!(diagnostics, data.diagnostics)
         diagnostics[:component] = data.component
@@ -51,14 +36,8 @@ function _rank_two_initialization(
         isnothing(source_component) && throw(ArgumentError(
             "start_point_strategy=:component requires a RealizationComponent."
         ))
-        component_initial_coordinates(
-            source_component,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            matroid_tol=matroid_tol,
-            rng=rng,
-        )
+        component_initial_coordinates(source_component, reduction;
+            bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol, rng=rng)
     elseif strategy in (:maximal_degenerations, :remi, :all_bases, :deepak)
         diagnostics[:rank_two_closed_form] = true
         rank_two_default_coordinates(point_count, bounds)
@@ -69,72 +48,30 @@ function _rank_two_initialization(
     end
 
     system = _rank_two_system(point_count)
-    return InitializationResult(
-        strategy,
-        Float64.(coordinates),
-        system,
-        Vector{Vector{Int}}(),
-        Any[],
-        component_index,
-        diagnostics,
-    )
+    return InitializationResult(strategy, Float64.(coordinates),
+        system, Vector{Vector{Int}}(), Any[], component_index, diagnostics)
 end
 
-function _drawing_result(
-    source,
-    target_matroid,
-    reduction,
-    initialization,
-    final_state,
-    history,
-    validation;
-    bounds,
-    title,
-    framestyle,
-    show_boundary,
-    show_labels,
-    filename,
-    animate,
-    animation_filename,
-    fps,
+function _drawing_result(source, target_matroid, reduction, initialization,
+    final_state, history, validation;
+    bounds, title, framestyle, show_boundary, show_labels, filename,
+    animate, animation_filename, fps,
 )
-    plt = save_static_drawing(
-        final_state,
-        reduction;
-        filename=filename,
-        bounds=bounds,
-        title=title,
-        framestyle=framestyle,
-        show_boundary=show_boundary,
-        show_labels=show_labels,
-    )
+    plt = save_static_drawing(final_state, reduction;
+        filename=filename, bounds=bounds, title=title,
+        framestyle=framestyle, show_boundary=show_boundary, show_labels=show_labels)
 
     gif_file = nothing
     if animate
         gif_file = isnothing(animation_filename) ? "drawing.gif" : String(animation_filename)
-        save_drawing_animation(
-            history,
-            reduction;
-            filename=gif_file,
-            fps=fps,
-            bounds=bounds,
-            title=title,
-            framestyle=framestyle,
-            show_boundary=show_boundary,
-            show_labels=show_labels,
-        )
+        save_drawing_animation(history, reduction;
+            filename=gif_file, fps=fps, bounds=bounds, title=title,
+            framestyle=framestyle, show_boundary=show_boundary, show_labels=show_labels)
     end
 
-    return DrawingResult(
-        source,
-        target_matroid,
-        reduction,
-        initialization,
-        Float64.(final_state),
-        [Float64.(state) for state in history],
-        validation,
-        plt,
-        isnothing(filename) ? nothing : String(filename),
+    return DrawingResult(source, target_matroid, reduction, initialization,
+        Float64.(final_state), [Float64.(state) for state in history],
+        validation, plt, isnothing(filename) ? nothing : String(filename),
         gif_file,
     )
 end
@@ -142,7 +79,7 @@ end
 """
     visualization(M::Matroid; start_point_strategy=:maximal_degenerations, ...)
 
-Draw a rank-two or rank-three matroid. Rank zero and rank one deliberately throw
+Draw a rank-two or rank-three matroid. Rank zero and rank one will throw
 an error. The supported start strategies are:
 
 - `:maximal_degenerations` / `:remi`: Rémi's maximal degenerations plus a greedy
@@ -154,35 +91,23 @@ an error. The supported start strategies are:
 """
 function visualization(
     M::Oscar.Matroid;
-    start_point_strategy::Symbol=:maximal_degenerations,
-    start_point=nothing,
-    source_component=nothing,
-    source_object=nothing,
-    bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    dt::Real=0.01,
-    max_steps::Int=300,
-    attempts::Int=5,
-    k_p::Real=10.0,
-    k_wall::Real=50.0,
-    corrector=Constrained_Optimization.moore_penrose_corrector,
-    projection_tol::Real=1e-10,
-    projection_max_iters::Int=100,
-    validation_tol::Real=1e-7,
-    collision_tol::Real=1e-6,
-    real_tol::Real=1e-7,
-    remi_preprocess::Bool=true,
-    remi_verbosity::Int=0,
-    remi_threads::Int=Base.Threads.nthreads(),
-    check_component_membership::Bool=false,
-    seed=nothing,
-    filename::Union{Nothing,AbstractString}=nothing,
-    animate::Bool=false,
-    animation_filename::Union{Nothing,AbstractString}=nothing,
-    fps::Int=15,
-    title::AbstractString="DrawingMatroids.jl",
-    framestyle=:box,
-    show_boundary::Bool=true,
-    show_labels::Bool=true,
+    start_point_strategy::Symbol = :maximal_degenerations,
+    start_point = nothing,
+
+    # Used internally by the RealizationComponent and RealizationSpace methods.
+    source_component = nothing,
+    source_object = nothing,
+    check_component_membership::Bool = false,
+
+    bounds = ((-5.0, 5.0), (-5.0, 5.0)),
+    attempts::Int = 5,
+    seed = nothing,
+
+    filename::Union{Nothing,AbstractString} = "matroid.png",
+    animate::Bool = false,
+    animation_filename::Union{Nothing,AbstractString} = "matroid.gif",
+
+    options::DrawingOptions = DrawingOptions(),
 )
     attempts >= 1 || throw(ArgumentError("attempts must be positive."))
     rng = isnothing(seed) ? Random.default_rng() : Random.MersenneTwister(seed)
@@ -197,76 +122,44 @@ function visualization(
     rank_value <= 3 || error("DrawingMatroids supports matroids of rank at most three.")
 
     if rank_value == 2
-        initialization = _rank_two_initialization(
-            reduction;
-            strategy=start_point_strategy,
-            start_point=start_point,
-            source_component=source_component,
-            bounds=bounds,
-            real_tol=real_tol,
-            matroid_tol=validation_tol,
-            rng=rng,
-        )
+        initialization = _rank_two_initialization(reduction;
+            strategy=start_point_strategy, start_point=start_point,
+            source_component=source_component, bounds=bounds,
+            real_tol=options.real_tol, matroid_tol=options.validation_tol, rng=rng)
         final_state = initialization.state
         history = [copy(final_state)]
         component_for_validation = check_component_membership ?
             _validation_component(source_component, initialization.diagnostics) : nothing
-        validation = validate_drawing(
-            final_state,
-            reduction;
-            tol=validation_tol,
-            collision_tol=collision_tol,
-            component=component_for_validation,
-        )
+        validation = validate_drawing(final_state, reduction;
+            tol=options.validation_tol, collision_tol=options.collision_tol,
+            component=component_for_validation)
         validation.valid || error(
             "The rank-two initializer did not produce the requested matroid: $(validation_summary(validation))."
         )
 
         return _drawing_result(
-            result_source,
-            target,
-            reduction,
-            initialization,
-            final_state,
-            history,
-            validation;
-            bounds=bounds,
-            title=title,
-            framestyle=framestyle,
-            show_boundary=show_boundary,
-            show_labels=show_labels,
-            filename=filename,
-            animate=animate,
-            animation_filename=animation_filename,
-            fps=fps,
+            result_source, target, reduction, initialization,
+            final_state, history, validation;
+            bounds=bounds, title=options.title, framestyle=options.framestyle,
+            show_boundary=options.show_boundary, show_labels=options.show_labels,
+            filename=filename, animate=animate,
+            animation_filename=animation_filename, fps=options.fps,
         )
     end
 
-    prepared = prepare_rank_three_initialization(
-        reduction;
-        strategy=start_point_strategy,
-        start_point=start_point,
-        source_component=source_component,
-        bounds=bounds,
-        phase=0.0,
-        jitter=0.0,
-        remi_preprocess=remi_preprocess,
-        remi_verbosity=remi_verbosity,
-        remi_threads=remi_threads,
-        initializer_attempts=attempts,
-        projection_tol=projection_tol,
-        projection_max_iters=projection_max_iters,
-        real_tol=real_tol,
-        matroid_tol=validation_tol,
-        rng=rng,
+    prepared = prepare_rank_three_initialization(reduction;
+        strategy=start_point_strategy, start_point=start_point,
+        source_component=source_component, bounds=bounds,
+        phase=0.0, jitter=0.0,
+        remi_preprocess=options.remi_preprocess, remi_verbosity=options.remi_verbosity,
+        remi_threads=options.remi_threads, initializer_attempts=attempts,
+        projection_tol=options.projection_tol, projection_max_iters=options.projection_max_iters,
+        real_tol=options.real_tol, matroid_tol=options.validation_tol, rng=rng,
     )
 
     if prepared.p0 !== nothing
-        initial_validation = validate_drawing(
-            prepared.p0,
-            reduction;
-            tol=validation_tol,
-            collision_tol=collision_tol,
+        initial_validation = validate_drawing(prepared.p0, reduction;
+            tol=options.validation_tol, collision_tol=options.collision_tol,
         )
         initial_validation.valid || throw(ArgumentError(
             "The supplied initializer does not realize the requested matroid: $(validation_summary(initial_validation))."
@@ -275,10 +168,8 @@ function visualization(
 
     point_count = length(reduction.parallel_classes)
     vector_field = Constrained_Optimization.make_bounded_repelling_force(
-        point_count,
-        bounds;
-        k_p=k_p,
-        k_wall=k_wall,
+        point_count, bounds;
+        k_p=options.k_p, k_wall=options.k_wall,
     )
 
     last_validation = nothing
@@ -287,41 +178,26 @@ function visualization(
     for attempt in 1:attempts
         local p0 = prepared.p0
         local guess = prepared.guess
-        local current_dt = dt / 2.0^(attempt - 1)
+        local current_dt = options.dt / 2.0^(attempt - 1)
 
         # Rémi/all-bases/NID/user/component strategies already provide p0.
         # Only Deepak's comparison strategy needs a fresh projected guess.
         if start_point_strategy == :deepak && attempt > 1
             p0 = nothing
-            guess = circle_guess(
-                point_count,
-                bounds;
-                phase=2pi * rand(rng),
-                jitter=0.015 * (attempt - 1),
-                rng=rng,
-            )
+            guess = circle_guess(point_count, bounds; phase=2pi * rand(rng), jitter=0.015 * (attempt - 1), rng=rng)
         end
 
         try
-            final_state, history = Constrained_Optimization.optimize(
-                prepared.system,
-                vector_field;
-                p0=p0,
-                guess=guess,
-                dt=current_dt,
-                max_steps=max_steps,
-                corrector=corrector,
-                tol=projection_tol,
-                max_iters=projection_max_iters,
+            final_state, history = constrained_optimize(
+                prepared.system, vector_field;
+                p0=p0, guess=guess, dt=current_dt, max_steps=options.max_steps,
+                corrector=Constrained_Optimization.moore_penrose_corrector, tol=options.projection_tol, max_iters=options.projection_max_iters,
             )
 
             component_for_validation = check_component_membership ?
                 _validation_component(source_component, prepared.diagnostics) : nothing
-            validation = validate_drawing(
-                final_state,
-                reduction;
-                tol=validation_tol,
-                collision_tol=collision_tol,
+            validation = validate_drawing(final_state, reduction;
+                tol=options.validation_tol, collision_tol=options.collision_tol,
                 component=component_for_validation,
             )
             last_validation = validation
@@ -342,23 +218,12 @@ function visualization(
                     diagnostics,
                 )
 
-                return _drawing_result(
-                    result_source,
-                    target,
-                    reduction,
-                    initialization,
-                    final_state,
-                    history,
-                    validation;
-                    bounds=bounds,
-                    title=title,
-                    framestyle=framestyle,
-                    show_boundary=show_boundary,
-                    show_labels=show_labels,
-                    filename=filename,
-                    animate=animate,
-                    animation_filename=animation_filename,
-                    fps=fps,
+                return _drawing_result(result_source, target, reduction,
+                    initialization, final_state, history, validation;
+                    bounds=bounds, title=options.title, framestyle=options.framestyle,
+                    show_boundary=options.show_boundary, show_labels=options.show_labels,
+                    filename=filename, animate=animate,
+                    animation_filename=animation_filename, fps=options.fps,
                 )
             end
         catch err
@@ -382,25 +247,20 @@ function visualization(
 )
     target = _target_component_matroid(C)
     effective_strategy = start_point_strategy == :nid ? :component : start_point_strategy
-    return visualization(
-        target;
+    return visualization(target;
         start_point_strategy=effective_strategy,
-        source_component=C,
-        source_object=C,
+        source_component=C, source_object=C,
         check_component_membership=check_component_membership,
         kwargs...,
     )
 end
 
 function _ensure_components!(RS)
-    if isnothing(RS.components)
+    if isnothing(RealizationSpaces.stored_components(RS))
         RealizationSpaces.get_NID!(RS)
     end
 
-    cps = RS.components
-    isnothing(cps) && error("Components have not been computed.")
-    isempty(cps) && error("No components were found.")
-    return cps
+    return RealizationSpaces.components(RS)
 end
 
 function _component_filename(filename, index::Int)
@@ -471,8 +331,7 @@ function visualization(
     if component > 0
         cps = _ensure_components!(RS)
         component in eachindex(cps) || throw(BoundsError(cps, component))
-        return visualization(
-            cps[component];
+        return visualization(cps[component];
             start_point_strategy=start_point_strategy,
             filename=filename,
             kwargs...,
@@ -489,11 +348,9 @@ function visualization(
     isnothing(target) && error("The RealizationSpace does not store a parent matroid.")
 
     if isempty(collect(Oscar.nonbases(target)))
-        return visualization(
-            target;
+        return visualization(target;
             start_point_strategy=start_point_strategy == :component ? :deepak : start_point_strategy,
-            filename=filename,
-            kwargs...,
+            filename=filename, kwargs...,
         )
     end
 
@@ -501,8 +358,7 @@ function visualization(
     matches = _matching_components_or_nonrealizable(RS, target)
     selected_index, selected_component = first(matches)
 
-    result = visualization(
-        selected_component;
+    result = visualization(selected_component;
         start_point_strategy=start_point_strategy,
         filename=filename,
         kwargs...,
@@ -512,4 +368,3 @@ function visualization(
 end
 
 matroid_visualize(args...; kwargs...) = visualization(args...; kwargs...)
-draw(args...; kwargs...) = visualization(args...; kwargs...)

@@ -1,9 +1,3 @@
-function _minor_value(A::AbstractMatrix, subset)
-    indices = sort(Int.(collect(subset)))
-    r = length(indices)
-    return det(A[1:r, indices])
-end
-
 function _coordinate_collisions(coords::AbstractVector, point_count::Int; tol::Real=1e-6)
     collisions = Tuple{Int,Int}[]
     for i in 1:point_count, j in (i + 1):point_count
@@ -21,11 +15,7 @@ function _component_coordinate_point(A::Matrix{Float64}, C; tol::Real=1e-10)
 
     if RealizationSpaces.is_quotient_space(parent_space)
         coordinates = ComplexF64.(RealizationSpaces.quotient_coordinates(
-            parent_space,
-            A;
-            tol=tol,
-            check=true,
-        ))
+            parent_space, A; tol=tol, check=true))
         chart = RealizationSpaces.quotient_chart(parent_space)
 
         if chart.has_rabinowitsch_variable
@@ -62,9 +52,7 @@ function _component_membership(A::Matrix{Float64}, C)
     end
 end
 
-function validate_drawing(
-    state::AbstractVector,
-    reduction::DrawingReduction;
+function validate_drawing(state::AbstractVector, reduction::DrawingReduction;
     tol::Real=1e-7,
     collision_tol::Real=1e-6,
     component=nothing,
@@ -82,7 +70,7 @@ function validate_drawing(
     max_nonbasis_residual = 0.0
     for NB in Oscar.nonbases(M)
         indices = sort(Int.(collect(NB)))
-        residual = abs(_minor_value(A, indices))
+        residual = abs(RealizationSpaces.determinant_minor(A, indices))
         max_nonbasis_residual = max(max_nonbasis_residual, Float64(residual))
         residual <= tol || push!(failed_nonbases, indices)
     end
@@ -91,16 +79,12 @@ function validate_drawing(
     min_basis_det = Inf
     for B in Oscar.bases(M)
         indices = sort(Int.(collect(B)))
-        value = abs(_minor_value(A, indices))
+        value = abs(RealizationSpaces.determinant_minor(A, indices))
         min_basis_det = min(min_basis_det, Float64(value))
         value > tol || push!(failed_bases, indices)
     end
 
-    collisions = _coordinate_collisions(
-        coords,
-        length(reduction.parallel_classes);
-        tol=collision_tol,
-    )
+    collisions = _coordinate_collisions(coords, length(reduction.parallel_classes); tol=collision_tol)
     component_member = _component_membership(A, component)
 
     valid = isempty(failed_nonbases) && isempty(failed_bases)
@@ -108,14 +92,8 @@ function validate_drawing(
         valid &= (component_member === true)
     end
 
-    return DrawingValidation(
-        valid,
-        A,
-        max_nonbasis_residual,
-        min_basis_det,
-        failed_nonbases,
-        failed_bases,
-        collisions,
+    return DrawingValidation(valid, A, max_nonbasis_residual,
+        min_basis_det, failed_nonbases, failed_bases, collisions,
         component_member,
     )
 end

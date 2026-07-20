@@ -1,3 +1,6 @@
+const _DEFAULT_CHART_TOL = 1e-9
+const _DEFAULT_CHART_ATTEMPTS = 100
+
 function _ordered_groundset(M)
     labels = Any[collect(Oscar.matroid_groundset(M))...]
     try
@@ -89,15 +92,6 @@ function drawing_reduction(M)
     )
 end
 
-function same_labeled_matroid(M, N)
-    Oscar.rank(M) == Oscar.rank(N) || return false
-    length(M) == length(N) || return false
-
-    bases_M = Set(Tuple(sort(Int.(collect(B)))) for B in Oscar.bases(M))
-    bases_N = Set(Tuple(sort(Int.(collect(B)))) for B in Oscar.bases(N))
-    return bases_M == bases_N
-end
-
 function coordinate_count(reduction::DrawingReduction)
     return 2 * length(reduction.parallel_classes)
 end
@@ -134,10 +128,11 @@ function coordinates_to_matrix(coords::AbstractVector, reduction::DrawingReducti
     return A
 end
 
-function _random_invertible_matrix(r::Int, rng::Random.AbstractRNG; tol::Real=1e-10)
+function _random_invertible_matrix(r::Int, rng::Random.AbstractRNG)
     for _ in 1:100
         G = randn(rng, r, r)
-        abs(det(G)) > tol && return G
+        abs(det(G)) > _DEFAULT_CHART_TOL &&
+            return G
     end
     error("Could not generate an invertible chart matrix.")
 end
@@ -173,12 +168,8 @@ function _fit_coordinates_to_bounds(coords::Vector{Float64}, bounds)
 end
 
 function realization_matrix_to_coordinates(
-    A::AbstractMatrix,
-    reduction::DrawingReduction;
-    bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    real_tol::Real=1e-7,
-    chart_tol::Real=1e-9,
-    chart_attempts::Int=100,
+    A::AbstractMatrix, reduction::DrawingReduction;
+    bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7,
     rng::Random.AbstractRNG=Random.default_rng(),
 )
     M = reduction.relabeled.matroid
@@ -195,13 +186,13 @@ function realization_matrix_to_coordinates(
     reps = reduction.representatives
 
     candidates = Matrix{Float64}[Matrix{Float64}(I, r, r)]
-    for _ in 1:chart_attempts
-        push!(candidates, _random_invertible_matrix(r, rng; tol=chart_tol))
+    for _ in 1:_DEFAULT_CHART_ATTEMPTS
+        push!(candidates, _random_invertible_matrix(r, rng; tol=_DEFAULT_CHART_TOL))
     end
 
     for G in candidates
         B = G * Ar
-        all(abs(B[1, j]) > chart_tol for j in reps) || continue
+        all(abs(B[1, j]) > _DEFAULT_CHART_TOL for j in reps) || continue
 
         coords = Float64[]
         for j in reps

@@ -1,22 +1,23 @@
 function _target_component_matroid(C; tol::Real=1e-7)
-    M = RealizationSpaces.matroid(C)
-    if isnothing(M)
-        M = RealizationSpaces.compute_component_matroid(C; tol=tol)
+    if isnothing(RealizationSpaces.matroid(C))
+        RealizationSpaces.compute_component_matroid!(C; tol=tol)
     end
-    return M
+    return RealizationSpaces.matroid(C)
 end
 
 function _matching_components(RS, target; tol::Real=1e-7)
-    cps = RS.components
-    isnothing(cps) && error("The numerical irreducible decomposition did not store components.")
+    cps = RealizationSpaces.components(RS)
     matches = Tuple{Int,Any}[]
 
     for (index, C) in enumerate(cps)
-        CM = RealizationSpaces.matroid(C)
-        if isnothing(CM)
-            CM = RealizationSpaces.compute_component_matroid(C; tol=tol)
+        if isnothing(RealizationSpaces.matroid(C))
+            RealizationSpaces.compute_component_matroid!(C; tol=tol)
         end
-        same_labeled_matroid(CM, target) && push!(matches, (index, C))
+
+        CM = RealizationSpaces.matroid(C)
+
+        RealizationSpaces.same_labeled_matroid(CM, target) &&
+            push!(matches, (index, C))
     end
 
     return matches

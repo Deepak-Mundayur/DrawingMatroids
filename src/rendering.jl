@@ -64,14 +64,9 @@ function render_drawing(
     )
 
     if show_boundary
-        plot!(
-            plt,
-            [xmin, xmax, xmax, xmin, xmin],
+        plot!(plt, [xmin, xmax, xmax, xmin, xmin],
             [ymin, ymin, ymax, ymax, ymin];
-            linewidth=1.5,
-            linestyle=:dash,
-            color=:red,
-            label="",
+            linewidth=1.5, linestyle=:dash, color=:red, label="",
         )
     end
 
@@ -81,29 +76,15 @@ function render_drawing(
         endpoints = _line_endpoints(coords, flat, bounds)
         isnothing(endpoints) && continue
         line_x, line_y = endpoints
-        plot!(
-            plt,
-            line_x,
-            line_y;
-            linewidth=1.5,
-            alpha=0.55,
-            color=:gray,
-            label=line_label_used ? "" : "rank-2 flats",
+        plot!(plt, line_x, line_y; linewidth=1.5, alpha=0.55, color=:gray, label=line_label_used ? "" : "rank-2 flats",
         )
         line_label_used = true
     end
 
     xs = [coords[2 * i - 1] for i in 1:point_count]
     ys = [coords[2 * i] for i in 1:point_count]
-    scatter!(
-        plt,
-        xs,
-        ys;
-        markershape=:circle,
-        markersize=8,
-        markercolor=:blue,
-        markerstrokecolor=:blue,
-        label="points / parallel classes",
+    scatter!(plt, xs, ys; markershape=:circle, markersize=8,
+        markercolor=:blue, markerstrokecolor=:blue, label="points / parallel classes",
     )
 
     if show_labels
@@ -117,18 +98,10 @@ function render_drawing(
             label = _group_label(labels)
 
             if length(labels) == 1
-                annotate!(
-                    plt,
-                    xs[i],
-                    ys[i],
-                    text(label, 9, :white, :center),
+                annotate!(plt, xs[i], ys[i], text(label, 9, :white, :center),
                 )
             else
-                annotate!(
-                    plt,
-                    xs[i] + parallel_label_offset,
-                    ys[i],
-                    text(label, 9, :black, :left),
+                annotate!(plt, xs[i] + parallel_label_offset, ys[i], text(label, 9, :black, :left),
                 )
             end
         end
@@ -136,14 +109,8 @@ function render_drawing(
 
     loop_x, loop_y = _loop_positions(length(reduction.loops), bounds)
     if !isempty(loop_x)
-        scatter!(
-            plt,
-            loop_x,
-            loop_y;
-            markershape=:rect,
-            markersize=9,
-            markercolor=:orange,
-            markerstrokecolor=:orange,
+        scatter!(plt, loop_x, loop_y;
+            markershape=:rect, markersize=9, markercolor=:orange, markerstrokecolor=:orange,
             label="", # Loops are intentionally omitted from the legend.
         )
 
@@ -184,14 +151,9 @@ function save_drawing_animation(
     animation = Animation()
 
     for (step, state) in enumerate(history)
-        plt = render_drawing(
-            state,
-            reduction;
-            bounds=bounds,
-            title="$title (step $step)",
-            framestyle=framestyle,
-            show_boundary=show_boundary,
-            show_labels=show_labels,
+        plt = render_drawing(state, reduction;
+            bounds=bounds, title="$title (step $step)", framestyle=framestyle,
+            show_boundary=show_boundary, show_labels=show_labels,
         )
         frame(animation, plt)
     end

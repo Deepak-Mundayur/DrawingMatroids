@@ -146,14 +146,13 @@ end
 
 function append_rabinowitsch_coordinates(
     coordinates::AbstractVector,
-    separating_bases::Vector{Vector{Int}};
-    determinant_tol::Real=1e-10,
-)
+    separating_bases::Vector{Vector{Int}})
+    
     state = Float64.(collect(coordinates))
 
     for basis in separating_bases
         determinant = Float64(affine_minor_value(coordinates, basis))
-        abs(determinant) > determinant_tol || throw(ArgumentError(
+        abs(determinant) > 1e-10 || throw(ArgumentError(
             "The initial affine guess has a nearly zero selected basis determinant for $basis."
         ))
         push!(state, inv(determinant))
