@@ -43,7 +43,7 @@ function render_drawing(
     state::AbstractVector,
     reduction::DrawingReduction;
     bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    title::AbstractString="DrawingMatroids.jl",
+    title::AbstractString="",
     framestyle=:box,
     show_boundary::Bool=true,
     show_labels::Bool=true,
@@ -54,69 +54,59 @@ function render_drawing(
     (xmin, xmax), (ymin, ymax) = bounds
 
     extra_top = isempty(reduction.loops) ? 0.5 : 1.5
+
     plt = plot(
         xlim=(xmin - 0.5, xmax + 0.5),
         ylim=(ymin - 0.5, ymax + extra_top),
         aspect_ratio=:equal,
-        legend=:outertopright,
-        title=title,
+        legend=:outerbottom,
+        title="",
         framestyle=framestyle,
     )
 
     if show_boundary
-        plot!(plt, [xmin, xmax, xmax, xmin, xmin],
-            [ymin, ymin, ymax, ymax, ymin];
-            linewidth=1.5, linestyle=:dash, color=:red, label="",
-        )
+        plot!(plt, [xmin, xmax, xmax, xmin, xmin], [ymin, ymin, ymax, ymax, ymin];
+              linewidth=1.5, linestyle=:dash, color=:red, label="")
     end
 
-    flats = rank_two_flats(simple)
-    line_label_used = false
-    for flat in flats
+    for flat in rank_two_flats(simple)
         endpoints = _line_endpoints(coords, flat, bounds)
         isnothing(endpoints) && continue
         line_x, line_y = endpoints
-        plot!(plt, line_x, line_y; linewidth=1.5, alpha=0.55, color=:gray, label=line_label_used ? "" : "rank-2 flats",
-        )
-        line_label_used = true
+        plot!(plt, line_x, line_y; linewidth=1.5, alpha=0.55, color=:gray, label="")
     end
 
-    xs = [coords[2 * i - 1] for i in 1:point_count]
-    ys = [coords[2 * i] for i in 1:point_count]
+    xs = [coords[2i - 1] for i in 1:point_count]
+    ys = [coords[2i] for i in 1:point_count]
+
     scatter!(plt, xs, ys; markershape=:circle, markersize=8,
-        markercolor=:blue, markerstrokecolor=:blue, label="points / parallel classes",
-    )
+             markercolor=:blue, markerstrokecolor=:blue,
+             label="points / parallel classes")
 
     if show_labels
-        # Singleton labels are centered inside their blue marker. Parallel-class
-        # labels are placed just to the right so grouped labels do not cover the
-        # marker itself.
         parallel_label_offset = 0.03 * (xmax - xmin)
-
         for i in 1:point_count
             labels = reduction.grouped_labels[i]
             label = _group_label(labels)
-
             if length(labels) == 1
-                annotate!(plt, xs[i], ys[i], text(label, 9, :white, :center),
-                )
+                annotate!(plt, xs[i], ys[i], text(label, 9, :white, :center))
             else
-                annotate!(plt, xs[i] + parallel_label_offset, ys[i], text(label, 9, :black, :left),
-                )
+                annotate!(plt, xs[i] + parallel_label_offset, ys[i], text(label, 9, :black, :left))
             end
         end
     end
 
     loop_x, loop_y = _loop_positions(length(reduction.loops), bounds)
+
     if !isempty(loop_x)
-        scatter!(plt, loop_x, loop_y;
-            markershape=:rect, markersize=9, markercolor=:orange, markerstrokecolor=:orange,
-            label="", # Loops are intentionally omitted from the legend.
-        )
+        scatter!(plt, loop_x, loop_y; markershape=:rect, markersize=9,
+                 markercolor=:orange, markerstrokecolor=:orange,
+                 label="loops")
 
         if show_labels
             for i in eachindex(loop_x)
-                annotate!(plt, loop_x[i], loop_y[i], text(string(reduction.loop_labels[i]), 9, :left))
+                annotate!(plt, loop_x[i], loop_y[i],
+                          text(string(reduction.loop_labels[i]), 9, :black, :center))
             end
         end
     end
@@ -143,18 +133,17 @@ function save_drawing_animation(
     filename::AbstractString="drawing.gif",
     fps::Int=15,
     bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    title::AbstractString="DrawingMatroids.jl",
+    title::AbstractString="",  # Retained for compatibility; not displayed.
     framestyle=:box,
     show_boundary::Bool=true,
     show_labels::Bool=true,
 )
     animation = Animation()
 
-    for (step, state) in enumerate(history)
-        plt = render_drawing(state, reduction;
-            bounds=bounds, title="$title (step $step)", framestyle=framestyle,
-            show_boundary=show_boundary, show_labels=show_labels,
-        )
+    for state in history
+        plt = render_drawing(state, reduction; bounds=bounds, title="",
+            framestyle=framestyle, show_boundary=show_boundary, show_labels=show_labels)
+
         frame(animation, plt)
     end
 

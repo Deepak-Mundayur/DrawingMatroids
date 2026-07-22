@@ -259,7 +259,6 @@ function _ensure_components!(RS)
     if isnothing(RealizationSpaces.stored_components(RS))
         RealizationSpaces.get_NID!(RS)
     end
-
     return RealizationSpaces.components(RS)
 end
 
@@ -354,8 +353,14 @@ function visualization(
         )
     end
 
-    cps = _ensure_components!(RS)
-    matches = _matching_components_or_nonrealizable(RS, target)
+    Oscar.is_realizable(target; char=0) || error(
+        "The parent matroid of the RealizationSpace is not realizable over characteristic zero."
+    )
+    _ensure_components!(RS)
+    matches = _matching_components(RS, target)
+    isempty(matches) && error(
+        "The numerical irreducible decomposition did not contain a component whose computed generic labeled matroid equals the characteristic-zero-realizable parent matroid."
+    )
     selected_index, selected_component = first(matches)
 
     result = visualization(selected_component;

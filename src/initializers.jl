@@ -23,179 +23,50 @@ function _matching_components(RS, target; tol::Real=1e-7)
     return matches
 end
 
-function _matching_components_or_nonrealizable(RS, target; tol::Real=1e-7)
-    matches = _matching_components(RS, target; tol=tol)
-
-    isempty(matches) && error(
-    "No computed top-rank component of the nonbasis variety has generic labeled matroid equal to the parent matroid. " *
-    "DrawingMatroids therefore declares the parent matroid not realizable over C, with X_M contained in " *
-    "the degenerate top-rank locus tilde(Z_M)."
-    )
-
-    return matches
-end
-
-function _component_real_matrix(C, target; real_tol::Real=1e-7, matroid_tol::Real=1e-7)
-    parent_space = RealizationSpaces.parent(C)
-    homogeneous = RealizationSpaces.is_homogeneous_space(parent_space)
-    points = HomotopyContinuation.solutions(RealizationSpaces.witness_set(C))
-
-    # First inspect the stored witness points.
-    for point_index in eachindex(points)
-        A = ComplexF64.(RealizationSpaces.witness_point(C; point=point_index))
-
-        # A real projective point may have a common complex phase.
-        if homogeneous && !isempty(A)
-            pivot = argmax(abs.(A))
-
-            if abs(A[pivot]) > real_tol
-                A .*= conj(A[pivot]) / abs(A[pivot])
-            end
-        end
-
-        threshold = Float64(real_tol) * max(1.0, maximum(abs.(A)))
-
-        if maximum(abs.(imag.(A))) <= threshold
-            Ar = Matrix{Float64}(real.(A))
-
-            if RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol)
-                return Ar
-            end
-        end
-    end
-
-    W = RealizationSpaces.witness_set(C)
-    sample_tol = max(Float64(real_tol), 1e-5)
-
-    try
-        for _ in 1:1000
-            result = HomotopyContinuation.solve(W.F, W.R; start_subspace=W.L,
-                target_subspace= RealizationSpaces.random_real_linear_space(W),
-                show_progress=false,
-            )
-
-            for path_result in result.path_results
-                solution = ComplexF64.(path_result.solution)
-
-                if homogeneous && !isempty(solution)
-                    pivot = argmax(abs.(solution))
-
-                    if abs(solution[pivot]) > sample_tol
-                        solution .*= (conj(solution[pivot]) / abs(solution[pivot])
-                        )
-                    end
-                end
-
-                threshold = sample_tol * max(1.0, maximum(abs.(solution)))
-
-                maximum(abs.(imag.(solution))) <= threshold ||
-                    continue
-
-                A = ComplexF64.(RealizationSpaces.representation(parent_space)(real.(solution)))
-
-                maximum(abs.(imag.(A))) <= threshold ||
-                    continue
-
-                Ar = Matrix{Float64}(real.(A))
-
-                if RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol)
-                    return Ar
-                end
-            end
-        end
-    catch err
-        @warn("Real-slice sampling failed for a matching component",
-            exception=(err, catch_backtrace()),
-        )
-    end
-
-    return nothing
-end
-
-function nid_initial_coordinates(
-    target,
-    reduction::DrawingReduction;
-    bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    real_tol::Real=1e-7,
-    matroid_tol::Real=1e-7,
-    rng::Random.AbstractRNG=Random.default_rng(),
-)
+function nid_initial_coordinates(target, reduction::DrawingReduction; bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7, matroid_tol::Real=1e-7, rng::Random.AbstractRNG=Random.default_rng())
     if isempty(collect(Oscar.nonbases(target)))
-        coordinates = Oscar.rank(target) == 2 ?
-            rank_two_default_coordinates(length(reduction.parallel_classes), bounds) :
-            circle_guess(length(reduction.parallel_classes), bounds)
-        return (
-            coordinates=coordinates,
-            component=nothing,
-            component_index=nothing,
-            realization_space=nothing,
-            diagnostics=Dict{Symbol,Any}(:ambient_component => true),
-        )
+        coordinates = Oscar.rank(target) == 2 ? 
+        rank_two_default_coordinates(length(reduction.parallel_classes), bounds) : circle_guess(length(reduction.parallel_classes), bounds)
+        return (coordinates=coordinates, component=nothing, component_index=nothing, realization_space=nothing, diagnostics=Dict{Symbol,Any}(:ambient_component => true))
     end
 
-    RS = RealizationSpaces.nonbasis_variety(
-        target;
-        compute_NID=true,
-        compute_orbits=false,
-    )
-    matches = _matching_components_or_nonrealizable(RS, target; tol=matroid_tol)
+    Oscar.is_realizable(target; char=0) || error("The matroid is not realizable over a field of characteristic zero, and therefore is not realizable over C.")
+
+    RS = RealizationSpaces.nonbasis_variety(target; compute_NID=true, compute_orbits=false)
+    matches = _matching_components(RS, target; tol=matroid_tol)
+
+    isempty(matches) && error("Oscar.is_realizable(target; char=0) reports that the matroid is realizable in characteristic zero, but the numerical irreducible decomposition did not contain a component whose computed generic labeled matroid equals the target. This indicates an NID, witness, tolerance, or component-matroid reconstruction failure.")
+
+    last_error = nothing
 
     for (index, C) in matches
-        A = _component_real_matrix(
-            C,
-            target;
-            real_tol=real_tol,
-            matroid_tol=matroid_tol,
-        )
-        isnothing(A) && continue
+        try
+            A = RealizationSpaces.sample(C; real_point=true)
+            Ar = Matrix{Float64}(real.(A))
+            RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol) || continue
 
-        coordinates = realization_matrix_to_coordinates(
-            A,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            rng=rng,
-        )
+            coordinates = realization_matrix_to_coordinates(Ar, reduction; bounds=bounds, real_tol=real_tol, rng=rng)
 
-        return (
-            coordinates=coordinates,
-            component=C,
-            component_index=index,
-            realization_space=RS,
-            diagnostics=Dict{Symbol,Any}(
-                :matching_component_count => length(matches),
-                :real_source => :witness_or_sample,
-            ),
-        )
+            return (coordinates=coordinates, component=C, component_index=index, realization_space=RS, diagnostics=Dict{Symbol,Any}(:matching_component_count => length(matches), :real_source => :realization_spaces_sample))
+        catch err
+            last_error = err
+        end
     end
 
-    error(
-    "The matroid has a matching complex realization component, but no numerically real witness or sample was found."
-    )
+    error("The matroid is realizable in characteristic zero and has at least one matching complex realization component, but no valid numerically real sample suitable for drawing was obtained. Last error: $(repr(last_error)).")
 end
 
-function component_initial_coordinates(
-    C,
-    reduction::DrawingReduction;
-    bounds=((-5.0, 5.0), (-5.0, 5.0)),
-    real_tol::Real=1e-7,
-    matroid_tol::Real=1e-7,
-    rng::Random.AbstractRNG=Random.default_rng(),
-)
+function component_initial_coordinates(C, reduction::DrawingReduction; bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7, matroid_tol::Real=1e-7, rng::Random.AbstractRNG=Random.default_rng())
     target = reduction.relabeled.matroid
-    A = _component_real_matrix(C, target; real_tol=real_tol, matroid_tol=matroid_tol)
 
-    isnothing(A) && error(
-        "The requested RealizationComponent has no numerically real witness or real sample suitable for drawing."
+    A = RealizationSpaces.sample(C; real_point=true)
+    Ar = Matrix{Float64}(real.(A))
+
+    RealizationSpaces.satisfies_matroid(Ar, target; tol=matroid_tol) || error(
+        "The real point sampled from the requested RealizationComponent does not realize the expected labeled target matroid."
     )
 
-    return realization_matrix_to_coordinates(
-        A,
-        reduction;
-        bounds=bounds,
-        real_tol=real_tol,
-        rng=rng,
-    )
+    return realization_matrix_to_coordinates(Ar, reduction; bounds=bounds, real_tol=real_tol, rng=rng)
 end
 
 function _rabinowitsch_initial_point(
@@ -225,16 +96,9 @@ function _rabinowitsch_initial_point(
         current_jitter = attempt == 1 ? jitter : max(jitter, 0.015 * (attempt - 1))
 
         try
-            affine_guess = circle_guess(
-                point_count,
-                bounds;
-                phase=current_phase,
-                jitter=current_jitter,
-                rng=rng,
+            affine_guess = circle_guess(point_count, bounds; phase=current_phase, jitter=current_jitter, rng=rng,
             )
-            augmented_guess = append_rabinowitsch_coordinates(
-                affine_guess,
-                separating_bases,
+            augmented_guess = append_rabinowitsch_coordinates(affine_guess, separating_bases,
             )
 
             println(
@@ -243,10 +107,8 @@ function _rabinowitsch_initial_point(
             )
 
             augmented_point, success = Constrained_Optimization.project_onto_manifold(
-                initializer_system,
-                augmented_guess;
-                tol=projection_tol,
-                max_iters=projection_max_iters,
+                initializer_system, augmented_guess;
+                tol=projection_tol, max_iters=projection_max_iters,
             )
 
             success || begin
@@ -323,41 +185,25 @@ function prepare_rank_three_initialization(
     p0 = nothing
     guess = nothing
 
-    # `system` is always the ordinary collinearity system used by the dynamics.
     system = drawing_system(simple)
     initializer_system = system
 
     if strategy in (:maximal_degenerations, :remi)
-        println(
-            "[DrawingMatroids] Computing Rémi maximal degenerations " *
-            "with $(min(remi_threads, Base.Threads.nthreads())) Julia thread(s)...",
-        )
+        println("[DrawingMatroids] Computing Rémi maximal degenerations with $(min(remi_threads, Base.Threads.nthreads())) Julia thread(s)...")
 
         remi_start = time()
         separating_bases, degenerations = maximal_degeneration_basis_transversal(
             simple;
-            preprocess=remi_preprocess,
-            verbosity=remi_verbosity,
-            n_procs=remi_threads,
+            preprocess=remi_preprocess, verbosity=remi_verbosity, n_procs=remi_threads
         )
         diagnostics[:remi_seconds] = time() - remi_start
 
-        println(
-            "[DrawingMatroids] Rémi finished: $(length(degenerations)) maximal " *
-            "degenerations and $(length(separating_bases)) separating bases.",
-        )
+        println("[DrawingMatroids] Rémi finished: $(length(degenerations)) maximal degenerations and $(length(separating_bases)) separating bases.")
 
-        initializer_data = _rabinowitsch_initial_point(
-            reduction,
-            separating_bases;
-            bounds=bounds,
-            phase=phase,
-            jitter=jitter,
-            attempts=initializer_attempts,
-            projection_tol=projection_tol,
-            projection_max_iters=projection_max_iters,
-            matroid_tol=matroid_tol,
-            rng=rng,
+        initializer_data = _rabinowitsch_initial_point(reduction, separating_bases;
+            bounds=bounds, phase=phase, jitter=jitter, attempts=initializer_attempts,
+            projection_tol=projection_tol, projection_max_iters=projection_max_iters,
+            matroid_tol=matroid_tol, rng=rng
         )
         p0 = initializer_data.coordinates
         initializer_system = initializer_data.initializer_system
@@ -375,20 +221,13 @@ function prepare_rank_three_initialization(
     elseif strategy == :all_bases
         separating_bases = sort(
             [sort(Int.(collect(B))) for B in Oscar.bases(simple)];
-            by=B -> Tuple(B),
+            by=B -> Tuple(B)
         )
 
-        initializer_data = _rabinowitsch_initial_point(
-            reduction,
-            separating_bases;
-            bounds=bounds,
-            phase=phase,
-            jitter=jitter,
+        initializer_data = _rabinowitsch_initial_point(reduction, separating_bases; bounds=bounds, phase=phase, jitter=jitter,
             attempts=initializer_attempts,
-            projection_tol=projection_tol,
-            projection_max_iters=projection_max_iters,
-            matroid_tol=matroid_tol,
-            rng=rng,
+            projection_tol=projection_tol, projection_max_iters=projection_max_iters,
+            matroid_tol=matroid_tol, rng=rng
         )
         p0 = initializer_data.coordinates
         initializer_system = initializer_data.initializer_system
@@ -407,13 +246,7 @@ function prepare_rank_three_initialization(
         diagnostics[:initializer_source] = :deepak_circle
 
     elseif strategy == :nid
-        data = nid_initial_coordinates(
-            target,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            matroid_tol=matroid_tol,
-            rng=rng,
+        data = nid_initial_coordinates(target, reduction; bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol, rng=rng
         )
         p0 = data.coordinates
         component_index = data.component_index
@@ -423,12 +256,7 @@ function prepare_rank_three_initialization(
         diagnostics[:initializer_source] = :nid
 
     elseif strategy == :user
-        p0 = user_input_to_coordinates(
-            start_point,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            rng=rng,
+        p0 = user_input_to_coordinates(start_point, reduction; bounds=bounds, real_tol=real_tol, rng=rng
         )
         diagnostics[:initializer_source] = :user
 
@@ -436,32 +264,18 @@ function prepare_rank_three_initialization(
         isnothing(source_component) && throw(ArgumentError(
             "start_point_strategy=:component requires a RealizationComponent source."
         ))
-        p0 = component_initial_coordinates(
-            source_component,
-            reduction;
-            bounds=bounds,
-            real_tol=real_tol,
-            matroid_tol=matroid_tol,
-            rng=rng,
+        p0 = component_initial_coordinates(source_component, reduction; bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol, rng=rng
         )
         diagnostics[:component] = source_component
         diagnostics[:initializer_source] = :component
 
     else
-        throw(ArgumentError(
-            "Unknown start_point_strategy=$strategy. Use :maximal_degenerations, " *
-            ":all_bases, :nid, :deepak, :user, or :component."
+        throw(ArgumentError("Unknown start_point_strategy=$strategy. Use :maximal_degenerations, :all_bases, :nid, :deepak, :user, or :component."
         ))
     end
 
-    return (
-        system=system,
-        initializer_system=initializer_system,
-        p0=p0,
-        guess=guess,
-        separating_bases=separating_bases,
-        maximal_degenerations=degenerations,
-        component_index=component_index,
-        diagnostics=diagnostics,
+    return (system=system, initializer_system=initializer_system, p0=p0,
+        guess=guess, separating_bases=separating_bases, maximal_degenerations=degenerations,
+        component_index=component_index, diagnostics=diagnostics,
     )
 end

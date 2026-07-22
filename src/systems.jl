@@ -88,9 +88,6 @@ function matroid_collinearity_system(
     vars_xy = collect(variables(base))
     equations = Any[collect(expressions(base))...]
 
-    # Deepak's dynamics code constructs an auxiliary parallel-transport system
-    # from the first equation even when that corrector is not selected.
-    # Retain a harmless zero equation for uniform rank-three matroids.
     if isempty(equations)
         push!(equations, 0.0 * vars_xy[1])
     end
