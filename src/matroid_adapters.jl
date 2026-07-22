@@ -2,30 +2,19 @@ const _DEFAULT_CHART_TOL = 1e-9
 const _DEFAULT_CHART_ATTEMPTS = 100
 
 """
-    relabel_matroid(M) -> (internal, labels)
+    _require_groundset_1_to_n(M)
 
-Rebuild `M` on the ground set `1:n`, returning the relabeled matroid and the
-vector `labels` mapping each internal index back to its original ground-set
-element. The original labels are sorted when orderable so the index assignment
-is deterministic.
+Throw an `ArgumentError` unless `M`'s ground set is exactly `1:length(M)`, the
+convention DrawingMatroids and RealizationSpaces both assume for indexing into
+realization matrices and polynomial-system variables.
 """
-function relabel_matroid(M)
-    labels = Any[collect(Oscar.matroid_groundset(M))...]
-    try
-        sort!(labels)
-    catch
-        # Preserve Oscar's iteration order when labels are not orderable.
-    end
-
-    label_to_index = Dict{Any,Int}(label => i for (i, label) in enumerate(labels))
-
-    mapped_bases = Vector{Vector{Int}}()
-    for B in Oscar.bases(M)
-        push!(mapped_bases, sort([label_to_index[e] for e in collect(B)]))
-    end
-
-    internal = Oscar.matroid_from_bases(mapped_bases, length(labels))
-    return internal, labels
+function _require_groundset_1_to_n(M)
+    n = length(M)
+    groundset = sort(Int.(collect(Oscar.matroid_groundset(M))))
+    groundset == collect(1:n) || throw(ArgumentError(
+        "DrawingMatroids requires the matroid's ground set to be 1:$n; got $groundset."
+    ))
+    return nothing
 end
 
 function _parallel_classes(M)
@@ -77,22 +66,15 @@ function _simple_matroid_from_classes(M, classes::Vector{Vector{Int}})
 end
 
 function drawing_reduction(M)
-    internal, labels = relabel_matroid(M)
-    classes, loops = _parallel_classes(internal)
-    simple = _simple_matroid_from_classes(internal, classes)
-    representatives = first.(classes)
-    grouped_labels = [Any[labels[i] for i in cls] for cls in classes]
-    loop_labels = Any[labels[i] for i in loops]
+    _require_groundset_1_to_n(M)
 
-    return DrawingReduction(
-        internal,
-        simple,
-        classes,
-        representatives,
-        grouped_labels,
-        loops,
-        loop_labels,
-    )
+    classes, loops = _parallel_classes(M)
+    simple = _simple_matroid_from_classes(M, classes)
+    representatives = first.(classes)
+    grouped_labels = [Any[e for e in cls] for cls in classes]
+    loop_labels = Any[e for e in loops]
+
+    return DrawingReduction(M, simple, classes, representatives, grouped_labels, loops, loop_labels)
 end
 
 function coordinate_count(reduction::DrawingReduction)

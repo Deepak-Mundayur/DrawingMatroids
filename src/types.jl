@@ -1,5 +1,5 @@
 struct DrawingReduction
-    matroid                              # relabeled matroid on ground set 1:n
+    matroid                              # input matroid; ground set must be 1:n
     simple_matroid
     parallel_classes::Vector{Vector{Int}}
     representatives::Vector{Int}
