@@ -1,12 +1,5 @@
-struct RelabeledMatroidData
-    original
-    matroid
-    labels::Vector{Any}
-    label_to_index::Dict{Any,Int}
-end
-
 struct DrawingReduction
-    relabeled::RelabeledMatroidData
+    matroid                              # relabeled matroid on ground set 1:n
     simple_matroid
     parallel_classes::Vector{Vector{Int}}
     representatives::Vector{Int}

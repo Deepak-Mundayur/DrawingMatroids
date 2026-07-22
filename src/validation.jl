@@ -64,36 +64,23 @@ function validate_drawing(state::AbstractVector, reduction::DrawingReduction;
 
     coords = state[1:coordinate_length]
     A = coordinates_to_matrix(coords, reduction)
-    M = reduction.relabeled.matroid
 
-    failed_nonbases = Vector{Vector{Int}}()
-    max_nonbasis_residual = 0.0
-    for NB in Oscar.nonbases(M)
-        indices = sort(Int.(collect(NB)))
-        residual = abs(RealizationSpaces.determinant_minor(A, indices))
-        max_nonbasis_residual = max(max_nonbasis_residual, Float64(residual))
-        residual <= tol || push!(failed_nonbases, indices)
-    end
-
-    failed_bases = Vector{Vector{Int}}()
-    min_basis_det = Inf
-    for B in Oscar.bases(M)
-        indices = sort(Int.(collect(B)))
-        value = abs(RealizationSpaces.determinant_minor(A, indices))
-        min_basis_det = min(min_basis_det, Float64(value))
-        value > tol || push!(failed_bases, indices)
-    end
+    minors = RealizationSpaces.matroid_realization_diagnostics(A, reduction.matroid; tol=tol)
 
     collisions = _coordinate_collisions(coords, length(reduction.parallel_classes); tol=collision_tol)
     component_member = _component_membership(A, component)
 
-    valid = isempty(failed_nonbases) && isempty(failed_bases)
+    valid = minors.valid
     if !isnothing(component)
         valid &= (component_member === true)
     end
 
-    return DrawingValidation(valid, A, max_nonbasis_residual,
-        min_basis_det, failed_nonbases, failed_bases, collisions,
+    return DrawingValidation(valid, A,
+        minors.max_nonbasis_residual,
+        minors.min_basis_absolute_determinant,
+        minors.failed_nonbases,
+        minors.failed_bases,
+        collisions,
         component_member,
     )
 end

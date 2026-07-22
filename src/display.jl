@@ -133,7 +133,7 @@ function Base.show(io::IO, ::MIME"text/plain", reduction::DrawingReduction)
     n_loops = length(reduction.loops)
 
     println(io, "DrawingReduction")
-    println(io, "  target:               ", _matroid_description(reduction.relabeled.matroid))
+    println(io, "  target:               ", _matroid_description(reduction.matroid))
     println(io, "  displayed points:     ", n_displayed)
     println(io, "  nontrivial parallels: ", n_parallel)
     println(io, "  loops:                ", n_loops)
@@ -170,7 +170,7 @@ function Base.show(io::IO, ::MIME"text/plain", result::DrawingResult)
     n_elements = try
         length(result.target_matroid)
     catch
-        length(reduction.relabeled.labels)
+        length(reduction.matroid)
     end
     n_displayed = _displayed_point_count(reduction)
     n_parallel = _parallel_class_count(reduction)

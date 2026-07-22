@@ -25,7 +25,7 @@ function _rank_two_initialization(
     coordinates = if strategy == :user
         user_input_to_coordinates(start_point, reduction; bounds=bounds, real_tol=real_tol, rng=rng)
     elseif strategy == :nid
-        data = nid_initial_coordinates(reduction.relabeled.matroid, reduction;
+        data = nid_initial_coordinates(reduction.matroid, reduction;
             bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol,
             rng=rng)
         component_index = data.component_index
@@ -113,7 +113,7 @@ function visualization(
     rng = isnothing(seed) ? Random.default_rng() : Random.MersenneTwister(seed)
 
     reduction = drawing_reduction(M)
-    target = reduction.relabeled.matroid
+    target = reduction.matroid
     rank_value = Oscar.rank(target)
     result_source = isnothing(source_object) ? M : source_object
 

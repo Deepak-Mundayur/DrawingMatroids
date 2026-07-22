@@ -1,18 +1,22 @@
 const _DEFAULT_CHART_TOL = 1e-9
 const _DEFAULT_CHART_ATTEMPTS = 100
 
-function _ordered_groundset(M)
+"""
+    relabel_matroid(M) -> (internal, labels)
+
+Rebuild `M` on the ground set `1:n`, returning the relabeled matroid and the
+vector `labels` mapping each internal index back to its original ground-set
+element. The original labels are sorted when orderable so the index assignment
+is deterministic.
+"""
+function relabel_matroid(M)
     labels = Any[collect(Oscar.matroid_groundset(M))...]
     try
         sort!(labels)
     catch
         # Preserve Oscar's iteration order when labels are not orderable.
     end
-    return labels
-end
 
-function relabel_matroid(M)
-    labels = _ordered_groundset(M)
     label_to_index = Dict{Any,Int}(label => i for (i, label) in enumerate(labels))
 
     mapped_bases = Vector{Vector{Int}}()
@@ -21,7 +25,7 @@ function relabel_matroid(M)
     end
 
     internal = Oscar.matroid_from_bases(mapped_bases, length(labels))
-    return RelabeledMatroidData(M, internal, labels, label_to_index)
+    return internal, labels
 end
 
 function _parallel_classes(M)
@@ -73,16 +77,15 @@ function _simple_matroid_from_classes(M, classes::Vector{Vector{Int}})
 end
 
 function drawing_reduction(M)
-    relabeled = relabel_matroid(M)
-    internal = relabeled.matroid
+    internal, labels = relabel_matroid(M)
     classes, loops = _parallel_classes(internal)
     simple = _simple_matroid_from_classes(internal, classes)
     representatives = first.(classes)
-    grouped_labels = [Any[relabeled.labels[i] for i in cls] for cls in classes]
-    loop_labels = Any[relabeled.labels[i] for i in loops]
+    grouped_labels = [Any[labels[i] for i in cls] for cls in classes]
+    loop_labels = Any[labels[i] for i in loops]
 
     return DrawingReduction(
-        relabeled,
+        internal,
         simple,
         classes,
         representatives,
@@ -97,7 +100,7 @@ function coordinate_count(reduction::DrawingReduction)
 end
 
 function coordinates_to_matrix(coords::AbstractVector, reduction::DrawingReduction)
-    M = reduction.relabeled.matroid
+    M = reduction.matroid
     r = Oscar.rank(M)
     n = length(M)
     k = length(reduction.parallel_classes)
@@ -172,7 +175,7 @@ function realization_matrix_to_coordinates(
     bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7,
     rng::Random.AbstractRNG=Random.default_rng(),
 )
-    M = reduction.relabeled.matroid
+    M = reduction.matroid
     r = Oscar.rank(M)
     n = length(M)
 
@@ -215,7 +218,7 @@ function realization_matrix_to_coordinates(
 end
 
 function _matrix_from_user_input(data, reduction::DrawingReduction)
-    M = reduction.relabeled.matroid
+    M = reduction.matroid
     r = Oscar.rank(M)
     n = length(M)
     k = length(reduction.parallel_classes)
@@ -268,7 +271,7 @@ function user_input_to_coordinates(
     end
 
     k = length(reduction.parallel_classes)
-    n = length(reduction.relabeled.matroid)
+    n = length(reduction.matroid)
 
     if data isa AbstractMatrix
         _require_numerically_real(data; tol=real_tol)

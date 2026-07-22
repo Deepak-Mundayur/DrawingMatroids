@@ -57,7 +57,7 @@ function nid_initial_coordinates(target, reduction::DrawingReduction; bounds=((-
 end
 
 function component_initial_coordinates(C, reduction::DrawingReduction; bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7, matroid_tol::Real=1e-7, rng::Random.AbstractRNG=Random.default_rng())
-    target = reduction.relabeled.matroid
+    target = reduction.matroid
 
     A = RealizationSpaces.sample(C; real_point=true)
     Ar = Matrix{Float64}(real.(A))
@@ -175,7 +175,7 @@ function prepare_rank_three_initialization(
     rng::Random.AbstractRNG=Random.default_rng(),
 )
     simple = reduction.simple_matroid
-    target = reduction.relabeled.matroid
+    target = reduction.matroid
     n_points = length(simple)
 
     separating_bases = Vector{Vector{Int}}()
