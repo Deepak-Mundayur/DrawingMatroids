@@ -1,0 +1,113 @@
+Failures:
+
+1) fano_matroid 
+
+julia> visualization(M)
+[DrawingMatroids] Computing Rémi maximal degenerations with 1 Julia thread(s)...
+[DrawingMatroids] Rémi finished: 20 maximal degenerations and 4 separating bases.
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 1/5, 4 separating bases)...
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 2/5, 4 separating bases)...
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 3/5, 4 separating bases)...
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 4/5, 4 separating bases)...
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 5/5, 4 separating bases)...
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:44
+ [2] _rabinowitsch_initial_point(reduction::DrawingMatroids.DrawingReduction, separating_bases::Vector{…}; bounds::Tuple{…}, phase::Float64, jitter::Float64, attempts::Int64, projection_tol::Float64, projection_max_iters::Int64, matroid_tol::Float64, rng::Random.TaskLocalRNG)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/initializers.jl:154
+ [3] _rabinowitsch_initial_point
+   @ ~/Documents/research/drawing_matroids/DrawingMatroids/src/initializers.jl:72 [inlined]
+ [4] prepare_rank_three_initialization(reduction::DrawingMatroids.DrawingReduction; strategy::Symbol, start_point::Nothing, source_component::Nothing, bounds::Tuple{…}, phase::Float64, jitter::Float64, initializer_attempts::Int64, projection_tol::Float64, projection_max_iters::Int64, remi_preprocess::Bool, remi_verbosity::Int64, remi_threads::Int64, real_tol::Float64, matroid_tol::Float64, rng::Random.TaskLocalRNG)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/initializers.jl:205
+ [5] prepare_rank_three_initialization
+   @ ~/Documents/research/drawing_matroids/DrawingMatroids/src/initializers.jl:161 [inlined]
+ [6] visualization(M::Matroid{…}; start_point_strategy::Symbol, start_point::Nothing, source_component::Nothing, source_object::Nothing, check_component_membership::Bool, bounds::Tuple{…}, attempts::Int64, seed::Nothing, filename::String, animate::Bool, animation_filename::String, options::DrawingMatroids.DrawingOptions)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/visualization.jl:150
+ [7] visualization(M::Matroid{Int64})
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/visualization.jl:92
+ [8] top-level scope
+   @ REPL[53]:1
+Some type information was truncated. Use `show(err)` to see complete types.
+
+
+2) moebius_kantor_matroid()
+
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+
+3) non_pappus_matroid()
+
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+
+4) perles_matroid()
+
+julia> M = perles_matroid()
+Matroid of rank 3 on 9 elements
+
+julia> visualization(M,filename="perles_matroid.png")
+[DrawingMatroids] Computing Rémi maximal degenerations with 1 Julia thread(s)...
+[DrawingMatroids] Rémi finished: 54 maximal degenerations and 4 separating bases.
+[DrawingMatroids] Projecting reduced Rabinowitsch initializer (attempt 1/5, 4 separating bases)...
+--- Executing Dynamics Path ---
+--- Executing Dynamics Path ---
+--- Executing Dynamics Path ---
+--- Executing Dynamics Path ---
+--- Executing Dynamics Path ---
+ERROR: No exact drawing was found after 5 attempts using strategy maximal_degenerations. Last validation: (valid = false, maximum_nonbasis_residual = 2.94063832765854e-13, minimum_basis_absolute_determinant = 3.595437633749212e-14, failed_nonbases = Vector{Int64}[], failed_bases = [[1, 2, 5], [1, 3, 5], [2, 3, 5], [1, 4, 5], [2, 4, 5], [3, 4, 5], [1, 2, 6], [1, 3, 6], [2, 3, 6], [1, 4, 6], [2, 4, 6], [3, 4, 6], [2, 5, 6], [3, 5, 6], [4, 5, 6], [1, 2, 7], [1, 3, 7], [2, 3, 7], [1, 4, 7], [2, 4, 7], [3, 4, 7], [1, 5, 7], [3, 5, 7], [4, 5, 7], [1, 6, 7], [2, 6, 7], [4, 6, 7], [5, 6, 7], [1, 2, 8], [1, 3, 8], [2, 3, 8], [1, 4, 8], [2, 4, 8], [3, 4, 8], [1, 5, 8], [2, 5, 8], [4, 5, 8], [1, 6, 8], [2, 6, 8], [3, 6, 8], [5, 6, 8], [1, 7, 8], [2, 7, 8], [3, 7, 8], [4, 7, 8], [5, 7, 8], [6, 7, 8], [1, 2, 9], [1, 3, 9], [2, 3, 9], [1, 4, 9], [2, 4, 9], [3, 4, 9], [1, 5, 9], [2, 5, 9], [3, 5, 9], [1, 6, 9], [2, 6, 9], [3, 6, 9], [4, 6, 9], [5, 6, 9], [2, 7, 9], [3, 7, 9], [4, 7, 9], [5, 7, 9], [6, 7, 9], [1, 8, 9], [3, 8, 9], [4, 8, 9], [5, 8, 9], [6, 8, 9], [7, 8, 9]], collisions = Tuple{Int64, Int64}[], component_member = nothing). Last error: nothing.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:44
+ [2] visualization(M::Matroid{…}; start_point_strategy::Symbol, start_point::Nothing, source_component::Nothing, source_object::Nothing, check_component_membership::Bool, bounds::Tuple{…}, attempts::Int64, seed::Nothing, filename::String, animate::Bool, animation_filename::String, options::DrawingMatroids.DrawingOptions)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/visualization.jl:236
+ [3] top-level scope
+   @ REPL[70]:1
+Some type information was truncated. Use `show(err)` to see complete types.
+
+5) R10_matroid()
+
+julia> visualization(M,filename="R10_matroid.png")
+ERROR: DrawingMatroids supports matroids of rank at most three.
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:44
+ [2] visualization(M::Matroid{…}; start_point_strategy::Symbol, start_point::Nothing, source_component::Nothing, source_object::Nothing, check_component_membership::Bool, bounds::Tuple{…}, attempts::Int64, seed::Nothing, filename::String, animate::Bool, animation_filename::String, options::DrawingMatroids.DrawingOptions)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/visualization.jl:122
+ [3] top-level scope
+   @ REPL[72]:1
+Some type information was truncated. Use `show(err)` to see complete types.
+
+6) vamos_matroid()
+
+ERROR: DrawingMatroids supports matroids of rank at most three.
+
+7) projective_plane(2)
+
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+
+
+8) projective_plane(3)
+
+[DrawingMatroids] Rémi finished: 1855 maximal degenerations and 6 separating bases.
+
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+
+9) projective_geometry(2,3)
+
+[DrawingMatroids] Rémi finished: 1855 maximal degenerations and 6 separating bases.
+
+ERROR: Could not obtain an exact real initializer from the Rabinowitsch system after 5 attempts. Last validation: no initializer validation was available. Last error: ErrorException("Reduced Rabinowitsch projection did not converge on attempt 5.").
+
+10) affine_geometry(2,3)
+
+julia> visualization(affine_geometry(2,3),animate = true, animation_filename="projective_plane_3.gif")
+ERROR: ArgumentError: DrawingMatroids requires the matroid's ground set to be 1:9; got [2, 3, 4, 5, 6, 7, 8, 9, 10].
+Stacktrace:
+ [1] _require_groundset_1_to_n(M::Matroid{Int64})
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/matroid_adapters.jl:14
+ [2] drawing_reduction(M::Matroid{Int64})
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/matroid_adapters.jl:69
+ [3] visualization(M::Matroid{…}; start_point_strategy::Symbol, start_point::Nothing, source_component::Nothing, source_object::Nothing, check_component_membership::Bool, bounds::Tuple{…}, attempts::Int64, seed::Nothing, filename::String, animate::Bool, animation_filename::String, options::DrawingMatroids.DrawingOptions)
+   @ DrawingMatroids ~/Documents/research/drawing_matroids/DrawingMatroids/src/visualization.jl:115
+ [4] top-level scope
+   @ REPL[92]:1
+Some type information was truncated. Use `show(err)` to see complete types.
