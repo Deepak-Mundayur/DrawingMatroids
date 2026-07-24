@@ -59,6 +59,6 @@ export render_drawing,
 
 export constrained_optimize
 
-
+export run_and_animate_collinear_system
 
 end

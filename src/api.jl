@@ -24,7 +24,7 @@ function run_and_animate_collinear_system(
     ]
     system = matroid_collinearity_system(n_pts, triples)
     initial_guess = isnothing(guess) ? circle_guess(n_pts, bounds) : Float64.(collect(guess))
-    field = Constrained_Optimization.make_bounded_repelling_force(
+    field = make_bounded_repelling_force(
         n_pts,
         bounds;
         k_p=k_p,
@@ -37,7 +37,7 @@ function run_and_animate_collinear_system(
         guess=initial_guess,
         dt=dt,
         max_steps=max_steps,
-        corrector=Constrained_Optimization.moore_penrose_corrector,
+        corrector=moore_penrose_corrector,
     )
 
     animation = Animation()
