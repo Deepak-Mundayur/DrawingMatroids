@@ -106,9 +106,11 @@ function _rabinowitsch_initial_point(
                 "(attempt $attempt/$attempts, $(length(separating_bases)) separating bases)...",
             )
 
-            augmented_point, success = Constrained_Optimization.project_onto_manifold(
-                initializer_system, augmented_guess;
-                tol=projection_tol, max_iters=projection_max_iters,
+            augmented_point, success = project_onto_manifold(
+                initializer_system,
+                augmented_guess;
+                tol=projection_tol,
+                max_iters=projection_max_iters,
             )
 
             success || begin

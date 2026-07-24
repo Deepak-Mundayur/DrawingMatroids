@@ -1,4 +1,4 @@
-function matroid_collinearity_system(n_points::Int, collinear_sets::Vector{NTuple{3, Int}}; hard_non_collinearity_relns=false)
+function _matroid_collinearity_system(n_points::Int, collinear_sets::Vector{NTuple{3, Int}}; hard_non_collinearity_relns=false)
     # Variables for n points (x, y)
     vars_xy = Variable[]
     for i in 1:n_points

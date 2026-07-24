@@ -3,18 +3,17 @@ module DrawingMatroids
 import Random
 using Random: rand, randn
 import HomotopyContinuation
-using HomotopyContinuation: System, Variable, expressions, variables
+using HomotopyContinuation: System, Variable, expressions, variables, Expression
 using Plots: Animation, annotate!, frame, gif, plot, plot!, savefig, scatter!, text
 # import Oscar
 using Oscar
 using LinearAlgebra: I, det
 using Printf: @sprintf
 
-import Constrained_Optimization
-const constrained_optimize = Constrained_Optimization.optimize
+import Constrained_Optimization: optimize as constrained_optimize, moore_penrose_corrector, project_onto_manifold
+using RealizationSpaces
 
-
-include(joinpath(@__DIR__, "..", "NumericalRealizationSpaces", "RealizationSpaces", "src", "RealizationSpaces.jl"))
+#include(joinpath(@__DIR__, "..", "NumericalRealizationSpaces", "RealizationSpaces", "src", "RealizationSpaces.jl"))
 include(joinpath(@__DIR__, "remi", "maximat.jl"))
 import .Maximat
 
@@ -26,10 +25,12 @@ import .Maximat
 
 include("types.jl")
 include("matroid_adapters.jl")
+include("varieties.jl")
 include("systems.jl")
 include("initializers.jl")
 include("validation.jl")
 include("rendering.jl")
+include("vector_fields.jl")
 include("visualization.jl")
 include("display.jl")
 
@@ -58,6 +59,6 @@ export render_drawing,
 
 export constrained_optimize
 
-
+export run_and_animate_collinear_system
 
 end
