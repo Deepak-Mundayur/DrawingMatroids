@@ -62,6 +62,8 @@ function render_drawing(
         legend=:outerbottom,
         title="",
         framestyle=framestyle,
+        xticks = false,
+        yticks= false
     )
 
     if show_boundary

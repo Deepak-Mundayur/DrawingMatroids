@@ -167,7 +167,7 @@ function visualization(
     end
 
     point_count = length(reduction.parallel_classes)
-    vector_field = Constrained_Optimization.make_bounded_repelling_force(
+    vector_field = make_bounded_repelling_force(
         point_count, bounds;
         k_p=options.k_p, k_wall=options.k_wall,
     )
@@ -191,7 +191,7 @@ function visualization(
             final_state, history = constrained_optimize(
                 prepared.system, vector_field;
                 p0=p0, guess=guess, dt=current_dt, max_steps=options.max_steps,
-                corrector=Constrained_Optimization.moore_penrose_corrector, tol=options.projection_tol, max_iters=options.projection_max_iters,
+                corrector=moore_penrose_corrector, tol=options.projection_tol, max_iters=options.projection_max_iters,
             )
 
             component_for_validation = check_component_membership ?

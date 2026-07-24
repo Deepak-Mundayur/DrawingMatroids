@@ -77,7 +77,7 @@ function matroid_collinearity_system(
     collinear_sets::Vector{NTuple{3,Int}};
     separating_bases::Vector{Vector{Int}}=Vector{Vector{Int}}(),
 )
-    raw_base = Constrained_Optimization.matroid_collinearity_system(
+    raw_base = _matroid_collinearity_system(
         n_points,
         collinear_sets;
         hard_non_collinearity_relns=false,
