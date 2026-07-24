@@ -218,28 +218,6 @@ function prepare_rank_three_initialization(
         diagnostics[:maximal_degeneration_count] = length(degenerations)
         diagnostics[:dynamics_uses_rabinowitsch] = false
 
-    elseif strategy == :all_bases
-        separating_bases = sort(
-            [sort(Int.(collect(B))) for B in Oscar.bases(simple)];
-            by=B -> Tuple(B)
-        )
-
-        initializer_data = _rabinowitsch_initial_point(reduction, separating_bases; bounds=bounds, phase=phase, jitter=jitter,
-            attempts=initializer_attempts,
-            projection_tol=projection_tol, projection_max_iters=projection_max_iters,
-            matroid_tol=matroid_tol, rng=rng
-        )
-        p0 = initializer_data.coordinates
-        initializer_system = initializer_data.initializer_system
-
-        diagnostics[:initializer_attempt] = initializer_data.attempt
-        diagnostics[:initializer_source] = :all_bases_rabinowitsch
-        diagnostics[:rabinowitsch_count] = length(separating_bases)
-        diagnostics[:total_basis_count] = length(separating_bases)
-        diagnostics[:rabinowitsch_reduction_ratio] = 1.0
-        diagnostics[:baseline] = :all_bases
-        diagnostics[:dynamics_uses_rabinowitsch] = false
-
     elseif strategy == :deepak
         guess = circle_guess(n_points, bounds; phase=phase, jitter=jitter, rng=rng)
         diagnostics[:hard_non_collinearity_relns] = false
@@ -270,7 +248,7 @@ function prepare_rank_three_initialization(
         diagnostics[:initializer_source] = :component
 
     else
-        throw(ArgumentError("Unknown start_point_strategy=$strategy. Use :maximal_degenerations, :all_bases, :nid, :deepak, :user, or :component."
+        throw(ArgumentError("Unknown start_point_strategy=$strategy. Use :maximal_degenerations, :nid, :deepak, :user, or :component."
         ))
     end
 

@@ -38,7 +38,7 @@ function _rank_two_initialization(
         ))
         component_initial_coordinates(source_component, reduction;
             bounds=bounds, real_tol=real_tol, matroid_tol=matroid_tol, rng=rng)
-    elseif strategy in (:maximal_degenerations, :remi, :all_bases, :deepak)
+    elseif strategy in (:maximal_degenerations, :remi, :deepak)
         diagnostics[:rank_two_closed_form] = true
         rank_two_default_coordinates(point_count, bounds)
     else
@@ -84,7 +84,6 @@ an error. The supported start strategies are:
 
 - `:maximal_degenerations` / `:remi`: Rémi's maximal degenerations plus a greedy
   reduced Rabinowitsch transversal.
-- `:all_bases`: full-basis Rabinowitsch baseline.
 - `:nid`: RealizationSpaces numerical irreducible decomposition.
 - `:deepak`: Deepak's circle guess and Newton pull-in without Rémi or NID.
 - `:user`: user-provided realization matrix or affine coordinates.

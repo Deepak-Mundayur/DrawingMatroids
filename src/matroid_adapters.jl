@@ -4,9 +4,7 @@ const _DEFAULT_CHART_ATTEMPTS = 100
 """
     _require_groundset_1_to_n(M)
 
-Throw an `ArgumentError` unless `M`'s ground set is exactly `1:length(M)`, the
-convention DrawingMatroids and RealizationSpaces both assume for indexing into
-realization matrices and polynomial-system variables.
+Throw an `ArgumentError` unless `M`'s ground set is exactly `1:length(M)`.
 """
 function _require_groundset_1_to_n(M)
     n = length(M)
