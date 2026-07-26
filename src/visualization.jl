@@ -111,14 +111,17 @@ function visualization(
     attempts >= 1 || throw(ArgumentError("attempts must be positive."))
     rng = isnothing(seed) ? Random.default_rng() : Random.MersenneTwister(seed)
 
-    reduction = drawing_reduction(M)
-    target = reduction.matroid
-    rank_value = Oscar.rank(target)
+    rank_value = Oscar.rank(M)
     result_source = isnothing(source_object) ? M : source_object
 
-    rank_value == 0 && error("DrawingMatroids does not draw rank-zero matroids.")
-    rank_value == 1 && error("DrawingMatroids does not draw rank-one matroids.")
-    rank_value <= 3 || error("DrawingMatroids supports matroids of rank at most three.")
+    rank_value in 2:3 || error("DrawingMatroids only draws matroids of rank two or three (got rank $rank_value).")
+
+    Oscar.is_realizable(M; char=0) || error(
+        "DrawingMatroids cannot draw $(result_source): it is not realizable over any field of characteristic 0."
+    )
+
+    reduction = drawing_reduction(M)
+    target = reduction.matroid
 
     if rank_value == 2
         initialization = _rank_two_initialization(reduction;
