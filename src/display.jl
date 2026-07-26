@@ -60,7 +60,6 @@ function Base.show(io::IO, ::MIME"text/plain", initialization::InitializationRes
     println(io, "InitializationResult")
     println(io, "  strategy:              :", initialization.strategy)
     println(io, "  state variables:       ", length(initialization.state))
-    println(io, "  separating bases:      ", length(initialization.separating_bases))
     println(io, "  maximal degenerations: ", length(initialization.maximal_degenerations))
 
     component_index = initialization.component_index
@@ -198,7 +197,6 @@ function Base.show(io::IO, ::MIME"text/plain", result::DrawingResult)
     n_separating = length(initialization.separating_bases)
     if n_degenerations > 0 || n_separating > 0
         println(io, "  degenerations:     ", n_degenerations)
-        println(io, "  separating bases:  ", n_separating)
     end
 
     total_basis_count = _optional_diagnostic(diagnostics, :total_basis_count)
