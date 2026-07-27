@@ -52,7 +52,7 @@ function _component_membership(A::Matrix{Float64}, C)
     end
 end
 
-function validate_drawing(state::AbstractVector, reduction::DrawingReduction;
+function compute_drawing_validation(state::AbstractVector, reduction::DrawingReduction;
     tol::Real=1e-7,
     collision_tol::Real=1e-6,
     component=nothing,
@@ -75,17 +75,21 @@ function validate_drawing(state::AbstractVector, reduction::DrawingReduction;
         valid &= (component_member === true)
     end
 
-    return DrawingValidation(valid, A,
-        minors.max_nonbasis_residual,
-        minors.min_basis_absolute_determinant,
-        minors.failed_nonbases,
-        minors.failed_bases,
-        collisions,
-        component_member,
+    return (
+        valid=valid,
+        matrix=A,
+        maximum_nonbasis_residual=minors.max_nonbasis_residual,
+        minimum_basis_absolute_determinant=minors.min_basis_absolute_determinant,
+        failed_nonbases=minors.failed_nonbases,
+        failed_bases=minors.failed_bases,
+        collisions=collisions,
+        component_member=component_member,
     )
 end
 
-function validation_summary(validation::DrawingValidation)
+validation_report(result::DrawingResult) = validation_report(result.validation)
+
+function validation_report(validation)
     return (
         valid=validation.valid,
         maximum_nonbasis_residual=validation.maximum_nonbasis_residual,

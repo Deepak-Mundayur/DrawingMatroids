@@ -42,7 +42,7 @@ export DrawingResult,
        DrawingValidation,
        InitializationResult
 
-export validation_summary,
+export validation_report,
        drawing_reduction
 
 export maximal_degeneration_basis_transversal

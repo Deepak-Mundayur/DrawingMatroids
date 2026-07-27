@@ -121,7 +121,7 @@ function _rabinowitsch_initial_point(
             end
 
             coordinates = Float64.(augmented_point[1:coordinate_length])
-            validation = validate_drawing(
+            validation = compute_drawing_validation(
                 coordinates,
                 reduction;
                 tol=matroid_tol,
@@ -140,7 +140,7 @@ function _rabinowitsch_initial_point(
 
             last_error = ErrorException(
                 "Projected initializer did not realize the target matroid: " *
-                string(validation_summary(validation)),
+                string(validation_report(validation)),
             )
         catch err
             last_error = err
@@ -149,7 +149,7 @@ function _rabinowitsch_initial_point(
 
     validation_text = isnothing(last_validation) ?
         "no initializer validation was available" :
-        string(validation_summary(last_validation))
+        string(validation_report(last_validation))
 
     error(
         "Could not obtain an exact real initializer from the Rabinowitsch system " *
