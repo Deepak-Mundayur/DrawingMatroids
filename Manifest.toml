@@ -923,9 +923,9 @@ uuid = "615f187c-cbe4-4ef1-ba3b-2fcf58d6d173"
 version = "0.1.1"
 
 [[deps.IntegerMathUtils]]
-git-tree-sha1 = "4c1acff2dc6b6967e7e750633c50bc3b8d83e617"
+git-tree-sha1 = "c72458f1962faeb003bf23cbdb75164fe6280906"
 uuid = "18e54dd8-cb9d-406c-a71d-865a43cbb235"
-version = "0.1.3"
+version = "0.1.4"
 
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
@@ -1716,7 +1716,7 @@ uuid = "05236dd9-4125-5232-aa7c-9ec0c9b2c25a"
 version = "8.3.3+0"
 
 [[deps.RealizationSpaces]]
-deps = ["Combinatorics", "HomotopyContinuation", "LinearAlgebra", "Oscar", "Plots", "Printf", "Revise"]
+deps = ["Combinatorics", "Constrained_Optimization", "HomotopyContinuation", "LinearAlgebra", "Oscar", "Plots", "Printf", "Revise"]
 path = "../NumericalRealizationSpaces/RealizationSpaces"
 uuid = "65755c9d-dd0c-4dc9-b48e-7e0c28ede372"
 version = "0.1.0"

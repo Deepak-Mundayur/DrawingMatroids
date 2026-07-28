@@ -2,26 +2,18 @@ module DrawingMatroids
 
 import Random
 using Random: rand, randn
-import HomotopyContinuation
-using HomotopyContinuation: System, Variable, expressions, variables, Expression
-using Plots: Animation, annotate!, frame, gif, plot, plot!, savefig, scatter!, text
-# import Oscar
-using Oscar
 using LinearAlgebra: I, det
 using Printf: @sprintf
 
+import HomotopyContinuation
+using HomotopyContinuation: System, Variable, expressions, variables, Expression
+using Plots: Animation, annotate!, frame, gif, plot, plot!, savefig, scatter!, text
+using Oscar
+
 import Constrained_Optimization: optimize as constrained_optimize, moore_penrose_corrector, project_onto_manifold
 using RealizationSpaces
-
-#include(joinpath(@__DIR__, "..", "NumericalRealizationSpaces", "RealizationSpaces", "src", "RealizationSpaces.jl"))
 include(joinpath(@__DIR__, "remi", "maximat.jl"))
 import .Maximat
-
-# using RealizationSpaces
-
-# include("varieties.jl")
-# include("vector_fields.jl")
-# include("api.jl")
 
 include("types.jl")
 include("matroid_adapters.jl")
@@ -35,7 +27,7 @@ include("visualization.jl")
 include("display.jl")
 
 
-export visualization, matroid_visualize
+export visualization
 
 export DrawingResult,
        DrawingCollectionResult,
