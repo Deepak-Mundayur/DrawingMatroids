@@ -258,8 +258,8 @@ function visualization(
 end
 
 function _ensure_components!(RS)
-    if isnothing(RealizationSpaces.stored_components(RS))
-        RealizationSpaces.get_NID!(RS)
+    if isnothing(RealizationSpaces._stored_components(RS))
+        RealizationSpaces.compute_decomposition!(RS)
     end
     return RealizationSpaces.components(RS)
 end
@@ -290,7 +290,7 @@ function visualization(
     grid_filename::Union{Nothing,AbstractString}=nothing,
     kwargs...,
 )
-    target_if_matroid = RealizationSpaces.structure_kind(RS) == :matroid ?
+    target_if_matroid = RealizationSpaces.kind(RS) == :matroid ?
         RealizationSpaces.matroid(RS) : nothing
     ambient_matroid_space = !isnothing(target_if_matroid) &&
         isempty(collect(Oscar.nonbases(target_if_matroid)))
@@ -339,7 +339,7 @@ function visualization(
         )
     end
 
-    if RealizationSpaces.structure_kind(RS) == :incidence
+    if RealizationSpaces.kind(RS) == :incidence
         error(
             "An incidence-defined RealizationSpace requires `component=i` or `all=true` so that a component matroid can be inferred."
         )

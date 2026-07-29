@@ -16,7 +16,7 @@ function _matching_components(RS, target; tol::Real=1e-7)
 
         CM = RealizationSpaces.matroid(C)
 
-        RealizationSpaces.same_labeled_matroid(CM, target) &&
+        RealizationSpaces._same_labeled_matroid(CM, target) &&
             push!(matches, (index, C))
     end
 
@@ -32,7 +32,7 @@ function nid_initial_coordinates(target, reduction::DrawingReduction; bounds=((-
 
     Oscar.is_realizable(target; char=0) || error("The matroid is not realizable over a field of characteristic zero, and therefore is not realizable over C.")
 
-    RS = RealizationSpaces.nonbasis_variety(target; compute_NID=true, compute_orbits=false)
+    RS = RealizationSpaces.nonbasis_variety(target; compute_decomposition=true, compute_matroid_orbits=false, compute_component_orbits=false)
     matches = _matching_components(RS, target; tol=matroid_tol)
 
     isempty(matches) && error("Oscar.is_realizable(target; char=0) reports that the matroid is realizable in characteristic zero, but the numerical irreducible decomposition did not contain a component whose computed generic labeled matroid equals the target. This indicates an NID, witness, tolerance, or component-matroid reconstruction failure.")
