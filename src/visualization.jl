@@ -293,8 +293,9 @@ function visualization(
     end
 
     point_count = length(reduction.parallel_classes)
+    collinear_sets = collinearity_triples(reduction.simple_matroid)
     vector_field = make_bounded_repelling_force(
-        point_count, bounds ;
+        point_count, bounds;
         k_p=options.k_p, k_wall=options.k_wall,
     )
 

@@ -54,6 +54,7 @@ Base.@kwdef struct DrawingOptions
     max_steps::Int = 300
     k_p::Float64 = 10.0
     k_wall::Float64 = 50.0
+    k_torque::Float64 = 0.5
 
     # Initial projection
     projection_tol::Float64 = 1e-10
