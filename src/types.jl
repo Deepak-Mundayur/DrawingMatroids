@@ -8,9 +8,14 @@ struct DrawingReduction
     loop_labels::Vector{Any}
 end
 
+const DrawingValidation = NamedTuple{(
+    :valid, :matrix, :maximum_nonbasis_residual, :minimum_basis_absolute_determinant,
+    :failed_nonbases, :failed_bases, :collisions, :component_member,
+)}                                    # alias over compute_drawing_validation's NamedTuple, for dispatch/display only
+
 struct InitializationResult
     strategy::Symbol
-    state::Vector{Float64}
+    state::Vector{Float64}               #projected point of p0 onto the manifold, before repelling-force
     system::System
     separating_bases::Vector{Vector{Int}}
     maximal_degenerations::Vector{Any}
@@ -18,25 +23,14 @@ struct InitializationResult
     diagnostics::Dict{Symbol,Any}
 end
 
-struct DrawingValidation
-    valid::Bool
-    matrix::Matrix{Float64}
-    maximum_nonbasis_residual::Float64
-    minimum_basis_absolute_determinant::Float64
-    failed_nonbases::Vector{Vector{Int}}
-    failed_bases::Vector{Vector{Int}}
-    collisions::Vector{Tuple{Int,Int}}
-    component_member::Union{Nothing,Bool}
-end
-
 struct DrawingResult
-    source
-    target_matroid
+    source                              #input matroid/component/RSpace
+    target_matroid                      #reduction.matroid
     reduction::DrawingReduction
     initialization::InitializationResult
-    final_state::Vector{Float64}
+    final_state::Vector{Float64}        #final point on the manifold
     history::Vector{Vector{Float64}}
-    validation::DrawingValidation
+    validation::DrawingValidation        #NamedTuple from compute_drawing_validation; see validation_report()
     plot
     image_filename::Union{Nothing,String}
     animation_filename::Union{Nothing,String}

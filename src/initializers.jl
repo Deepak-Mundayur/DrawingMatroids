@@ -16,7 +16,7 @@ function _matching_components(RS, target; tol::Real=1e-7)
 
         CM = RealizationSpaces.matroid(C)
 
-        RealizationSpaces.same_labeled_matroid(CM, target) &&
+        RealizationSpaces._same_labeled_matroid(CM, target) &&
             push!(matches, (index, C))
     end
 
@@ -32,7 +32,7 @@ function nid_initial_coordinates(target, reduction::DrawingReduction; bounds=((-
 
     Oscar.is_realizable(target; char=0) || error("The matroid is not realizable over a field of characteristic zero, and therefore is not realizable over C.")
 
-    RS = RealizationSpaces.nonbasis_variety(target; compute_NID=true, compute_orbits=false)
+    RS = RealizationSpaces.nonbasis_variety(target; compute_decomposition=true, compute_matroid_orbits=false, compute_component_orbits=false)
     matches = _matching_components(RS, target; tol=matroid_tol)
 
     isempty(matches) && error("Oscar.is_realizable(target; char=0) reports that the matroid is realizable in characteristic zero, but the numerical irreducible decomposition did not contain a component whose computed generic labeled matroid equals the target. This indicates an NID, witness, tolerance, or component-matroid reconstruction failure.")
@@ -121,7 +121,7 @@ function _rabinowitsch_initial_point(
             end
 
             coordinates = Float64.(augmented_point[1:coordinate_length])
-            validation = validate_drawing(
+            validation = compute_drawing_validation(
                 coordinates,
                 reduction;
                 tol=matroid_tol,
@@ -140,7 +140,7 @@ function _rabinowitsch_initial_point(
 
             last_error = ErrorException(
                 "Projected initializer did not realize the target matroid: " *
-                string(validation_summary(validation)),
+                string(validation_report(validation)),
             )
         catch err
             last_error = err
@@ -149,7 +149,7 @@ function _rabinowitsch_initial_point(
 
     validation_text = isnothing(last_validation) ?
         "no initializer validation was available" :
-        string(validation_summary(last_validation))
+        string(validation_report(last_validation))
 
     error(
         "Could not obtain an exact real initializer from the Rabinowitsch system " *

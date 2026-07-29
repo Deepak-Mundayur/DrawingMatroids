@@ -256,11 +256,11 @@ function visualization(
         history = [copy(final_state)]
         component_for_validation = check_component_membership ?
             _validation_component(source_component, initialization.diagnostics) : nothing
-        validation = validate_drawing(final_state, reduction;
+        validation = compute_drawing_validation(final_state, reduction;
             tol=options.validation_tol, collision_tol=options.collision_tol,
             component=component_for_validation)
         validation.valid || error(
-            "The rank-two initializer did not produce the requested matroid: $(validation_summary(validation))."
+            "The rank-two initializer did not produce the requested matroid: $(validation_report(validation))."
         )
 
         return _drawing_result(
@@ -284,11 +284,11 @@ function visualization(
     )
 
     if prepared.p0 !== nothing
-        initial_validation = validate_drawing(prepared.p0, reduction;
+        initial_validation = compute_drawing_validation(prepared.p0, reduction;
             tol=options.validation_tol, collision_tol=options.collision_tol,
         )
         initial_validation.valid || throw(ArgumentError(
-            "The supplied initializer does not realize the requested matroid: $(validation_summary(initial_validation))."
+            "The supplied initializer does not realize the requested matroid: $(validation_report(initial_validation))."
         ))
     end
 
@@ -323,7 +323,7 @@ function visualization(
 
             component_for_validation = check_component_membership ?
                 _validation_component(source_component, prepared.diagnostics) : nothing
-            validation = validate_drawing(final_state, reduction;
+            validation = compute_drawing_validation(final_state, reduction;
                 tol=options.validation_tol, collision_tol=options.collision_tol,
                 component=component_for_validation,
             )
@@ -359,7 +359,7 @@ function visualization(
     end
 
     diagnostic_text = isnothing(last_validation) ? "no final validation was available" :
-        string(validation_summary(last_validation))
+        string(validation_report(last_validation))
     error(
         "No exact drawing was found after $attempts attempts using strategy $start_point_strategy. " *
         "Last validation: $diagnostic_text. Last error: $(repr(last_error))."
@@ -383,8 +383,8 @@ function visualization(
 end
 
 function _ensure_components!(RS)
-    if isnothing(RealizationSpaces.stored_components(RS))
-        RealizationSpaces.get_NID!(RS)
+    if isnothing(RealizationSpaces._stored_components(RS))
+        RealizationSpaces.compute_decomposition!(RS)
     end
     return RealizationSpaces.components(RS)
 end
@@ -415,7 +415,7 @@ function visualization(
     grid_filename::Union{Nothing,AbstractString}=nothing,
     kwargs...,
 )
-    target_if_matroid = RealizationSpaces.structure_kind(RS) == :matroid ?
+    target_if_matroid = RealizationSpaces.kind(RS) == :matroid ?
         RealizationSpaces.matroid(RS) : nothing
     ambient_matroid_space = !isnothing(target_if_matroid) &&
         isempty(collect(Oscar.nonbases(target_if_matroid)))
@@ -464,7 +464,7 @@ function visualization(
         )
     end
 
-    if RealizationSpaces.structure_kind(RS) == :incidence
+    if RealizationSpaces.kind(RS) == :incidence
         error(
             "An incidence-defined RealizationSpace requires `component=i` or `all=true` so that a component matroid can be inferred."
         )
