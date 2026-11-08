@@ -1,11 +1,7 @@
 module Comparison
 
 using Base.Threads
-using ..Hypergraph: supp, inf_subs, replace_vertices, remove_element,
-                    is_inside, diff_size
-
-export test_T3, sup_hyper, poset_maxs_part, serial_max_merge,
-       parallel_max_merge, serial_max_poset, parallel_max_poset
+using ..Hypergraph: supp, inf_subs, replace, remove, is_inside, diff_size
 
 function test_T3(edge, X2)
     is_inside(edge, X2[2]) && return true
@@ -25,14 +21,14 @@ function sup_hyper(H1, H2)
 
     H1S2 = deepcopy(H1)
     for element in setdiff(S1, S2)
-        H1S2 = remove_element(H1S2, element)
+        H1S2 = remove(H1S2, element)
     end
 
     X1, P1 = H1S2
     X2, P2 = H2
     inf_subs(P1, P2) || return false
 
-    X1bis = replace_vertices(X1, P2)
+    X1bis = replace(X1, P2)
     inf_subs(X1bis[1], X2[1]) || return false
 
     return all(edge -> test_T3(edge, X2), X1bis[2])
@@ -107,8 +103,7 @@ function serial_max_merge(LB::AbstractVector, LC::AbstractVector, f)
     return filter(x -> !isempty(x), new_B), filter(x -> !isempty(x), new_C)
 end
 
-_can_spawn(depth::Integer, n_procs::Integer) =
-    n_procs > 1 && depth < floor(Int, log2(n_procs)) - 1
+_can_spawn(depth::Integer, n_procs::Integer) = depth < floor(Int, log2(n_procs)) - 1
 
 function parallel_max_merge(LB::AbstractVector, LC::AbstractVector, f;
                             depth::Integer=0, n_procs::Integer=1)
@@ -116,14 +111,12 @@ function parallel_max_merge(LB::AbstractVector, LC::AbstractVector, f;
     nB = sum(length, LB; init=0)
     nC = sum(length, LC; init=0)
 
-    # The recursive split is over groups, not individual elements. Splitting
-    # a zero- or one-group list does not reduce it (`[[], original]`) and
-    # therefore recurses forever when that group contains more than the
-    # threshold number of elements. Fall back to the exact serial merge.
-    if length(LB) <= 1 || length(LC) <= 1 ||
-       (nB <= threshold && nC <= threshold)
+    # Only split a side made of several lists (and with enough elements).
+    split_B_side = nB > threshold && length(LB) > 1
+    split_C_side = nC > threshold && length(LC) > 1
+    if !split_B_side && !split_C_side
         return serial_max_merge(LB, LC, f)
-    elseif nB > threshold && nC > threshold
+    elseif split_B_side && split_C_side
         split_B = _split_halves(LB)
         split_C = _split_halves(LC)
 
@@ -164,7 +157,7 @@ function parallel_max_merge(LB::AbstractVector, LC::AbstractVector, f;
         end
 
         return vcat(split_B[1], split_B[2]), vcat(split_C[1], split_C[2])
-    elseif nB > threshold
+    elseif split_B_side
         split_B = _split_halves(LB)
         split_B[1], LC = parallel_max_merge(split_B[1], LC, f;
                                              depth=depth, n_procs=n_procs)
@@ -212,10 +205,7 @@ function parallel_max_poset(LX::AbstractVector, f;
     threshold = 6
     total = sum(length, LX; init=0)
 
-    # As in `parallel_max_merge`, recursion must strictly shrink the number
-    # of groups. A one-group list with more than `threshold` elements was
-    # previously split into `[[], LX]`, causing infinite recursion.
-    if length(LX) <= 1 || total <= threshold
+    if total <= threshold || length(LX) <= 1 # A single list cannot be split
         return serial_max_poset(LX, f)
     end
 

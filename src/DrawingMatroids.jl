@@ -2,55 +2,27 @@ module DrawingMatroids
 
 import Random
 using Random: rand, randn
-using LinearAlgebra: I, det
-using Printf: @sprintf
+using LinearAlgebra: I, det, svd
 
 import HomotopyContinuation
-using HomotopyContinuation: System, Variable, expressions, variables, Expression
+using HomotopyContinuation: System, Expression, @var
 using Plots: Animation, annotate!, frame, gif, plot, plot!, savefig, scatter!, text
 using Oscar
 
-import Constrained_Optimization: optimize as constrained_optimize, moore_penrose_corrector, project_onto_manifold
+import Constrained_Optimization: optimize as constrained_optimize, moore_penrose_corrector, project_onto_manifold, make_bounded_repelling_force
 using RealizationSpaces
-include(joinpath(@__DIR__, "remi", "maximat.jl"))
+include(joinpath(@__DIR__, "maximat", "maximat.jl"))
 import .Maximat
 
-include("types.jl")
 include("matroid_adapters.jl")
-include("varieties.jl")
 include("systems.jl")
 include("initializers.jl")
 include("validation.jl")
 include("rendering.jl")
 include("vector_fields.jl")
 include("visualization.jl")
-include("display.jl")
 
 
-export visualization
-
-export DrawingResult,
-       DrawingCollectionResult,
-       DrawingValidation,
-       InitializationResult
-
-export validation_report,
-       drawing_reduction
-
-export maximal_degeneration_basis_transversal
-
-# export matroid_collinearity_system, drawing_system,
-#        collinearity_triples,
-#        matroid_collinearity_vector_field,
-#        matroid_collinearity_system_and_vector_field,
-
-export render_drawing,
-       save_static_drawing,
-       save_drawing_animation,
-       inspect
-
-export constrained_optimize
-
-export run_and_animate_collinear_system
+export draw_matroid, draw_component
 
 end

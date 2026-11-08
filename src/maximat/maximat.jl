@@ -1,26 +1,15 @@
 module Maximat
 
 using Base.Threads
+using Combinatorics: combinations
 
 include("hypergraph.jl")
 include("datamat.jl")
 include("comparison.jl")
 
-using .Hypergraph: is_inside, inter_size, diff_size, rem_sub, replace,
-                   replace_vertices, identify, remove, remove_element, inf_subs, supp
-using .DataMat: cyclic_to_hyper, hyper_to_cyclic, printmat
-using .Comparison: test_T3, sup_hyper, poset_maxs_part,
-                   serial_max_merge, parallel_max_merge,
-                   serial_max_poset, parallel_max_poset
-
-export is_inside, inter_size, diff_size, rem_sub, replace, replace_vertices,
-       identify, remove, remove_element, inf_subs, supp,
-       cyclic_to_hyper, hyper_to_cyclic, printmat,
-       test_T3, sup_hyper, poset_maxs_part,
-       serial_max_merge, parallel_max_merge,
-       serial_max_poset, parallel_max_poset,
-       sup_cyclic, solve_int, detect_mat_case, detect_mat,
-       comp_leaves, redund_edge, add_edge, maximal_degenerations, show_dep
+using .Hypergraph: is_inside, inter_size, rem_sub, identify, remove, supp
+using .DataMat: cyclic_to_hyper, hyper_to_cyclic
+using .Comparison: sup_hyper, poset_maxs_part, parallel_max_poset
 
 """
     sup_cyclic(CF1, CF2, d)
@@ -31,24 +20,19 @@ one represented by `CF2`.
 sup_cyclic(CF1, CF2, d::Integer) =
     sup_hyper(cyclic_to_hyper(CF1, d), cyclic_to_hyper(CF2, d))
 
+"""
+    solve_int(XT, r)
 
-_edge_signature(edge) = Tuple(sort!(Int.(collect(edge))))
-
-function _XT_signature(XT::AbstractVector)
-    return (
-        Set(_edge_signature(edge) for edge in XT[1]),
-        Set(_edge_signature(edge) for edge in XT[2]),
-    )
-end
-
+Fix all submodularity failures of the labeled hypergraph `XT` that require no choice,
+depending on the situation given by `r` (no cyclic flat of rank < `r` included). Return
+`(flag, [T2, T3])`, where `flag` tells whether modifications have been done.
+"""
 function solve_int(XT::AbstractVector, r::Integer)
     flag = false
     T2, T3 = copy(XT[1]), copy(XT[2])
-
-    # Case 4.
+    # Fix Case 4
     for i in eachindex(T2), j in (i + 1):length(T2)
-        if length(intersect(T2[i], T2[j])) == 1 &&
-           !is_inside(union(T2[i], T2[j]), T3)
+        if length(intersect(T2[i], T2[j])) == 1 && !is_inside(union(T2[i], T2[j]), XT[2])
             flag = true
             push!(T3, union(T2[i], T2[j]))
         end
@@ -56,75 +40,42 @@ function solve_int(XT::AbstractVector, r::Integer)
     T2, T3 = rem_sub(Any[T2, T3])
 
     if r >= 3
-        # Case 2. Guarded indices make the original in-place logic safe in Julia.
-        i = 1
-        while i <= length(T3)
-            j = 1
-            while j <= length(T2)
-                if length(intersect(T3[i], T2[j])) > 1 && !issubset(T2[j], T3[i])
-                    flag = true
-                    merged = union(T3[i], T2[j])
-                    T3 = [T3[k] for k in eachindex(T3) if k != i]
-                    push!(T3, merged)
-                    i = min(i, length(T3))
-                end
-                j += 1
+        # Fix Case 2
+        for i in 1:length(T3), j in 1:length(T2)
+            if length(intersect(T3[i], T2[j])) > 1 && !issubset(T2[j], T3[i])
+                flag = true
+                T3 = [[T3[k] for k in eachindex(T3) if k != i]; [union(T3[i], T2[j])]]
             end
-            i += 1
         end
         T2, T3 = rem_sub(Any[T2, T3])
     end
 
     if r == 3
-        i = 1
-        while i <= length(T2)
-            j = i + 1
-            while j <= length(T2)
-                if length(intersect(T2[i], T2[j])) > 1
-                    flag = true
-                    merged = union(T2[i], T2[j])
-                    T2 = [T2[k] for k in eachindex(T2) if k != i && k != j]
-                    push!(T2, merged)
-                    j = i + 1
-                else
-                    j += 1
-                end
+        # Fix Case 3
+        for i in 1:length(T2), j in (i + 1):length(T2)
+            if length(intersect(T2[i], T2[j])) > 1
+                flag = true
+                T2 = [[T2[k] for k in eachindex(T2) if k != i && k != j]; [union(T2[i], T2[j])]]
             end
-            i += 1
         end
         T2, T3 = rem_sub(Any[T2, T3])
     end
 
     if r >= 4
-        i = 1
-        while i <= length(T3)
-            j = i + 1
-            while j <= length(T3)
-                intersection = intersect(T3[i], T3[j])
-                if length(intersection) > 2 && !is_inside(intersection, T2)
-                    flag = true
-                    merged = union(T3[i], T3[j])
-                    T3 = [T3[k] for k in eachindex(T3) if k != i && k != j]
-                    push!(T3, merged)
-                    j = i + 1
-                else
-                    j += 1
-                end
+        # Fix Case 1
+        for i in 1:length(T3), j in (i + 1):length(T3)
+            S = intersect(T3[i], T3[j])
+            if length(S) > 2 && !is_inside(S, T2)
+                flag = true
+                T3 = [[T3[k] for k in eachindex(T3) if k != i && k != j]; [union(T3[i], T3[j])]]
             end
-            i += 1
         end
         T2, T3 = rem_sub(Any[T2, T3])
     end
 
-    result = Any[T2, T3]
-
-    # `flag` above records attempted repairs. Some attempted repairs are
-    # immediately removed by `rem_sub` as redundant, leaving the reduced
-    # hypergraph unchanged. Returning `true` in that situation makes the
-    # preprocessing fixed-point loop in `comp_leaves` run forever.
-    changed = _XT_signature(result) != _XT_signature(XT)
-    return changed, result
+    return flag, Any[T2, T3]
 end
+
 
 function detect_mat_case(XT::AbstractVector, c::Integer, r::Integer)
     T2, T3 = XT
@@ -166,19 +117,19 @@ function detect_mat(XT::AbstractVector, r::Integer)
     return 0, ()
 end
 
-function comp_leaves(HT::AbstractVector, r::Integer; pproc::Bool=false)
+function comp_leaves(HT::AbstractVector, r::Integer)
     XT, partition = HT
     XT = Any[copy(XT[1]), copy(XT[2])]
     candidates = Any[]
 
+    # We first reduce the hypergraph as we added some edges
     XT = rem_sub(XT)
-    if pproc
-        changed = true
-        while changed
-            changed, XT = solve_int(XT, r)
-        end
-    end
-
+    # Former (disabled) preprocessing option: call solve_int before any recursive call.
+    # This does not change the number of candidates, see the doc of solve_int for further details.
+    # flag = true
+    # while flag
+    #     flag, XT = solve_int(XT, r)
+    # end
     case, indices = detect_mat(XT, r)
     if case == 0
         push!(candidates, Any[XT, partition])
@@ -194,13 +145,13 @@ function comp_leaves(HT::AbstractVector, r::Integer; pproc::Bool=false)
             T3bis = [T3[k] for k in eachindex(T3) if k != i && k != j]
             push!(T3bis, union(e1, e2))
             append!(candidates,
-                    comp_leaves(Any[Any[T2, T3bis], partition], r; pproc=pproc))
+                    comp_leaves(Any[Any[T2, T3bis], partition], r))
         end
         if r <= 3
             T2bis = copy(T2)
             push!(T2bis, intersect(e1, e2))
             append!(candidates,
-                    comp_leaves(Any[Any[T2bis, T3], partition], r; pproc=pproc))
+                    comp_leaves(Any[Any[T2bis, T3], partition], r))
         end
     elseif case == 2
         e1, e2 = T3[i], T2[j]
@@ -208,11 +159,11 @@ function comp_leaves(HT::AbstractVector, r::Integer; pproc::Bool=false)
             T3bis = [T3[k] for k in eachindex(T3) if k != i]
             push!(T3bis, union(e1, e2))
             append!(candidates,
-                    comp_leaves(Any[Any[T2, T3bis], partition], r; pproc=pproc))
+                    comp_leaves(Any[Any[T2, T3bis], partition], r))
         end
         if r <= 2
             identified = identify(HT, intersect(e1, e2))
-            append!(candidates, comp_leaves(identified, r; pproc=pproc))
+            append!(candidates, comp_leaves(identified, r))
         end
     elseif case == 3
         e1, e2 = T2[i], T2[j]
@@ -220,18 +171,18 @@ function comp_leaves(HT::AbstractVector, r::Integer; pproc::Bool=false)
             T2bis = [T2[k] for k in eachindex(T2) if k != i && k != j]
             push!(T2bis, union(e1, e2))
             append!(candidates,
-                    comp_leaves(Any[Any[T2bis, T3], partition], r; pproc=pproc))
+                    comp_leaves(Any[Any[T2bis, T3], partition], r))
         end
         if r <= 2
             identified = identify(HT, intersect(e1, e2))
-            append!(candidates, comp_leaves(identified, r; pproc=pproc))
+            append!(candidates, comp_leaves(identified, r))
         end
     elseif case == 4
         e1, e2 = T2[i], T2[j]
         T3bis = copy(T3)
         push!(T3bis, union(e1, e2))
         append!(candidates,
-                comp_leaves(Any[Any[T2, T3bis], partition], r; pproc=pproc))
+                comp_leaves(Any[Any[T2, T3bis], partition], r))
     end
 
     return candidates
@@ -246,7 +197,7 @@ end
 
 function add_edge(HT::AbstractVector, edge::AbstractSet, i::Integer)
     if i == 1
-        return remove_element(HT, minimum(edge))
+        return remove(HT, minimum(edge))
     elseif i == 2
         return identify(HT, edge)
     elseif i == 3
@@ -259,30 +210,6 @@ function add_edge(HT::AbstractVector, edge::AbstractSet, i::Integer)
         return Any[Any[copy(HT[1][1]), T3], HT[2]]
     end
     throw(ArgumentError("i must be in 1:4"))
-end
-
-function _combinations(n::Integer, k::Integer)
-    k < 0 && return Vector{Vector{Int}}()
-    k == 0 && return [Int[]]
-    k > n && return Vector{Vector{Int}}()
-
-    result = Vector{Vector{Int}}()
-    current = Vector{Int}(undef, k)
-
-    function visit(start::Int, depth::Int)
-        if depth > k
-            push!(result, copy(current))
-            return
-        end
-        last = n - (k - depth)
-        for value in start:last
-            current[depth] = value
-            visit(value + 1, depth + 1)
-        end
-    end
-
-    visit(1, 1)
-    return result
 end
 
 function _parallel_map(f, values::AbstractVector, n_workers::Integer)
@@ -302,21 +229,17 @@ function _parallel_map(f, values::AbstractVector, n_workers::Integer)
     return result
 end
 
-show_dep(candidate, v::Integer) = begin
-    v > 1 && println("Add ", candidate[2])
-    candidate[1]
-end
+_hyper_key(HT) = (Set(Set.(HT[1][1])), Set(Set.(HT[1][2])), Set(Set.(HT[2])))
 
-function _process_candidate(candidate, rank::Integer, preprocess::Bool,
-                            verbosity::Integer, existing_maxima)
-    HT = show_dep(candidate, verbosity - 1)
-    leaves = comp_leaves(HT, rank; pproc=preprocess)
-    return poset_maxs_part(leaves, existing_maxima, sup_hyper)
+# Keep only the first occurrence of each hypergraph across all candidate groups.
+function _remove_duplicates(groups)
+    seen = Set{Any}()
+    return [[HT for HT in group if !(_hyper_key(HT) in seen) && (push!(seen, _hyper_key(HT)); true)]
+            for group in groups]
 end
 
 """
-    maximal_degenerations(CF, d; S=[1,2,3,4], v=0,
-                          preprocess=false, n_procs=1)
+    maximal_degenerations(CF, d; S=[1,2,3,4], v=0, n_procs=1)
 
 Compute all maximal matroid degenerations of a rank-at-most-four matroid given
 by cyclic flats grouped by rank.
@@ -327,18 +250,13 @@ Julia with `julia -t N` to make `N` threads available.
 function maximal_degenerations(CF::AbstractVector, d::Integer;
                                S::AbstractVector{<:Integer}=[1, 2, 3, 4],
                                v::Integer=0,
-                               preprocess::Bool=false,
                                n_procs::Integer=1)
-    @assert all(i -> i in 1:4, S) "Wrong input for S"
-    @assert length(CF) == 4 && all(level -> level isa AbstractVector &&
-                                  all(edge -> edge isa AbstractSet, level), CF) "Wrong input for CF"
-    @assert d > 0 && all(e -> 1 <= e <= d,
-                         (e for level in CF for edge in level for e in edge)) "Wrong input for d"
+    issubset(S, 1:4) || throw(ArgumentError("Wrong input for S: must be a sublist of [1,2,3,4]"))
+    HT = cyclic_to_hyper(CF, d) # Also checks the input CF and d
 
     n_procs <= 0 && (n_procs = Threads.nthreads())
     n_procs = max(1, min(n_procs, Threads.nthreads()))
 
-    HT = cyclic_to_hyper(CF, d)
     XT, partition = HT
     leaf_time = 0.0
     maxima_time = 0.0
@@ -354,19 +272,21 @@ function maximal_degenerations(CF::AbstractVector, d::Integer;
     for rank in sort(collect(S); rev=true)
         raw_candidates = Any[]
 
-        # The partition, rather than 1:d, is the correct current point set when
-        # loops or parallel classes are present.
-        for indices in _combinations(length(partition), rank)
-            edge = Set(minimum(partition[index]) for index in indices)
+        # Any non-loop element can become a loop, even inside a parallel class;
+        # otherwise take a circuit of size `rank`, given by its representatives.
+        edges = rank == 1 ? [Set([e]) for e in sort!(collect(supp(partition)))] :
+            [Set(minimum(partition[index]) for index in indices)
+             for indices in combinations(1:length(partition), rank)]
+        for edge in edges
             if !redund_edge(XT, edge, rank)
-                push!(raw_candidates, (add_edge(HT, edge, rank), edge))
+                v > 2 && println("Add ", edge)
+                push!(raw_candidates, add_edge(HT, edge, rank))
             end
         end
 
         start = time()
-        worker = candidate -> _process_candidate(candidate, rank, preprocess,
-                                                  v, cumulative_maxima)
-        candidate_maxima = _parallel_map(worker, raw_candidates, n_procs)
+        leaves = _remove_duplicates(_parallel_map(HT -> comp_leaves(HT, rank), raw_candidates, n_procs))
+        candidate_maxima = _parallel_map(Y -> poset_maxs_part(Y, cumulative_maxima, sup_hyper), leaves, n_procs)
         after_leaves = time()
         leaf_time += after_leaves - start
 

@@ -1,102 +1,57 @@
-function _coordinate_collisions(coords::AbstractVector, point_count::Int; tol::Real=1e-6)
-    collisions = Tuple{Int,Int}[]
-    for i in 1:point_count, j in (i + 1):point_count
-        dx = coords[2 * i - 1] - coords[2 * j - 1]
-        dy = coords[2 * i] - coords[2 * j]
-        hypot(dx, dy) <= tol && push!(collisions, (i, j))
-    end
-    return collisions
+# Map a drawing matrix `A` to a point in the variables of the parent space's system.
+# Geometric coordinates come from `RealizationSpaces.coordinates` (ambient: vec(A);
+# quotient: chart coordinates). Auxiliary (Rabinowitsch) variables enter the system
+# affinely, F(x, u) = J_u * u + F(x, 0), so they are solved for directly.
+function _component_coordinate_point(A::Matrix{Float64}, C; tol::Real)
+    space = RealizationSpaces.parent(C)
+    # A drawing of a lower-rank component is padded back to the space's matrix size.
+    A = [A; zeros(RealizationSpaces.rank(space) - size(A, 1), size(A, 2))]
+    F = RealizationSpaces.system(space)
+    x = ComplexF64.(RealizationSpaces.coordinates(space, A; tol=tol, check=true))
+    k = length(RealizationSpaces.auxiliary_variables(space))
+    k == 0 && return x
+
+    x0 = [x; zeros(ComplexF64, k)]
+    J_u = HomotopyContinuation.jacobian(F, x0)[:, (end - k + 1):end]
+    point = [x; J_u \ -F(x0)]
+    all(isfinite, point) || return nothing
+    maximum(abs, F(point)) <= sqrt(tol) * max(1.0, maximum(abs, point)) || return nothing
+    return point
 end
 
-function _component_coordinate_point(A::Matrix{Float64}, C; tol::Real=1e-10)
-    parent_space = RealizationSpaces.parent(C)
-    parent_system = RealizationSpaces.system(parent_space)
-    variable_count = length(variables(parent_system))
-
-    if RealizationSpaces.is_quotient_space(parent_space)
-        coordinates = ComplexF64.(RealizationSpaces.quotient_coordinates(
-            parent_space, A; tol=tol, check=true))
-        chart = RealizationSpaces.quotient_chart(parent_space)
-
-        if chart.has_rabinowitsch_variable
-            open_conditions = RealizationSpaces._nontrivial_inequations(chart.inequations)
-            product_value = prod(
-                RealizationSpaces._evaluate_oscar_polynomial(f, coordinates)
-                for f in open_conditions
-            )
-            abs(product_value) > tol || return nothing
-            push!(coordinates, inv(product_value))
-        end
-
-        length(coordinates) == variable_count || return nothing
-        return coordinates
-    end
-
-    variable_count == length(A) || return nothing
-    return vec(ComplexF64.(A))
-end
-
-function _component_membership(A::Matrix{Float64}, C)
+function _component_membership(A::Matrix{Float64}, C; tol::Real)
     isnothing(C) && return nothing
-
-    try
-        point = _component_coordinate_point(A, C)
-        isnothing(point) && return nothing
-
-        return first(HomotopyContinuation.membership(
-            [point],
-            RealizationSpaces.witness_set(C),
-        ))
-    catch
-        return nothing
-    end
+    point = _component_coordinate_point(A, C; tol=tol)
+    isnothing(point) && return nothing
+    return first(HomotopyContinuation.membership([point], RealizationSpaces.witness_set(C)))
 end
 
-function compute_drawing_validation(state::AbstractVector, reduction::DrawingReduction;
-    tol::Real=1e-7,
-    collision_tol::Real=1e-6,
-    component=nothing,
-)
-    coordinate_length = coordinate_count(reduction)
-    length(state) >= coordinate_length || throw(ArgumentError(
-        "Drawing state has length $(length(state)), but at least $coordinate_length coordinates are required."
-    ))
-
-    coords = state[1:coordinate_length]
-    A = coordinates_to_matrix(coords, reduction)
-
-    minors = RealizationSpaces.matroid_realization_diagnostics(A, reduction.matroid; tol=tol)
-
-    collisions = _coordinate_collisions(coords, length(reduction.parallel_classes); tol=collision_tol)
-    component_member = _component_membership(A, component)
-
-    valid = minors.valid
-    if !isnothing(component)
-        valid &= (component_member === true)
-    end
-
-    return (
-        valid=valid,
-        matrix=A,
-        maximum_nonbasis_residual=minors.max_nonbasis_residual,
-        minimum_basis_absolute_determinant=minors.min_basis_absolute_determinant,
-        failed_nonbases=minors.failed_nonbases,
-        failed_bases=minors.failed_bases,
-        collisions=collisions,
-        component_member=component_member,
-    )
+# RealizationSpaces' realization diagnostics of the drawing, plus (when `component` is
+# given) membership of the drawing in that component.
+function compute_drawing_validation(state::AbstractVector, reduction; tol::Real=1e-7, component=nothing)
+    A = coordinates_to_matrix(state[1:coordinate_count(reduction)], reduction)
+    diagnostics = RealizationSpaces.matroid_realization_diagnostics(A, reduction.matroid; tol=tol)
+    component_member = _component_membership(A, component; tol=tol)
+    valid = diagnostics.valid && (isnothing(component) || component_member === true)
+    return merge(diagnostics, (; valid, component_member))
 end
 
-validation_report(result::DrawingResult) = validation_report(result.validation)
+# Generic matroid of C, checked against its witness points: each witness point is a generic
+# point of C, so the nonbases are exactly the sets whose minors vanish at every witness point.
+# RealizationSpaces computes the stored matroid from a single sample, which numerical error
+# can occasionally turn into extra nonbases; that step is rerun for C until it agrees.
+function _component_matroid!(C; tol::Real, attempts::Int=10)
+    points = [RealizationSpaces.witness_point(C; point=i)
+              for i in eachindex(HomotopyContinuation.solutions(RealizationSpaces.witness_set(C)))]
+    r = maximum(A -> RealizationSpaces.numerical_rank(A; rtol=tol), points)
+    witness_nonbases = Set(reduce(intersect, (RealizationSpaces.numerical_nonbases(A, r; rtol=tol) for A in points)))
+    agrees(M) = !isnothing(M) && Oscar.rank(M) == r && Set(Oscar.nonbases(M)) == witness_nonbases
 
-function validation_report(validation)
-    return (
-        valid=validation.valid,
-        maximum_nonbasis_residual=validation.maximum_nonbasis_residual,
-        minimum_basis_absolute_determinant=validation.minimum_basis_absolute_determinant,
-        failed_nonbases=validation.failed_nonbases,
-        failed_bases=validation.failed_bases,
-        collisions=validation.collisions,
-        component_member=validation.component_member,
-    )
+    for _ in 1:attempts
+        agrees(RealizationSpaces.matroid(C)) && return RealizationSpaces.matroid(C)
+        RealizationSpaces.compute_component_matroid!(C; tol=1e-9)
+    end
+    agrees(RealizationSpaces.matroid(C)) && return RealizationSpaces.matroid(C)
+    error("RealizationSpaces' generic matroid of the component still disagrees with its witness points " *
+          "after $attempts recomputations, so the component is not drawn.")
 end

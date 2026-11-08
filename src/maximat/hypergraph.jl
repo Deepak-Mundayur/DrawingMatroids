@@ -1,10 +1,5 @@
 module Hypergraph
 
-import Base: replace
-
-export is_inside, inter_size, diff_size, rem_sub, replace, replace_vertices,
-       identify, remove, remove_element, inf_subs, supp
-
 """
     is_inside(s, L)
 
@@ -23,10 +18,10 @@ inter_size(s::AbstractSet, L::AbstractVector, n::Integer) =
 """
     diff_size(s, L, n)
 
-Return `true` when `s : l` has exactly `n` elements for some `l` in `L`.
+Return `true` when `s \\ l` has at most `n` elements for some `l` in `L`.
 """
 diff_size(s::AbstractSet, L::AbstractVector, n::Integer) =
-    any(l -> length(setdiff(s, l)) == n, L)
+    any(l -> length(setdiff(s, l)) <= n, L)
 
 """
     rem_sub(XT)
@@ -39,12 +34,13 @@ function rem_sub(XT::AbstractVector)
 
     XT_new = [copy(XT[1]), copy(XT[2])]
 
-    # Criterion 1: remove any edge contained in another edge of the same type.
+    # Criterion 1: remove any edge strictly contained in another edge of the same
+    # type; of identical edges only the first is kept.
     for k in eachindex(XT_new)
         old = XT_new[k]
         XT_new[k] = [
             s for (i, s) in pairs(old)
-            if !any(j -> j != i && issubset(s, old[j]), eachindex(old))
+            if !any(j -> (s != old[j] && issubset(s, old[j])) || (s == old[j] && j < i), eachindex(old))
         ]
     end
 
@@ -59,12 +55,12 @@ function rem_sub(XT::AbstractVector)
 end
 
 """
-    replace_vertices(XT, P)
+    replace(XT, P)
 
 Replace each element by the minimum representative of its block in the
 partition `P`. Edges that become too small are discarded.
 """
-function replace_vertices(XT::AbstractVector, P::AbstractVector)
+function replace(XT::AbstractVector, P::AbstractVector)
     representatives = Dict{Int, Int}()
     for block in P
         isempty(block) && continue
@@ -106,18 +102,18 @@ function identify(HT::AbstractVector, elements::AbstractSet)
             push!(P1, copy(block))
         end
     end
-    !isempty(merged) && push!(P1, merged)
+    push!(P1, merged)
 
-    return Any[replace_vertices(XT, P1), P1]
+    return Any[replace(XT, P1), P1]
 end
 
 """
-    remove_element(HT, e)
+    remove(HT, e)
 
 Adjoin `{e}` as a type-0 edge, equivalently removing `e` from the represented
 matroid and reducing the labeled hypergraph.
 """
-function remove_element(HT::AbstractVector, e::Integer)
+function remove(HT::AbstractVector, e::Integer)
     @assert length(HT) == 2 "HT must have the form [XT, P]"
     XT, P = HT
 
@@ -172,10 +168,6 @@ function remove_element(HT::AbstractVector, e::Integer)
 
     return Any[XT1, P1]
 end
-
-# API-compatible aliases for the original Python function names.
-replace(XT::AbstractVector, P::AbstractVector) = replace_vertices(XT, P)
-remove(HT::AbstractVector, e::Integer) = remove_element(HT, e)
 
 """
     inf_subs(P1, P2)
