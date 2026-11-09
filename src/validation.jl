@@ -29,7 +29,7 @@ end
 # RealizationSpaces' realization diagnostics of the drawing, plus (when `component` is
 # given) membership of the drawing in that component.
 function compute_drawing_validation(state::AbstractVector, reduction; tol::Real=1e-7, component=nothing)
-    A = coordinates_to_matrix(state[1:coordinate_count(reduction)], reduction)
+    A = coordinates_to_matrix(state[1:(2 * length(reduction.parallel_classes))], reduction)
     diagnostics = RealizationSpaces.matroid_realization_diagnostics(A, reduction.matroid; tol=tol)
     component_member = _component_membership(A, component; tol=tol)
     valid = diagnostics.valid && (isnothing(component) || component_member === true)
@@ -49,7 +49,7 @@ function _component_matroid!(C; tol::Real, attempts::Int=10)
 
     for _ in 1:attempts
         agrees(RealizationSpaces.matroid(C)) && return RealizationSpaces.matroid(C)
-        RealizationSpaces.compute_component_matroid!(C; tol=1e-9)
+        RealizationSpaces.compute_component_matroid!(C; tol=tol)
     end
     agrees(RealizationSpaces.matroid(C)) && return RealizationSpaces.matroid(C)
     error("RealizationSpaces' generic matroid of the component still disagrees with its witness points " *

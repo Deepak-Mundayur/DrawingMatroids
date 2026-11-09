@@ -6,7 +6,7 @@ using LinearAlgebra: I, det, svd
 
 import HomotopyContinuation
 using HomotopyContinuation: System, Expression, @var
-using Plots: Animation, annotate!, frame, gif, plot, plot!, savefig, scatter!, text
+using Plots: Animation, Shape, annotate!, frame, gif, palette, plot, plot!, savefig, scatter!, text
 using Oscar
 
 import Constrained_Optimization: optimize as constrained_optimize, moore_penrose_corrector, project_onto_manifold, make_bounded_repelling_force
@@ -21,8 +21,9 @@ include("validation.jl")
 include("rendering.jl")
 include("vector_fields.jl")
 include("visualization.jl")
+include("poset.jl")
 
 
-export draw_matroid, draw_component
+export draw_matroid, draw_poset
 
 end

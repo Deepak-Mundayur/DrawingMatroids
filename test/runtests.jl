@@ -108,17 +108,17 @@ import RealizationSpaces as RSp
 quiet(f) = redirect_stdout(f, devnull)
 same_matroid(M1, M2) = Oscar.rank(M1) == Oscar.rank(M2) && Set(Oscar.nonbases(M1)) == Set(Oscar.nonbases(M2))
 
-@testset "draw_component" begin
+@testset "draw_matroid on a component" begin
     # A rank-2 component (all points on a line) of a rank-3 space is drawn as a 2×n matrix.
-    Z = quiet(() -> RSp.nonbasis_variety(RSp.non_fano_matroid()))
+    Z = quiet(() -> RSp.nonbasis_variety(RSp.non_fano_matroid(); compute_matroid_orbits=false))
     C2 = only(filter(C -> Oscar.rank(RSp.matroid(C)) == 2, RSp.components(Z)))
-    r = quiet(() -> draw_component(C2; filename=nothing, seed=1))
+    r = quiet(() -> draw_matroid(C2; filename=nothing, seed=1))
     @test size(r.matrix) == (2, 7) && RSp.satisfies_matroid(r.matrix, RSp.matroid(C2); tol=1e-7)
     # A wrong stored matroid is replaced by the one read off the witness points.
     M5 = matroid_from_nonbases([[1, 2, 3]], 5)
     C = only(RSp.components(quiet(() -> RSp.realization_space(M5))))
     RSp._set_component_matroid!(C, matroid_from_nonbases([[1, 2, 3], [2, 3, 4], [2, 3, 5]], 5))
-    r = quiet(() -> draw_component(C; filename=nothing, seed=1))
+    r = quiet(() -> draw_matroid(C; filename=nothing, seed=1))
     @test same_matroid(RSp.matroid(C), M5) && RSp.satisfies_matroid(r.matrix, M5; tol=1e-7)
     # Without a rerun that agrees with the witness points, the component is not drawn.
     RSp._set_component_matroid!(C, matroid_from_nonbases([[1, 2, 3], [2, 3, 4], [2, 3, 5]], 5))

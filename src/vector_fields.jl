@@ -1,8 +1,36 @@
 # Constrained_Optimization's repulsion between points and from the walls of `bounds`, plus a
-# torque that opens up the angles between intersecting lines of the drawing.
-function drawing_force_field(n_pts::Int, bounds, lines; k_p, k_wall, k_torque)
+# torque that opens up the angles between intersecting lines of the drawing and a push of each
+# point away from the lines it is not on. The push on each point is capped at `max_force`: the
+# repulsion grows without bound as two points meet, and an uncapped push throws points out of
+# the box, where the walls then hold them outside.
+function drawing_force_field(n_pts::Int, bounds, lines; k_p, k_wall, k_torque, k_line, max_force)
     repel = make_bounded_repelling_force(n_pts, bounds; k_p=k_p, k_wall=k_wall)
-    return pos -> torque_force!(repel(pos), pos, lines, k_torque)
+    function field(pos)
+        force = line_repulsion_force!(torque_force!(repel(pos), pos, lines, k_torque), pos, lines, n_pts, k_line)
+        for p in 1:n_pts
+            magnitude = hypot(force[2p - 1], force[2p])
+            magnitude > max_force && (force[(2p - 1):(2p)] .*= max_force / magnitude)
+        end
+        return force
+    end
+    return field
+end
+
+# Push each point away from every drawn line (the segment between the line's outermost points)
+# that it is not on, with strength k_line / distance, so no point seems to lie on such a line.
+function line_repulsion_force!(force, pos, lines, n_pts, k_line)
+    for flat in lines
+        (ax, bx), (ay, by) = _line_segment(pos, flat)
+        for p in 1:n_pts
+            p in flat && continue
+            px, py = pos[2p - 1], pos[2p]
+            vx, vy = _segment_offset(px, py, ax, ay, bx, by)
+            d2 = vx^2 + vy^2 + 1e-6
+            force[2p - 1] += k_line * vx / d2
+            force[2p] += k_line * vy / d2
+        end
+    end
+    return force
 end
 
 # For every two lines meeting in exactly one point c, and every i on the first and j on the

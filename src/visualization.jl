@@ -13,17 +13,17 @@ end
 """
     draw_matroid(M::Matroid; start=:maximal_degenerations, seed=nothing, ...)
 
-Draw a rank-two or rank-three matroid and return `(matrix, plot, seed)`: a real
+Draw a matroid of rank at most three and return `(matrix, plot, seed)`: a real
 realization matrix of `M`, the plot, and the seed that reproduces this drawing.
 
 `start` chooses the initial point:
 
 - `:maximal_degenerations`: maximal degenerations plus a greedy reduced Rabinowitsch
-  transversal.
+  transversal; if projecting onto that system fails, it continues as `:circle`.
 - `:circle`: points on a circle, pulled onto the drawing variety by the optimizer.
 - `:nid`: a real sample of a component of `RealizationSpaces.realization_space(M)`.
   The decomposition is the slow step; to draw several times, keep the component and
-  call `draw_component` on it instead.
+  call `draw_matroid(C)` on it instead.
 - an r×n realization matrix of `M`.
 
 Up to `attempts` attempts are made, all determined by `seed`. Without `seed` a random
@@ -32,22 +32,27 @@ calling again without `seed` tries different random choices.
 
 Keywords: `tol` (realization tolerance), `bounds`, the optimizer settings `dt`,
 `max_steps`, `k_p` (point repulsion), `k_wall` (bounding box), `k_torque` (angle between
-lines), and the output settings `filename`, `animate`, `animation_filename`, `fps`,
+lines), `k_line` (points away from lines they are not on), and the output settings `filename`, `animate`, `animation_filename`, `fps`,
 `framestyle`, `show_boundary`, `show_labels`.
 """
-function draw_matroid(
-    M::Oscar.Matroid;
+draw_matroid(M::Oscar.Matroid; kwargs...) = _draw_matroid(M, nothing; kwargs...)
+
+# `component`: when given, the drawing must also lie on this RealizationComponent.
+function _draw_matroid(
+    M::Oscar.Matroid,
+    component;
     start = :maximal_degenerations,
     attempts::Int = 5,
     seed::Union{Nothing,Integer} = nothing,
     tol::Real = 1e-7,
-    bounds = ((-5.0, 5.0), (-5.0, 5.0)),
+    bounds = ((-10.0, 10.0), (-10.0, 10.0)),
 
     dt::Real = 0.01,
     max_steps::Int = 300,
     k_p::Real = 10.0,
     k_wall::Real = 50.0,
     k_torque::Real = 0.5,
+    k_line::Real = 5.0,
 
     filename::Union{Nothing,AbstractString} = "matroid.png",
     animate::Bool = false,
@@ -56,10 +61,6 @@ function draw_matroid(
     framestyle::Symbol = :box,
     show_boundary::Bool = true,
     show_labels::Bool = true,
-
-    # Set by draw_component.
-    component = nothing,
-    check_component_membership::Bool = false,
 )
     attempts >= 1 || throw(ArgumentError("attempts must be positive."))
     start in (:maximal_degenerations, :circle, :nid) || start isa Union{AbstractMatrix, RealizationSpaces.RealizationComponent} || throw(ArgumentError(
@@ -67,7 +68,7 @@ function draw_matroid(
         "or a realization matrix."
     ))
     rank_value = Oscar.rank(M)
-    rank_value in 2:3 || error("DrawingMatroids only draws matroids of rank two or three (got rank $rank_value).")
+    rank_value <= 3 || error("DrawingMatroids only draws matroids of rank at most three (got rank $rank_value).")
     Oscar.is_realizable(M; char=0) || error(
         "DrawingMatroids cannot draw $(something(component, M)): it is not realizable over any field of characteristic 0."
     )
@@ -78,14 +79,14 @@ function draw_matroid(
     style = (; bounds, framestyle, show_boundary, show_labels)
 
     return _with_seed(seed) do
-        initial, member_of = start, check_component_membership ? component : nothing
+        initial, member_of = start, component
         if start === :nid
             initial = member_of = first(RealizationSpaces.components(RealizationSpaces.realization_space(M)))
         end
 
         reduction = drawing_reduction(M)
         final_state, history = _find_drawing(reduction, initial;
-            attempts, seed, tol, bounds, dt, max_steps, k_p, k_wall, k_torque, component=member_of)
+            attempts, seed, tol, bounds, dt, max_steps, k_p, k_wall, k_torque, k_line, component=member_of)
 
         plt = save_static_drawing(final_state, reduction; filename, style...)
         animate && save_drawing_animation(history, reduction; filename=animation_filename, fps, style...)
@@ -97,16 +98,25 @@ end
 # Fixed starts (maximal degenerations, user input) are computed once and validated;
 # :circle and component starts get a fresh random point on each attempt.
 function _find_drawing(reduction, start;
-    attempts, seed, tol, bounds, dt, max_steps, k_p, k_wall, k_torque, component)
+    attempts, seed, tol, bounds, dt, max_steps, k_p, k_wall, k_torque, k_line, component)
 
     simple = reduction.simple_matroid
     point_count = length(reduction.parallel_classes)
     rank_three = Oscar.rank(simple) == 3
 
-    fixed_start = if !rank_three && start isa Symbol
-        rank_two_default_coordinates(point_count, bounds)
+    # Any distinct points on a line realize a rank-2 simple matroid, so ranks <= 2 use evenly
+    # spaced points (still checked against a component when one is given).
+    fixed_start = if !rank_three && !(start isa AbstractMatrix)
+        low_rank_default_coordinates(point_count, bounds)
     elseif start === :maximal_degenerations
-        maximal_degeneration_start(reduction; bounds, attempts, tol)
+        try
+            maximal_degeneration_start(reduction; bounds, attempts, tol)
+        catch err
+            err isa InterruptException && rethrow()
+            println("[DrawingMatroids] The reduced Rabinowitsch projection failed; continuing with start=:circle.")
+            start = :circle
+            nothing
+        end
     elseif start isa AbstractMatrix
         realization_matrix_to_coordinates(start, reduction; bounds, real_tol=tol)
     end
@@ -118,7 +128,8 @@ function _find_drawing(reduction, start;
 
     if rank_three
         system = drawing_system(simple)
-        vector_field = drawing_force_field(point_count, bounds, rank_two_flats(simple); k_p, k_wall, k_torque)
+        # At most 5% of the box width per optimizer step (the step is dt times the force).
+        max_force = 0.05 * (bounds[1][2] - bounds[1][1]) / dt
     end
 
     last_validation = last_error = nothing
@@ -136,12 +147,31 @@ function _find_drawing(reduction, start;
                 sampled, nothing
             end
 
+            vector_field = rank_three ? drawing_force_field(point_count, bounds, rank_two_flats(simple);
+                k_p, k_wall, k_torque, k_line, max_force=max_force * 2.0^(attempt - 1)) : nothing
             final_state, history = !rank_three ? (p0, [p0]) : constrained_optimize(system, vector_field;
                 p0, guess, dt=dt / 2.0^(attempt - 1), max_steps,
                 corrector=moore_penrose_corrector, tol=1e-10, max_iters=100)
 
             last_validation = compute_drawing_validation(final_state, reduction; tol, component)
-            last_validation.valid && return Float64.(final_state), [Float64.(state) for state in history]
+            if !last_validation.valid && rank_three
+                # The optimizer can slide into a degeneration (points merging); keep the state
+                # along its path that still realizes the matroid and is most readable.
+                valid = findall(state -> compute_drawing_validation(state, reduction; tol).valid, history)
+                if !isempty(valid)
+                    k = valid[argmax([_readability(_fit_coordinates_to_bounds(Float64.(history[k][1:2point_count]), bounds),
+                                                   reduction, bounds) for k in valid])]
+                    final_state, history = history[k], history[1:k]
+                    last_validation = compute_drawing_validation(final_state, reduction; tol, component)
+                end
+            end
+            if last_validation.valid
+                history = [Float64.(state) for state in history]
+                final_state = Float64.(final_state)
+                spread = rank_three ? _readable_frame(final_state, reduction, bounds; tol) : final_state
+                spread === final_state || push!(history, spread)
+                return spread, history
+            end
         catch err
             err isa InterruptException && rethrow()
             last_error = err
@@ -160,21 +190,19 @@ function _find_drawing(reduction, start;
 end
 
 """
-    draw_component(C::RealizationComponent; start=C, check_component_membership=true, ...)
+    draw_matroid(C::RealizationComponent; start=C, check_component_membership=true, ...)
 
-Draw the generic matroid of `C`, starting from a real sample of `C` and, by default,
-checking that the final drawing lies on `C`. Returns `(matrix, plot, seed)`; other
-keywords are those of `draw_matroid`.
+Draw the generic matroid of the irreducible component `C` (for example a component of
+`RealizationSpaces.realization_space(M)` or `nonbasis_variety(M)`), starting from a real
+sample of `C` and, by default, checking that the final drawing lies on `C`. Returns
+`(matrix, plot, seed)`; other keywords are those of `draw_matroid(M)`.
 """
-function draw_component(
+function draw_matroid(
     C::RealizationSpaces.RealizationComponent;
     start=C,
     check_component_membership::Bool=true,
     kwargs...,
 )
     M = _component_matroid!(C; tol=1e-7)
-    return draw_matroid(M;
-        start=start === :nid ? C : start,
-        component=C, check_component_membership, kwargs...,
-    )
+    return _draw_matroid(M, check_component_membership ? C : nothing; start=start === :nid ? C : start, kwargs...)
 end

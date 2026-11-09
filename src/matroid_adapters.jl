@@ -1,6 +1,3 @@
-const _DEFAULT_CHART_TOL = 1e-9
-const _DEFAULT_CHART_ATTEMPTS = 100
-
 """
     _require_groundset_1_to_n(M)
 
@@ -28,10 +25,6 @@ function drawing_reduction(M)
     return (matroid=M, simple_matroid=simple, parallel_classes=classes)
 end
 
-function coordinate_count(reduction)
-    return 2 * length(reduction.parallel_classes)
-end
-
 function coordinates_to_matrix(coords::AbstractVector, reduction)
     M = reduction.matroid
     r = Oscar.rank(M)
@@ -47,13 +40,7 @@ function coordinates_to_matrix(coords::AbstractVector, reduction)
         x = Float64(real(coords[2 * class_index - 1]))
         y = Float64(real(coords[2 * class_index]))
 
-        column = if r == 3
-            [1.0, x, y]
-        elseif r == 2
-            [1.0, x]
-        else
-            error("Drawing coordinates are implemented only for ranks 2 and 3.")
-        end
+        column = [1.0, x, y][1:r]
 
         for element in cls
             A[:, element] .= column
@@ -62,15 +49,6 @@ function coordinates_to_matrix(coords::AbstractVector, reduction)
 
     # Loop columns remain zero.
     return A
-end
-
-function _random_invertible_matrix(r::Int)
-    for _ in 1:100
-        G = randn(r, r)
-        abs(det(G)) > _DEFAULT_CHART_TOL &&
-            return G
-    end
-    error("Could not generate an invertible chart matrix.")
 end
 
 function _fit_coordinates_to_bounds(coords::Vector{Float64}, bounds)
@@ -105,7 +83,7 @@ end
 
 function realization_matrix_to_coordinates(
     A::AbstractMatrix, reduction;
-    bounds=((-5.0, 5.0), (-5.0, 5.0)), real_tol::Real=1e-7
+    bounds, real_tol::Real=1e-7
 )
     M = reduction.matroid
     r = Oscar.rank(M)
@@ -120,25 +98,17 @@ function realization_matrix_to_coordinates(
     Ar = Matrix{Float64}(real.(A))
     reps = first.(reduction.parallel_classes)
 
-    candidates = Matrix{Float64}[Matrix{Float64}(I, r, r)]
-    for _ in 1:_DEFAULT_CHART_ATTEMPTS
-        push!(candidates, _random_invertible_matrix(r))
-    end
-
-    for G in candidates
+    # An affine chart: the identity, else a random invertible G with every point off the line at infinity.
+    for attempt in 0:100
+        G = attempt == 0 ? Matrix(1.0I, r, r) : randn(r, r)
+        abs(det(G)) > 1e-9 || continue
         B = G * Ar
-        all(abs(B[1, j]) > _DEFAULT_CHART_TOL for j in reps) || continue
+        all(abs(B[1, j]) > 1e-9 for j in reps) || continue
 
         coords = Float64[]
         for j in reps
             normalized = B[:, j] ./ B[1, j]
-            if r == 3
-                push!(coords, normalized[2], normalized[3])
-            elseif r == 2
-                push!(coords, normalized[2], 0.0)
-            else
-                error("Drawing is implemented only for ranks 2 and 3.")
-            end
+            push!(coords, r >= 2 ? normalized[2] : 0.0, r == 3 ? normalized[3] : 0.0)
         end
 
         return _fit_coordinates_to_bounds(coords, bounds)

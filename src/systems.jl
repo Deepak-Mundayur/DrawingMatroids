@@ -45,9 +45,10 @@ function circle_guess(
     return guess
 end
 
-function rank_two_default_coordinates(n_points::Int, bounds)
+# Points evenly spaced on a horizontal line (one point: the centre), for ranks 0 to 2.
+function low_rank_default_coordinates(n_points::Int, bounds)
     (xmin, xmax), (ymin, ymax) = bounds
-    n_points >= 2 || error("A rank-two simple matroid needs at least two points.")
+    n_points == 1 && return [(xmin + xmax) / 2, (ymin + ymax) / 2]
     xs = range(xmin + 0.15 * (xmax - xmin), xmax - 0.15 * (xmax - xmin); length=n_points)
     return [c for x in xs for c in (x, (ymin + ymax) / 2)]
 end
