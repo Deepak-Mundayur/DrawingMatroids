@@ -1,0 +1,967 @@
+name	n	lines	start	seed	status	seconds	start_used	readability	png	reason	info
+n6_1	6	1	maximal_degenerations	1	ok	10.8	maximal_degenerations	2.475	n6_1_maximal_degenerations.png		
+n6_1	6	1	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.475			
+n6_1	6	1	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.475			
+n6_1	6	1	circle	1	ok	0.3	circle	2.475	n6_1_circle.png		
+n6_1	6	1	circle	2	ok	0.3	circle	2.475			
+n6_1	6	1	circle	3	ok	0.2	circle	2.475			
+n6_4	6	2	maximal_degenerations	1	ok	0.1	maximal_degenerations	3.645	n6_4_maximal_degenerations.png		
+n6_4	6	2	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.645			
+n6_4	6	2	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.645			
+n6_4	6	2	circle	1	ok	0.1	circle	3.645	n6_4_circle.png		
+n6_4	6	2	circle	2	ok	0.1	circle	3.645			
+n6_4	6	2	circle	3	ok	0.1	circle	3.645			
+n6_7	6	4	maximal_degenerations	1	ok	0.9	maximal_degenerations	2.536	n6_7_maximal_degenerations.png		
+n6_7	6	4	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.536			
+n6_7	6	4	maximal_degenerations	3	ok	0.1	maximal_degenerations	2.536			
+n6_7	6	4	circle	1	ok	0.1	circle	2.713	n6_7_circle.png		
+n6_7	6	4	circle	2	ok	0.1	circle	2.713			
+n6_7	6	4	circle	3	ok	0.7	circle	2.713			
+n7_1	7	1	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.5	n7_1_maximal_degenerations.png		
+n7_1	7	1	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.533			
+n7_1	7	1	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.509			
+n7_1	7	1	circle	1	ok	0.5	circle	1.728	n7_1_circle.png		
+n7_1	7	1	circle	2	ok	0.5	circle	1.728			
+n7_1	7	1	circle	3	ok	1.1	circle	1.728			
+n7_4	7	2	maximal_degenerations	1	ok	0.1	maximal_degenerations	3.568	n7_4_maximal_degenerations.png		
+n7_4	7	2	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.568			
+n7_4	7	2	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.568			
+n7_4	7	2	circle	1	ok	0.1	circle	3.569	n7_4_circle.png		
+n7_4	7	2	circle	2	ok	0.1	circle	3.569			
+n7_4	7	2	circle	3	ok	0.1	circle	3.569			
+n7_7	7	3	maximal_degenerations	1	ok	0.4	maximal_degenerations	3.525	n7_7_maximal_degenerations.png		
+n7_7	7	3	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.525			
+n7_7	7	3	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.525			
+n7_7	7	3	circle	1	ok	0.1	circle	3.525	n7_7_circle.png		
+n7_7	7	3	circle	2	ok	0.1	circle	3.525			
+n7_7	7	3	circle	3	ok	0.1	circle	3.525			
+n7_10	7	4	maximal_degenerations	1	ok	0.1	maximal_degenerations	3.12	n7_10_maximal_degenerations.png		
+n7_10	7	4	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.12			
+n7_10	7	4	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.12			
+n7_10	7	4	circle	1	ok	0.1	circle	3.12	n7_10_circle.png		
+n7_10	7	4	circle	2	ok	0.1	circle	3.12			
+n7_10	7	4	circle	3	ok	0.1	circle	3.12			
+n7_13	7	5	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.713	n7_13_maximal_degenerations.png		
+n7_13	7	5	maximal_degenerations	2	ok	0.1	maximal_degenerations	2.713			
+n7_13	7	5	maximal_degenerations	3	ok	0.1	maximal_degenerations	2.713			
+n7_13	7	5	circle	1	ok	0.1	circle	2.713	n7_13_circle.png		
+n7_13	7	5	circle	2	ok	0.1	circle	2.713			
+n7_13	7	5	circle	3	ok	0.1	circle	2.713			
+n7_16	7	1	maximal_degenerations	1	ok	0.2	maximal_degenerations	3.081	n7_16_maximal_degenerations.png		
+n7_16	7	1	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.081			
+n7_16	7	1	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.081			
+n7_16	7	1	circle	1	ok	0.1	circle	2.917	n7_16_circle.png		
+n7_16	7	1	circle	2	ok	0.1	circle	2.917			
+n7_16	7	1	circle	3	ok	0.1	circle	2.917			
+n7_19	7	3	maximal_degenerations	1	ok	0.2	maximal_degenerations	1.228	n7_19_maximal_degenerations.png		
+n7_19	7	3	maximal_degenerations	2	ok	0.2	maximal_degenerations	1.228			
+n7_19	7	3	maximal_degenerations	3	ok	1.3	maximal_degenerations	1.228			
+n7_19	7	3	circle	1	ok	0.2	circle	2.284	n7_19_circle.png		
+n7_19	7	3	circle	2	ok	0.1	circle	2.284			
+n7_19	7	3	circle	3	ok	0.1	circle	2.284			
+n7_22	7	1	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.475	n7_22_maximal_degenerations.png		
+n7_22	7	1	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.475			
+n7_22	7	1	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.475			
+n7_22	7	1	circle	1	ok	0.2	circle	2.475	n7_22_circle.png		
+n7_22	7	1	circle	2	ok	0.2	circle	2.475			
+n7_22	7	1	circle	3	ok	0.2	circle	2.475			
+n8_2	8	0	maximal_degenerations	1	ok	0.1	maximal_degenerations	3.605	n8_2_maximal_degenerations.png		
+n8_2	8	0	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.605			
+n8_2	8	0	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.605			
+n8_2	8	0	circle	1	ok	0.0	circle	3.605	n8_2_circle.png		
+n8_2	8	0	circle	2	ok	0.0	circle	3.605			
+n8_2	8	0	circle	3	ok	0.0	circle	3.605			
+n8_5	8	2	maximal_degenerations	1	ok	0.1	maximal_degenerations	3.501	n8_5_maximal_degenerations.png		
+n8_5	8	2	maximal_degenerations	2	ok	0.1	maximal_degenerations	3.501			
+n8_5	8	2	maximal_degenerations	3	ok	0.1	maximal_degenerations	3.501			
+n8_5	8	2	circle	1	ok	0.1	circle	3.501	n8_5_circle.png		
+n8_5	8	2	circle	2	ok	0.1	circle	3.501			
+n8_5	8	2	circle	3	ok	0.1	circle	3.501			
+n8_8	8	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.768	n8_8_maximal_degenerations.png		
+n8_8	8	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.768			
+n8_8	8	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.768			
+n8_8	8	4	circle	1	ok	0.1	circle	2.768	n8_8_circle.png		
+n8_8	8	4	circle	2	ok	0.1	circle	2.768			
+n8_8	8	4	circle	3	ok	0.2	circle	2.768			
+n8_11	8	4	maximal_degenerations	1	ok	1.3	maximal_degenerations	2.572	n8_11_maximal_degenerations.png		
+n8_11	8	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.572			
+n8_11	8	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.572			
+n8_11	8	4	circle	1	ok	0.2	circle	2.572	n8_11_circle.png		
+n8_11	8	4	circle	2	ok	0.2	circle	2.572			
+n8_11	8	4	circle	3	ok	0.2	circle	2.572			
+n8_14	8	5	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.204	n8_14_maximal_degenerations.png		
+n8_14	8	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.204			
+n8_14	8	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.204			
+n8_14	8	5	circle	1	ok	0.2	circle	2.204	n8_14_circle.png		
+n8_14	8	5	circle	2	ok	0.2	circle	2.204			
+n8_14	8	5	circle	3	ok	0.2	circle	2.204			
+n8_17	8	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.857	n8_17_maximal_degenerations.png		
+n8_17	8	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.857			
+n8_17	8	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.857			
+n8_17	8	4	circle	1	ok	0.2	circle	2.857	n8_17_circle.png		
+n8_17	8	4	circle	2	ok	0.2	circle	2.857			
+n8_17	8	4	circle	3	ok	0.2	circle	2.857			
+n8_20	8	6	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.438	n8_20_maximal_degenerations.png		
+n8_20	8	6	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.438			
+n8_20	8	6	maximal_degenerations	3	ok	1.0	maximal_degenerations	1.438			
+n8_20	8	6	circle	1	ok	0.2	circle	2.657	n8_20_circle.png		
+n8_20	8	6	circle	2	ok	0.2	circle	2.657			
+n8_20	8	6	circle	3	ok	0.2	circle	2.657			
+n8_23	8	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.901	n8_23_maximal_degenerations.png		
+n8_23	8	7	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.901			
+n8_23	8	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.901			
+n8_23	8	7	circle	1	ok	0.1	circle	1.901	n8_23_circle.png		
+n8_23	8	7	circle	2	ok	0.1	circle	1.901			
+n8_23	8	7	circle	3	ok	0.1	circle	1.901			
+n8_26	8	5	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.528	n8_26_maximal_degenerations.png		
+n8_26	8	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.528			
+n8_26	8	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.528			
+n8_26	8	5	circle	1	ok	0.1	circle	2.713	n8_26_circle.png		
+n8_26	8	5	circle	2	ok	0.1	circle	2.713			
+n8_26	8	5	circle	3	ok	0.1	circle	2.713			
+n8_29	8	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.199	n8_29_maximal_degenerations.png		
+n8_29	8	6	maximal_degenerations	2	ok	1.0	maximal_degenerations	2.046			
+n8_29	8	6	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.046			
+n8_29	8	6	circle	1	ok	0.2	circle	2.046	n8_29_circle.png		
+n8_29	8	6	circle	2	ok	0.2	circle	2.046			
+n8_29	8	6	circle	3	ok	0.2	circle	2.046			
+n8_32	8	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.288	n8_32_maximal_degenerations.png		
+n8_32	8	7	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.288			
+n8_32	8	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.288			
+n8_32	8	7	circle	1	ok	10.4	exact	1.199	n8_32_circle.png		
+n8_32	8	7	circle	2	ok	1.8	exact	1.319			
+n8_32	8	7	circle	3	ok	1.1	circle	1.319			
+n8_35	8	2	maximal_degenerations	1	ok	1.0	maximal_degenerations	2.027	n8_35_maximal_degenerations.png		
+n8_35	8	2	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.027			
+n8_35	8	2	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.027			
+n8_35	8	2	circle	1	ok	0.2	circle	2.027	n8_35_circle.png		
+n8_35	8	2	circle	2	ok	0.2	circle	2.027			
+n8_35	8	2	circle	3	ok	0.2	circle	2.027			
+n8_38	8	3	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.455	n8_38_maximal_degenerations.png		
+n8_38	8	3	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.455			
+n8_38	8	3	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.455			
+n8_38	8	3	circle	1	ok	0.2	circle	2.574	n8_38_circle.png		
+n8_38	8	3	circle	2	ok	0.2	circle	2.574			
+n8_38	8	3	circle	3	ok	0.2	circle	2.574			
+n8_41	8	3	maximal_degenerations	1	ok	0.5	maximal_degenerations	2.609	n8_41_maximal_degenerations.png		
+n8_41	8	3	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.609			
+n8_41	8	3	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.609			
+n8_41	8	3	circle	1	ok	0.2	circle	2.236	n8_41_circle.png		
+n8_41	8	3	circle	2	ok	0.2	circle	2.236			
+n8_41	8	3	circle	3	ok	0.2	circle	2.236			
+n8_44	8	5	maximal_degenerations	1	ok	1.0	maximal_degenerations	1.671	n8_44_maximal_degenerations.png		
+n8_44	8	5	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.671			
+n8_44	8	5	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.671			
+n8_44	8	5	circle	1	ok	0.2	circle	1.671	n8_44_circle.png		
+n8_44	8	5	circle	2	ok	0.2	circle	1.671			
+n8_44	8	5	circle	3	ok	0.2	circle	1.671			
+n8_47	8	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.588	n8_47_maximal_degenerations.png		
+n8_47	8	5	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.588			
+n8_47	8	5	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.588			
+n8_47	8	5	circle	1	ok	0.3	circle	1.579	n8_47_circle.png		
+n8_47	8	5	circle	2	ok	0.3	circle	1.579			
+n8_47	8	5	circle	3	ok	0.3	circle	1.579			
+n8_50	8	4	maximal_degenerations	1	ok	1.2	maximal_degenerations	2.15	n8_50_maximal_degenerations.png		
+n8_50	8	4	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.15			
+n8_50	8	4	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.15			
+n8_50	8	4	circle	1	ok	0.2	circle	2.319	n8_50_circle.png		
+n8_50	8	4	circle	2	ok	0.2	circle	2.319			
+n8_50	8	4	circle	3	ok	0.2	circle	2.319			
+n8_53	8	6	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.706	n8_53_maximal_degenerations.png		
+n8_53	8	6	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.706			
+n8_53	8	6	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.706			
+n8_53	8	6	circle	1	ok	0.5	circle	1.705	n8_53_circle.png		
+n8_53	8	6	circle	2	ok	0.7	circle	1.705			
+n8_53	8	6	circle	3	ok	0.7	circle	1.705			
+n8_56	8	7	maximal_degenerations	1	fail	4.3				not char-0 realizable	
+n8_56	8	7	maximal_degenerations	2	fail	2.4				not char-0 realizable	
+n8_56	8	7	maximal_degenerations	3	fail	3.1				not char-0 realizable	
+n8_56	8	7	circle	1	fail	1.4				not char-0 realizable	
+n8_56	8	7	circle	2	fail	2.3				not char-0 realizable	
+n8_56	8	7	circle	3	fail	1.3				not char-0 realizable	
+n8_59	8	4	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.172	n8_59_maximal_degenerations.png		
+n8_59	8	4	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.172			
+n8_59	8	4	maximal_degenerations	3	ok	0.4	maximal_degenerations	2.172			
+n8_59	8	4	circle	1	ok	0.3	circle	2.172	n8_59_circle.png		
+n8_59	8	4	circle	2	ok	0.3	circle	2.172			
+n8_59	8	4	circle	3	ok	0.3	circle	2.172			
+n8_62	8	2	maximal_degenerations	1	ok	1.2	maximal_degenerations	2.475	n8_62_maximal_degenerations.png		
+n8_62	8	2	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.475			
+n8_62	8	2	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.475			
+n8_62	8	2	circle	1	ok	0.2	circle	2.475	n8_62_circle.png		
+n8_62	8	2	circle	2	ok	0.2	circle	2.475			
+n8_62	8	2	circle	3	ok	0.2	circle	2.475			
+n8_65	8	4	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.881	n8_65_maximal_degenerations.png		
+n8_65	8	4	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.881			
+n8_65	8	4	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.881			
+n8_65	8	4	circle	1	ok	0.4	circle	1.881	n8_65_circle.png		
+n8_65	8	4	circle	2	ok	0.4	circle	1.881			
+n8_65	8	4	circle	3	ok	0.4	circle	1.881			
+n8_68	8	2	maximal_degenerations	1	ok	1.7	maximal_degenerations	1.199	n8_68_maximal_degenerations.png		
+n8_68	8	2	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.199			
+n8_68	8	2	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.199			
+n8_68	8	2	circle	1	ok	0.5	circle	1.139	n8_68_circle.png		
+n8_68	8	2	circle	2	ok	0.6	circle	1.139			
+n8_68	8	2	circle	3	ok	0.6	circle	1.139			
+n9_3	9	1	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.94	n9_3_maximal_degenerations.png		
+n9_3	9	1	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.94			
+n9_3	9	1	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.94			
+n9_3	9	1	circle	1	ok	0.1	circle	1.939	n9_3_circle.png		
+n9_3	9	1	circle	2	ok	0.1	circle	1.939			
+n9_3	9	1	circle	3	ok	0.1	circle	1.939			
+n9_6	9	2	maximal_degenerations	1	ok	1.5	maximal_degenerations	1.742	n9_6_maximal_degenerations.png		
+n9_6	9	2	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.742			
+n9_6	9	2	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.742			
+n9_6	9	2	circle	1	ok	0.1	circle	1.742	n9_6_circle.png		
+n9_6	9	2	circle	2	ok	0.1	circle	1.742			
+n9_6	9	2	circle	3	ok	0.1	circle	1.742			
+n9_9	9	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.52	n9_9_maximal_degenerations.png		
+n9_9	9	4	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.52			
+n9_9	9	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.52			
+n9_9	9	4	circle	1	ok	0.2	circle	2.52	n9_9_circle.png		
+n9_9	9	4	circle	2	ok	0.2	circle	2.52			
+n9_9	9	4	circle	3	ok	0.2	circle	2.52			
+n9_12	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.524	n9_12_maximal_degenerations.png		
+n9_12	9	5	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.524			
+n9_12	9	5	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.524			
+n9_12	9	5	circle	1	ok	0.2	circle	2.139	n9_12_circle.png		
+n9_12	9	5	circle	2	ok	0.2	circle	2.139			
+n9_12	9	5	circle	3	ok	0.7	circle	2.139			
+n9_15	9	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.664	n9_15_maximal_degenerations.png		
+n9_15	9	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.664			
+n9_15	9	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.664			
+n9_15	9	4	circle	1	ok	0.2	circle	2.664	n9_15_circle.png		
+n9_15	9	4	circle	2	ok	0.1	circle	2.664			
+n9_15	9	4	circle	3	ok	0.1	circle	2.664			
+n9_18	9	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.689	n9_18_maximal_degenerations.png		
+n9_18	9	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.689			
+n9_18	9	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.689			
+n9_18	9	4	circle	1	ok	0.1	circle	2.689	n9_18_circle.png		
+n9_18	9	4	circle	2	ok	0.1	circle	2.689			
+n9_18	9	4	circle	3	ok	0.1	circle	2.689			
+n9_21	9	6	maximal_degenerations	1	ok	0.8	maximal_degenerations	1.706	n9_21_maximal_degenerations.png		
+n9_21	9	6	maximal_degenerations	2	ok	0.2	maximal_degenerations	1.706			
+n9_21	9	6	maximal_degenerations	3	ok	0.2	maximal_degenerations	1.706			
+n9_21	9	6	circle	1	ok	0.2	circle	1.706	n9_21_circle.png		
+n9_21	9	6	circle	2	ok	0.2	circle	1.706			
+n9_21	9	6	circle	3	ok	0.2	circle	1.706			
+n9_24	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.565	n9_24_maximal_degenerations.png		
+n9_24	9	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.565			
+n9_24	9	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.565			
+n9_24	9	5	circle	1	ok	1.0	circle	2.53	n9_24_circle.png		
+n9_24	9	5	circle	2	ok	0.2	circle	2.53			
+n9_24	9	5	circle	3	ok	0.2	circle	2.53			
+n9_27	9	5	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.204	n9_27_maximal_degenerations.png		
+n9_27	9	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.204			
+n9_27	9	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.204			
+n9_27	9	5	circle	1	ok	0.2	circle	2.204	n9_27_circle.png		
+n9_27	9	5	circle	2	ok	0.2	circle	2.204			
+n9_27	9	5	circle	3	ok	0.2	circle	2.204			
+n9_30	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.204	n9_30_maximal_degenerations.png		
+n9_30	9	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.204			
+n9_30	9	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.204			
+n9_30	9	5	circle	1	ok	0.2	circle	2.204	n9_30_circle.png		
+n9_30	9	5	circle	2	ok	0.7	circle	2.204			
+n9_30	9	5	circle	3	ok	0.2	circle	2.204			
+n9_33	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.512	n9_33_maximal_degenerations.png		
+n9_33	9	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.512			
+n9_33	9	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.512			
+n9_33	9	5	circle	1	ok	0.2	circle	2.512	n9_33_circle.png		
+n9_33	9	5	circle	2	ok	0.2	circle	2.512			
+n9_33	9	5	circle	3	ok	0.2	circle	2.512			
+n9_36	9	6	maximal_degenerations	1	ok	0.8	maximal_degenerations	2.333	n9_36_maximal_degenerations.png		
+n9_36	9	6	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.333			
+n9_36	9	6	maximal_degenerations	3	ok	1.3	maximal_degenerations	1.373			
+n9_36	9	6	circle	1	ok	0.3	circle	1.87	n9_36_circle.png		
+n9_36	9	6	circle	2	ok	0.3	circle	1.87			
+n9_36	9	6	circle	3	ok	0.3	circle	1.87			
+n9_39	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.847	n9_39_maximal_degenerations.png		
+n9_39	9	7	maximal_degenerations	2	ok	0.2	maximal_degenerations	1.847			
+n9_39	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.847			
+n9_39	9	7	circle	1	ok	0.2	circle	1.847	n9_39_circle.png		
+n9_39	9	7	circle	2	ok	0.2	circle	1.847			
+n9_39	9	7	circle	3	ok	0.2	circle	1.847			
+n9_42	9	7	maximal_degenerations	1	ok	1.7	maximal_degenerations	1.852	n9_42_maximal_degenerations.png		
+n9_42	9	7	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.549			
+n9_42	9	7	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.222			
+n9_42	9	7	circle	1	ok	2.3	exact	1.082	n9_42_circle.png		
+n9_42	9	7	circle	2	ok	1.6	exact	1.549			
+n9_42	9	7	circle	3	ok	2.8	exact	1.477			
+n9_45	9	4	maximal_degenerations	1	ok	0.2	maximal_degenerations	2.921	n9_45_maximal_degenerations.png		
+n9_45	9	4	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.921			
+n9_45	9	4	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.921			
+n9_45	9	4	circle	1	ok	0.1	circle	2.921	n9_45_circle.png		
+n9_45	9	4	circle	2	ok	0.1	circle	2.921			
+n9_45	9	4	circle	3	ok	0.1	circle	2.921			
+n9_48	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.919	n9_48_maximal_degenerations.png		
+n9_48	9	5	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.919			
+n9_48	9	5	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.919			
+n9_48	9	5	circle	1	ok	0.2	circle	2.919	n9_48_circle.png		
+n9_48	9	5	circle	2	ok	0.2	circle	2.919			
+n9_48	9	5	circle	3	ok	0.2	circle	2.919			
+n9_51	9	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.304	n9_51_maximal_degenerations.png		
+n9_51	9	6	maximal_degenerations	2	ok	1.0	maximal_degenerations	2.304			
+n9_51	9	6	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.304			
+n9_51	9	6	circle	1	ok	0.2	circle	2.304	n9_51_circle.png		
+n9_51	9	6	circle	2	ok	0.3	circle	2.304			
+n9_51	9	6	circle	3	ok	0.2	circle	2.304			
+n9_54	9	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.532	n9_54_maximal_degenerations.png		
+n9_54	9	6	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.532			
+n9_54	9	6	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.532			
+n9_54	9	6	circle	1	ok	0.2	circle	2.532	n9_54_circle.png		
+n9_54	9	6	circle	2	ok	0.2	circle	2.532			
+n9_54	9	6	circle	3	ok	0.2	circle	2.532			
+n9_57	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.662	n9_57_maximal_degenerations.png		
+n9_57	9	5	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.662			
+n9_57	9	5	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.662			
+n9_57	9	5	circle	1	ok	0.2	circle	1.661	n9_57_circle.png		
+n9_57	9	5	circle	2	ok	0.2	circle	1.661			
+n9_57	9	5	circle	3	ok	0.2	circle	1.661			
+n9_60	9	6	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.511	n9_60_maximal_degenerations.png		
+n9_60	9	6	maximal_degenerations	2	ok	1.0	maximal_degenerations	2.511			
+n9_60	9	6	maximal_degenerations	3	ok	1.3	maximal_degenerations	1.314			
+n9_60	9	6	circle	1	ok	0.9	circle	1.314	n9_60_circle.png		
+n9_60	9	6	circle	2	ok	0.3	circle	1.314			
+n9_60	9	6	circle	3	ok	0.2	circle	1.314			
+n9_63	9	6	maximal_degenerations	1	ok	0.8	maximal_degenerations	1.904	n9_63_maximal_degenerations.png		
+n9_63	9	6	maximal_degenerations	2	ok	1.3	maximal_degenerations	1.904			
+n9_63	9	6	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.904			
+n9_63	9	6	circle	1	ok	0.3	circle	1.32	n9_63_circle.png		
+n9_63	9	6	circle	2	ok	0.2	circle	1.32			
+n9_63	9	6	circle	3	ok	0.2	circle	1.32			
+n9_66	9	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.434	n9_66_maximal_degenerations.png		
+n9_66	9	6	maximal_degenerations	2	ok	1.4	maximal_degenerations	1.434			
+n9_66	9	6	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.434			
+n9_66	9	6	circle	1	ok	0.2	circle	1.434	n9_66_circle.png		
+n9_66	9	6	circle	2	ok	0.2	circle	1.434			
+n9_66	9	6	circle	3	ok	0.2	circle	1.434			
+n9_69	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.789	n9_69_maximal_degenerations.png		
+n9_69	9	7	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.789			
+n9_69	9	7	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.789			
+n9_69	9	7	circle	1	ok	0.3	circle	1.875	n9_69_circle.png		
+n9_69	9	7	circle	2	ok	0.3	circle	1.875			
+n9_69	9	7	circle	3	ok	0.3	circle	1.875			
+n9_72	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.314	n9_72_maximal_degenerations.png		
+n9_72	9	7	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.314			
+n9_72	9	7	maximal_degenerations	3	ok	0.2	maximal_degenerations	1.314			
+n9_72	9	7	circle	1	ok	0.2	circle	1.314	n9_72_circle.png		
+n9_72	9	7	circle	2	ok	0.2	circle	1.314			
+n9_72	9	7	circle	3	ok	0.2	circle	1.314			
+n9_75	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.736	n9_75_maximal_degenerations.png		
+n9_75	9	7	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.736			
+n9_75	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.736			
+n9_75	9	7	circle	1	ok	0.2	circle	2.327	n9_75_circle.png		
+n9_75	9	7	circle	2	ok	0.2	circle	2.327			
+n9_75	9	7	circle	3	ok	0.2	circle	2.327			
+n9_78	9	8	maximal_degenerations	1	ok	1.5	circle	0.925	n9_78_maximal_degenerations.png		
+n9_78	9	8	maximal_degenerations	2	ok	0.5	maximal_degenerations	0.798			
+n9_78	9	8	maximal_degenerations	3	ok	0.7	circle	0.907			
+n9_78	9	8	circle	1	ok	0.5	circle	0.962	n9_78_circle.png		
+n9_78	9	8	circle	2	ok	0.5	circle	0.699			
+n9_78	9	8	circle	3	ok	0.7	circle	0.699			
+n9_81	9	8	maximal_degenerations	1	ok	1.2	maximal_degenerations	2.153	n9_81_maximal_degenerations.png		
+n9_81	9	8	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.153			
+n9_81	9	8	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.153			
+n9_81	9	8	circle	1	ok	0.4	circle	2.153	n9_81_circle.png		
+n9_81	9	8	circle	2	ok	0.4	circle	2.153			
+n9_81	9	8	circle	3	ok	0.4	circle	2.153			
+n9_84	9	5	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.696	n9_84_maximal_degenerations.png		
+n9_84	9	5	maximal_degenerations	2	ok	0.6	maximal_degenerations	2.696			
+n9_84	9	5	maximal_degenerations	3	ok	1.5	maximal_degenerations	2.696			
+n9_84	9	5	circle	1	ok	0.3	circle	2.696	n9_84_circle.png		
+n9_84	9	5	circle	2	ok	0.3	circle	2.696			
+n9_84	9	5	circle	3	ok	0.3	circle	2.696			
+n9_87	9	6	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.571	n9_87_maximal_degenerations.png		
+n9_87	9	6	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.571			
+n9_87	9	6	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.571			
+n9_87	9	6	circle	1	ok	0.2	circle	2.429	n9_87_circle.png		
+n9_87	9	6	circle	2	ok	0.2	circle	2.429			
+n9_87	9	6	circle	3	ok	0.2	circle	2.429			
+n9_90	9	7	maximal_degenerations	1	ok	0.5	maximal_degenerations	2.338	n9_90_maximal_degenerations.png		
+n9_90	9	7	maximal_degenerations	2	ok	1.1	maximal_degenerations	1.518			
+n9_90	9	7	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.889			
+n9_90	9	7	circle	1	ok	0.2	circle	1.571	n9_90_circle.png		
+n9_90	9	7	circle	2	ok	0.3	circle	1.571			
+n9_90	9	7	circle	3	ok	0.3	circle	1.571			
+n9_93	9	8	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.879	n9_93_maximal_degenerations.png		
+n9_93	9	8	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.879			
+n9_93	9	8	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.879			
+n9_93	9	8	circle	1	ok	10.2	exact	1.17	n9_93_circle.png		
+n9_93	9	8	circle	2	ok	10.5	exact	1.219			
+n9_93	9	8	circle	3	ok	10.0	exact	1.204			
+n9_96	9	8	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.234	n9_96_maximal_degenerations.png		
+n9_96	9	8	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.234			
+n9_96	9	8	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.234			
+n9_96	9	8	circle	1	ok	0.3	circle	1.337	n9_96_circle.png		
+n9_96	9	8	circle	2	ok	0.3	circle	1.337			
+n9_96	9	8	circle	3	ok	0.3	circle	1.337			
+n9_99	9	8	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.415	n9_99_maximal_degenerations.png		
+n9_99	9	8	maximal_degenerations	2	ok	1.5	maximal_degenerations	1.025			
+n9_99	9	8	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.311			
+n9_99	9	8	circle	1	ok	1.6	exact	0.864	n9_99_circle.png		
+n9_99	9	8	circle	2	ok	3.4	exact	2.243			
+n9_99	9	8	circle	3	ok	2.2	exact	1.495			
+n9_102	9	8	maximal_degenerations	1	ok	6.7	exact	1.505	n9_102_maximal_degenerations.png		
+n9_102	9	8	maximal_degenerations	2	ok	2.4	circle	1.839			
+n9_102	9	8	maximal_degenerations	3	ok	3.7	exact	1.311			
+n9_102	9	8	circle	1	ok	2.5	circle	1.839	n9_102_circle.png		
+n9_102	9	8	circle	2	ok	4.2	exact	1.073			
+n9_102	9	8	circle	3	ok	2.8	exact	1.242			
+n9_105	9	10	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.777	n9_105_maximal_degenerations.png		
+n9_105	9	10	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.777			
+n9_105	9	10	maximal_degenerations	3	ok	1.6	maximal_degenerations	1.777			
+n9_105	9	10	circle	1	ok	0.4	circle	1.777	n9_105_circle.png		
+n9_105	9	10	circle	2	ok	0.4	circle	1.777			
+n9_105	9	10	circle	3	ok	0.4	circle	1.777			
+n9_108	9	8	maximal_degenerations	1	fail	2.2				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_108	9	8	maximal_degenerations	2	fail	3.4				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_108	9	8	maximal_degenerations	3	fail	4.3				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_108	9	8	circle	1	fail	1.5				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_108	9	8	circle	2	fail	1.7				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_108	9	8	circle	3	fail	3.7				start=:exact found no start: Oscar's realization space has equations left in positive dimension.	
+n9_111	9	11	maximal_degenerations	1	fail	24.2				not char-0 realizable	
+n9_111	9	11	maximal_degenerations	2	fail	23.2				not char-0 realizable	
+n9_111	9	11	maximal_degenerations	3	fail	16.6				not char-0 realizable	
+n9_111	9	11	circle	1	fail	18.3				not char-0 realizable	
+n9_111	9	11	circle	4	fail	23.0				not char-0 realizable	
+n9_111	9	11	circle	3	fail	26.9				not char-0 realizable	
+n9_114	9	5	maximal_degenerations	1	ok	8.9	maximal_degenerations	2.685	n9_114_maximal_degenerations.png		
+n9_114	9	5	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.685			
+n9_114	9	5	maximal_degenerations	3	ok	0.9	maximal_degenerations	2.685			
+n9_114	9	5	circle	1	ok	0.2	circle	2.685	n9_114_circle.png		
+n9_114	9	5	circle	2	ok	0.2	circle	2.685			
+n9_114	9	5	circle	3	ok	0.2	circle	2.685			
+n9_117	9	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.536	n9_117_maximal_degenerations.png		
+n9_117	9	6	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.536			
+n9_117	9	6	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.536			
+n9_117	9	6	circle	1	ok	0.2	circle	2.536	n9_117_circle.png		
+n9_117	9	6	circle	2	ok	0.2	circle	2.536			
+n9_117	9	6	circle	3	ok	0.2	circle	2.536			
+n9_120	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	2.266	n9_120_maximal_degenerations.png		
+n9_120	9	7	maximal_degenerations	2	ok	0.2	maximal_degenerations	2.266			
+n9_120	9	7	maximal_degenerations	3	ok	0.2	maximal_degenerations	2.266			
+n9_120	9	7	circle	1	ok	0.2	circle	2.266	n9_120_circle.png		
+n9_120	9	7	circle	2	ok	0.2	circle	2.266			
+n9_120	9	7	circle	3	ok	0.2	circle	2.266			
+n9_123	9	6	maximal_degenerations	1	ok	0.9	maximal_degenerations	2.393	n9_123_maximal_degenerations.png		
+n9_123	9	6	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.393			
+n9_123	9	6	maximal_degenerations	3	ok	0.6	maximal_degenerations	2.393			
+n9_123	9	6	circle	1	ok	0.2	circle	2.393	n9_123_circle.png		
+n9_123	9	6	circle	2	ok	0.2	circle	2.393			
+n9_123	9	6	circle	3	ok	0.2	circle	2.393			
+n9_126	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.328	n9_126_maximal_degenerations.png		
+n9_126	9	7	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.328			
+n9_126	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.328			
+n9_126	9	7	circle	1	ok	0.2	circle	2.328	n9_126_circle.png		
+n9_126	9	7	circle	2	ok	0.3	circle	2.328			
+n9_126	9	7	circle	3	ok	0.8	circle	2.328			
+n9_129	9	7	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.535	n9_129_maximal_degenerations.png		
+n9_129	9	7	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.535			
+n9_129	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.535			
+n9_129	9	7	circle	1	ok	0.2	circle	2.535	n9_129_circle.png		
+n9_129	9	7	circle	2	ok	0.2	circle	2.535			
+n9_129	9	7	circle	3	ok	0.2	circle	2.535			
+n9_132	9	7	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.404	n9_132_maximal_degenerations.png		
+n9_132	9	7	maximal_degenerations	2	ok	0.8	maximal_degenerations	2.404			
+n9_132	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.404			
+n9_132	9	7	circle	1	ok	0.2	circle	2.404	n9_132_circle.png		
+n9_132	9	7	circle	2	ok	0.2	circle	2.404			
+n9_132	9	7	circle	3	ok	0.3	circle	2.404			
+n9_135	9	8	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.027	n9_135_maximal_degenerations.png		
+n9_135	9	8	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.027			
+n9_135	9	8	maximal_degenerations	3	ok	0.9	maximal_degenerations	2.027			
+n9_135	9	8	circle	1	ok	0.4	circle	2.027	n9_135_circle.png		
+n9_135	9	8	circle	2	ok	0.3	circle	2.027			
+n9_135	9	8	circle	3	ok	0.5	circle	2.027			
+n9_138	9	7	maximal_degenerations	1	ok	1.4	maximal_degenerations	1.751	n9_138_maximal_degenerations.png		
+n9_138	9	7	maximal_degenerations	2	ok	3.2	circle	1.166			
+n9_138	9	7	maximal_degenerations	3	ok	0.9	maximal_degenerations	2.256			
+n9_138	9	7	circle	1	ok	0.4	circle	1.166	n9_138_circle.png		
+n9_138	9	7	circle	2	ok	0.3	circle	1.166			
+n9_138	9	7	circle	3	ok	0.5	circle	1.166			
+n9_141	9	8	maximal_degenerations	1	ok	1.1	maximal_degenerations	1.334	n9_141_maximal_degenerations.png		
+n9_141	9	8	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.334			
+n9_141	9	8	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.334			
+n9_141	9	8	circle	1	ok	3.0	circle	1.644	n9_141_circle.png		
+n9_141	9	8	circle	2	ok	2.5	exact	1.938			
+n9_141	9	8	circle	3	ok	2.3	exact	1.194			
+n9_144	9	8	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.926	n9_144_maximal_degenerations.png		
+n9_144	9	8	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.926			
+n9_144	9	8	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.926			
+n9_144	9	8	circle	1	ok	1.9	circle	1.118	n9_144_circle.png		
+n9_144	9	8	circle	2	ok	1.6	exact	1.029			
+n9_144	9	8	circle	3	ok	2.7	exact	1.463			
+n9_147	9	8	maximal_degenerations	1	ok	1.1	circle	1.651	n9_147_maximal_degenerations.png		
+n9_147	9	8	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.724			
+n9_147	9	8	maximal_degenerations	3	ok	2.4	circle	1.651			
+n9_147	9	8	circle	1	ok	0.6	circle	1.651	n9_147_circle.png		
+n9_147	9	8	circle	2	ok	1.4	circle	1.794			
+n9_147	9	8	circle	3	ok	1.3	circle	1.651			
+n9_150	9	9	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.329	n9_150_maximal_degenerations.png		
+n9_150	9	9	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.593			
+n9_150	9	9	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.529			
+n9_150	9	9	circle	1	ok	0.6	circle	1.794	n9_150_circle.png		
+n9_150	9	9	circle	2	ok	1.9	circle	1.794			
+n9_150	9	9	circle	3	ok	0.5	circle	1.794			
+n9_153	9	10	maximal_degenerations	1	fail	5.0				no real realization	
+n9_153	9	10	maximal_degenerations	2	fail	2.8				no real realization	
+n9_153	9	10	maximal_degenerations	3	fail	3.6				no real realization	
+n9_153	9	10	circle	1	fail	5.9				no real realization	
+n9_153	9	10	circle	2	fail	3.8				no real realization	
+n9_153	9	10	circle	3	fail	3.2				no real realization	
+n9_156	9	7	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.245	n9_156_maximal_degenerations.png		
+n9_156	9	7	maximal_degenerations	2	ok	1.3	maximal_degenerations	1.245			
+n9_156	9	7	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.245			
+n9_156	9	7	circle	1	ok	1.2	circle	1.295	n9_156_circle.png		
+n9_156	9	7	circle	2	ok	1.4	exact	1.319			
+n9_156	9	7	circle	3	ok	2.5	exact	1.309			
+n9_159	9	8	maximal_degenerations	1	ok	0.4	maximal_degenerations	0.897	n9_159_maximal_degenerations.png		
+n9_159	9	8	maximal_degenerations	2	ok	0.4	maximal_degenerations	0.897			
+n9_159	9	8	maximal_degenerations	3	ok	0.4	maximal_degenerations	0.897			
+n9_159	9	8	circle	1	ok	2.9	exact	1.319	n9_159_circle.png		
+n9_159	9	8	circle	2	ok	2.5	exact	2.046			
+n9_159	9	8	circle	3	ok	1.9	exact	0.949			
+n9_162	9	9	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.288	n9_162_maximal_degenerations.png		
+n9_162	9	9	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.288			
+n9_162	9	9	maximal_degenerations	3	ok	0.9	maximal_degenerations	1.288			
+n9_162	9	9	circle	1	ok	1.7	circle	1.284	n9_162_circle.png		
+n9_162	9	9	circle	2	ok	3.7	exact	1.288			
+n9_162	9	9	circle	3	ok	2.5	exact	1.094			
+n9_165	9	1	maximal_degenerations	1	ok	1.8	maximal_degenerations	2.333	n9_165_maximal_degenerations.png		
+n9_165	9	1	maximal_degenerations	2	ok	0.6	maximal_degenerations	2.333			
+n9_165	9	1	maximal_degenerations	3	ok	0.4	maximal_degenerations	2.333			
+n9_165	9	1	circle	1	ok	0.1	circle	1.963	n9_165_circle.png		
+n9_165	9	1	circle	2	ok	0.1	circle	1.963			
+n9_165	9	1	circle	3	ok	0.1	circle	1.963			
+n9_168	9	2	maximal_degenerations	1	ok	0.5	maximal_degenerations	2.257	n9_168_maximal_degenerations.png		
+n9_168	9	2	maximal_degenerations	2	ok	0.7	maximal_degenerations	2.257			
+n9_168	9	2	maximal_degenerations	3	ok	0.7	maximal_degenerations	2.257			
+n9_168	9	2	circle	1	ok	0.3	circle	2.453	n9_168_circle.png		
+n9_168	9	2	circle	2	ok	0.4	circle	2.453			
+n9_168	9	2	circle	3	ok	0.3	circle	2.453			
+n9_171	9	3	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.134	n9_171_maximal_degenerations.png		
+n9_171	9	3	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.134			
+n9_171	9	3	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.134			
+n9_171	9	3	circle	1	ok	0.3	circle	2.487	n9_171_circle.png		
+n9_171	9	3	circle	2	ok	0.3	circle	2.487			
+n9_171	9	3	circle	3	ok	0.3	circle	2.487			
+n9_174	9	3	maximal_degenerations	1	ok	1.3	maximal_degenerations	2.333	n9_174_maximal_degenerations.png		
+n9_174	9	3	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.333			
+n9_174	9	3	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.333			
+n9_174	9	3	circle	1	ok	0.3	circle	2.446	n9_174_circle.png		
+n9_174	9	3	circle	2	ok	0.2	circle	2.446			
+n9_174	9	3	circle	3	ok	0.2	circle	2.446			
+n9_177	9	3	maximal_degenerations	1	ok	0.8	maximal_degenerations	2.564	n9_177_maximal_degenerations.png		
+n9_177	9	3	maximal_degenerations	2	ok	0.6	maximal_degenerations	2.564			
+n9_177	9	3	maximal_degenerations	3	ok	0.4	maximal_degenerations	2.564			
+n9_177	9	3	circle	1	ok	0.3	circle	1.892	n9_177_circle.png		
+n9_177	9	3	circle	2	ok	0.2	circle	1.892			
+n9_177	9	3	circle	3	ok	0.2	circle	1.892			
+n9_180	9	3	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.331	n9_180_maximal_degenerations.png		
+n9_180	9	3	maximal_degenerations	2	ok	1.1	maximal_degenerations	2.331			
+n9_180	9	3	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.331			
+n9_180	9	3	circle	1	ok	0.3	circle	2.567	n9_180_circle.png		
+n9_180	9	3	circle	2	ok	0.3	circle	2.567			
+n9_180	9	3	circle	3	ok	0.3	circle	2.567			
+n9_183	9	4	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.375	n9_183_maximal_degenerations.png		
+n9_183	9	4	maximal_degenerations	2	ok	0.3	maximal_degenerations	2.375			
+n9_183	9	4	maximal_degenerations	3	ok	0.4	maximal_degenerations	2.375			
+n9_183	9	4	circle	1	ok	0.4	circle	2.375	n9_183_circle.png		
+n9_183	9	4	circle	2	ok	0.4	circle	2.375			
+n9_183	9	4	circle	3	ok	0.4	circle	2.375			
+n9_186	9	5	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.14	n9_186_maximal_degenerations.png		
+n9_186	9	5	maximal_degenerations	2	ok	0.7	maximal_degenerations	2.14			
+n9_186	9	5	maximal_degenerations	3	ok	1.4	maximal_degenerations	2.14			
+n9_186	9	5	circle	1	ok	0.5	circle	1.437	n9_186_circle.png		
+n9_186	9	5	circle	2	ok	0.7	circle	1.437			
+n9_186	9	5	circle	3	ok	0.4	circle	1.437			
+n9_189	9	4	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.343	n9_189_maximal_degenerations.png		
+n9_189	9	4	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.343			
+n9_189	9	4	maximal_degenerations	3	ok	0.4	maximal_degenerations	2.343			
+n9_189	9	4	circle	1	ok	0.4	circle	2.333	n9_189_circle.png		
+n9_189	9	4	circle	2	ok	0.3	circle	2.333			
+n9_189	9	4	circle	3	ok	0.3	circle	2.333			
+n9_192	9	5	maximal_degenerations	1	ok	0.3	maximal_degenerations	2.146	n9_192_maximal_degenerations.png		
+n9_192	9	5	maximal_degenerations	2	ok	1.4	maximal_degenerations	2.146			
+n9_192	9	5	maximal_degenerations	3	ok	0.3	maximal_degenerations	2.146			
+n9_192	9	5	circle	1	ok	0.3	circle	2.16	n9_192_circle.png		
+n9_192	9	5	circle	2	ok	0.3	circle	2.16			
+n9_192	9	5	circle	3	ok	0.3	circle	2.16			
+n9_195	9	6	maximal_degenerations	1	ok	0.3	maximal_degenerations	1.748	n9_195_maximal_degenerations.png		
+n9_195	9	6	maximal_degenerations	2	ok	0.3	maximal_degenerations	1.748			
+n9_195	9	6	maximal_degenerations	3	ok	0.3	maximal_degenerations	1.748			
+n9_195	9	6	circle	1	ok	0.4	circle	0.963	n9_195_circle.png		
+n9_195	9	6	circle	2	ok	0.4	circle	0.963			
+n9_195	9	6	circle	3	ok	0.4	circle	1.334			
+n9_198	9	5	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.535	n9_198_maximal_degenerations.png		
+n9_198	9	5	maximal_degenerations	2	ok	1.5	maximal_degenerations	1.535			
+n9_198	9	5	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.535			
+n9_198	9	5	circle	1	ok	0.5	circle	1.671	n9_198_circle.png		
+n9_198	9	5	circle	2	ok	0.5	circle	1.671			
+n9_198	9	5	circle	3	ok	0.3	circle	1.671			
+n9_201	9	4	maximal_degenerations	1	ok	1.2	maximal_degenerations	1.255	n9_201_maximal_degenerations.png		
+n9_201	9	4	maximal_degenerations	2	ok	4.2	maximal_degenerations	2.339			
+n9_201	9	4	maximal_degenerations	3	ok	1.5	maximal_degenerations	2.351			
+n9_201	9	4	circle	1	ok	0.4	circle	1.755	n9_201_circle.png		
+n9_201	9	4	circle	2	ok	1.1	circle	1.755			
+n9_201	9	4	circle	3	ok	0.4	circle	1.755			
+n9_204	9	6	maximal_degenerations	1	ok	0.5	maximal_degenerations	2.126	n9_204_maximal_degenerations.png		
+n9_204	9	6	maximal_degenerations	2	ok	1.2	maximal_degenerations	1.188			
+n9_204	9	6	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.022			
+n9_204	9	6	circle	1	ok	0.3	circle	2.126	n9_204_circle.png		
+n9_204	9	6	circle	2	ok	0.3	circle	2.126			
+n9_204	9	6	circle	3	ok	0.3	circle	2.126			
+n9_207	9	6	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.102	n9_207_maximal_degenerations.png		
+n9_207	9	6	maximal_degenerations	2	ok	1.3	maximal_degenerations	1.102			
+n9_207	9	6	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.102			
+n9_207	9	6	circle	1	ok	0.4	circle	1.521	n9_207_circle.png		
+n9_207	9	6	circle	2	ok	0.4	circle	1.172			
+n9_207	9	6	circle	3	ok	0.4	circle	1.529			
+n9_210	9	6	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.245	n9_210_maximal_degenerations.png		
+n9_210	9	6	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.245			
+n9_210	9	6	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.245			
+n9_210	9	6	circle	1	ok	0.5	circle	1.206	n9_210_circle.png		
+n9_210	9	6	circle	2	ok	1.6	circle	1.206			
+n9_210	9	6	circle	3	ok	0.5	circle	1.206			
+n9_213	9	7	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.51	n9_213_maximal_degenerations.png		
+n9_213	9	7	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.51			
+n9_213	9	7	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.51			
+n9_213	9	7	circle	1	ok	1.2	circle	1.6	n9_213_circle.png		
+n9_213	9	7	circle	2	ok	2.6	exact	1.054			
+n9_213	9	7	circle	3	ok	1.3	circle	1.558			
+n9_216	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.318	n9_216_maximal_degenerations.png		
+n9_216	9	7	maximal_degenerations	2	ok	1.3	maximal_degenerations	0.921			
+n9_216	9	7	maximal_degenerations	3	ok	2.5	exact	1.279			
+n9_216	9	7	circle	1	ok	2.7	exact	1.279	n9_216_circle.png		
+n9_216	9	7	circle	2	ok	1.8	exact	1.043			
+n9_216	9	7	circle	3	ok	3.0	exact	2.028			
+n9_219	9	5	maximal_degenerations	1	ok	1.7	circle	2.18	n9_219_maximal_degenerations.png		
+n9_219	9	5	maximal_degenerations	2	ok	1.5	maximal_degenerations	1.591			
+n9_219	9	5	maximal_degenerations	3	ok	2.3	maximal_degenerations	2.204			
+n9_219	9	5	circle	1	ok	0.3	circle	2.18	n9_219_circle.png		
+n9_219	9	5	circle	2	ok	0.3	circle	2.18			
+n9_219	9	5	circle	3	ok	0.4	circle	2.18			
+n9_222	9	6	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.06	n9_222_maximal_degenerations.png		
+n9_222	9	6	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.06			
+n9_222	9	6	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.06			
+n9_222	9	6	circle	1	ok	0.4	circle	0.957	n9_222_circle.png		
+n9_222	9	6	circle	2	ok	0.4	circle	1.384			
+n9_222	9	6	circle	3	ok	0.5	circle	1.344			
+n9_225	9	6	maximal_degenerations	1	ok	1.6	maximal_degenerations	1.538	n9_225_maximal_degenerations.png		
+n9_225	9	6	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.831			
+n9_225	9	6	maximal_degenerations	3	ok	0.7	maximal_degenerations	0.997			
+n9_225	9	6	circle	1	ok	0.4	circle	1.831	n9_225_circle.png		
+n9_225	9	6	circle	2	ok	0.4	circle	1.831			
+n9_225	9	6	circle	3	ok	0.4	circle	1.831			
+n9_228	9	6	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.018	n9_228_maximal_degenerations.png		
+n9_228	9	6	maximal_degenerations	2	ok	0.4	maximal_degenerations	2.018			
+n9_228	9	6	maximal_degenerations	3	ok	1.4	maximal_degenerations	2.018			
+n9_228	9	6	circle	1	ok	2.6	exact	1.466	n9_228_circle.png		
+n9_228	9	6	circle	2	ok	4.4	exact	0.934			
+n9_228	9	6	circle	3	ok	4.3	circle	1.583			
+n9_231	9	5	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.489	n9_231_maximal_degenerations.png		
+n9_231	9	5	maximal_degenerations	2	ok	0.6	maximal_degenerations	2.489			
+n9_231	9	5	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.489			
+n9_231	9	5	circle	1	ok	0.3	circle	2.333	n9_231_circle.png		
+n9_231	9	5	circle	2	ok	0.4	circle	2.333			
+n9_231	9	5	circle	3	ok	0.5	circle	2.333			
+n9_234	9	6	maximal_degenerations	1	ok	0.8	maximal_degenerations	2.084	n9_234_maximal_degenerations.png		
+n9_234	9	6	maximal_degenerations	2	ok	0.9	maximal_degenerations	2.084			
+n9_234	9	6	maximal_degenerations	3	ok	2.2	maximal_degenerations	2.084			
+n9_234	9	6	circle	1	ok	0.6	circle	2.137	n9_234_circle.png		
+n9_234	9	6	circle	2	ok	0.5	circle	2.137			
+n9_234	9	6	circle	3	ok	0.6	circle	2.137			
+n9_237	9	7	maximal_degenerations	1	ok	1.0	maximal_degenerations	0.961	n9_237_maximal_degenerations.png		
+n9_237	9	7	maximal_degenerations	2	ok	1.0	maximal_degenerations	0.961			
+n9_237	9	7	maximal_degenerations	3	ok	0.8	maximal_degenerations	0.961			
+n9_237	9	7	circle	1	ok	0.3	circle	1.629	n9_237_circle.png		
+n9_237	9	7	circle	2	ok	0.3	circle	1.629			
+n9_237	9	7	circle	3	ok	0.4	circle	1.629			
+n9_240	9	7	maximal_degenerations	1	ok	2.8	maximal_degenerations	0.93	n9_240_maximal_degenerations.png		
+n9_240	9	7	maximal_degenerations	2	ok	0.8	maximal_degenerations	0.857			
+n9_240	9	7	maximal_degenerations	3	ok	1.2	maximal_degenerations	0.897			
+n9_240	9	7	circle	1	ok	2.3	exact	0.827	n9_240_circle.png		
+n9_240	9	7	circle	2	ok	3.0	exact	1.095			
+n9_240	9	7	circle	3	ok	2.2	exact	1.541			
+n9_243	9	6	maximal_degenerations	1	ok	1.5	maximal_degenerations	2.357	n9_243_maximal_degenerations.png		
+n9_243	9	6	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.357			
+n9_243	9	6	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.357			
+n9_243	9	6	circle	1	ok	0.6	circle	2.333	n9_243_circle.png		
+n9_243	9	6	circle	2	ok	0.6	circle	2.333			
+n9_243	9	6	circle	3	ok	0.6	circle	2.333			
+n9_246	9	5	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.334	n9_246_maximal_degenerations.png		
+n9_246	9	5	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.334			
+n9_246	9	5	maximal_degenerations	3	ok	1.4	maximal_degenerations	1.334			
+n9_246	9	5	circle	1	ok	0.5	circle	1.611	n9_246_circle.png		
+n9_246	9	5	circle	2	ok	0.5	circle	1.611			
+n9_246	9	5	circle	3	ok	0.5	circle	1.611			
+n9_249	9	6	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.173	n9_249_maximal_degenerations.png		
+n9_249	9	6	maximal_degenerations	2	ok	0.7	maximal_degenerations	2.173			
+n9_249	9	6	maximal_degenerations	3	ok	1.0	maximal_degenerations	1.712			
+n9_249	9	6	circle	1	ok	0.5	circle	1.336	n9_249_circle.png		
+n9_249	9	6	circle	2	ok	0.5	circle	1.336			
+n9_249	9	6	circle	3	ok	0.3	circle	1.336			
+n9_252	9	6	maximal_degenerations	1	ok	2.0	maximal_degenerations	1.459	n9_252_maximal_degenerations.png		
+n9_252	9	6	maximal_degenerations	2	ok	0.8	maximal_degenerations	1.932			
+n9_252	9	6	maximal_degenerations	3	ok	1.1	maximal_degenerations	1.472			
+n9_252	9	6	circle	1	ok	0.6	circle	1.98	n9_252_circle.png		
+n9_252	9	6	circle	2	ok	0.6	circle	1.98			
+n9_252	9	6	circle	3	ok	0.6	circle	1.98			
+n9_255	9	7	maximal_degenerations	1	ok	1.4	maximal_degenerations	1.932	n9_255_maximal_degenerations.png		
+n9_255	9	7	maximal_degenerations	2	ok	2.1	maximal_degenerations	1.932			
+n9_255	9	7	maximal_degenerations	3	ok	1.0	maximal_degenerations	1.397			
+n9_255	9	7	circle	1	ok	0.9	circle	1.261	n9_255_circle.png		
+n9_255	9	7	circle	2	ok	0.8	circle	1.261			
+n9_255	9	7	circle	3	ok	0.8	circle	1.261			
+n9_258	9	6	maximal_degenerations	1	ok	0.9	maximal_degenerations	1.696	n9_258_maximal_degenerations.png		
+n9_258	9	6	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.696			
+n9_258	9	6	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.696			
+n9_258	9	6	circle	1	ok	1.3	circle	1.764	n9_258_circle.png		
+n9_258	9	6	circle	2	ok	0.3	circle	1.764			
+n9_258	9	6	circle	3	ok	0.3	circle	1.764			
+n9_261	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.008	n9_261_maximal_degenerations.png		
+n9_261	9	7	maximal_degenerations	2	ok	0.8	maximal_degenerations	1.008			
+n9_261	9	7	maximal_degenerations	3	ok	0.7	maximal_degenerations	1.008			
+n9_261	9	7	circle	1	ok	0.6	circle	2.146	n9_261_circle.png		
+n9_261	9	7	circle	2	ok	0.5	circle	2.146			
+n9_261	9	7	circle	3	ok	0.5	circle	2.146			
+n9_264	9	6	maximal_degenerations	1	ok	3.2	maximal_degenerations	1.614	n9_264_maximal_degenerations.png		
+n9_264	9	6	maximal_degenerations	2	ok	0.9	maximal_degenerations	1.58			
+n9_264	9	6	maximal_degenerations	3	ok	1.3	maximal_degenerations	1.255			
+n9_264	9	6	circle	1	ok	0.6	circle	1.075	n9_264_circle.png		
+n9_264	9	6	circle	2	ok	0.4	circle	1.075			
+n9_264	9	6	circle	3	ok	0.3	circle	1.075			
+n9_267	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.21	n9_267_maximal_degenerations.png		
+n9_267	9	7	maximal_degenerations	2	ok	1.8	maximal_degenerations	1.318			
+n9_267	9	7	maximal_degenerations	3	ok	0.9	maximal_degenerations	1.441			
+n9_267	9	7	circle	1	ok	0.7	circle	1.498	n9_267_circle.png		
+n9_267	9	7	circle	2	ok	0.9	circle	1.498			
+n9_267	9	7	circle	3	ok	0.5	circle	1.498			
+n9_270	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.932	n9_270_maximal_degenerations.png		
+n9_270	9	7	maximal_degenerations	2	ok	0.8	maximal_degenerations	1.932			
+n9_270	9	7	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.932			
+n9_270	9	7	circle	1	ok	0.4	circle	1.853	n9_270_circle.png		
+n9_270	9	7	circle	2	ok	1.1	circle	1.853			
+n9_270	9	7	circle	3	ok	0.4	circle	1.853			
+n9_273	9	7	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.592	n9_273_maximal_degenerations.png		
+n9_273	9	7	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.592			
+n9_273	9	7	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.592			
+n9_273	9	7	circle	1	ok	0.4	circle	1.508	n9_273_circle.png		
+n9_273	9	7	circle	2	ok	0.4	circle	1.508			
+n9_273	9	7	circle	3	ok	0.4	circle	1.508			
+n9_276	9	8	maximal_degenerations	1	ok	1.5	maximal_degenerations	1.098	n9_276_maximal_degenerations.png		
+n9_276	9	8	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.098			
+n9_276	9	8	maximal_degenerations	3	ok	0.5	maximal_degenerations	1.098			
+n9_276	9	8	circle	1	ok	0.5	circle	1.097	n9_276_circle.png		
+n9_276	9	8	circle	2	ok	0.4	circle	1.097			
+n9_276	9	8	circle	3	ok	0.4	circle	1.097			
+n9_279	9	8	maximal_degenerations	1	ok	1.1	maximal_degenerations	1.149	n9_279_maximal_degenerations.png		
+n9_279	9	8	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.152			
+n9_279	9	8	maximal_degenerations	3	ok	0.7	maximal_degenerations	1.196			
+n9_279	9	8	circle	1	ok	0.4	circle	1.308	n9_279_circle.png		
+n9_279	9	8	circle	2	ok	0.4	circle	1.308			
+n9_279	9	8	circle	3	ok	1.3	circle	1.308			
+n9_282	9	9	maximal_degenerations	1	fail	2.5				no real realization	
+n9_282	9	9	maximal_degenerations	2	fail	3.2				no real realization	
+n9_282	9	9	maximal_degenerations	3	fail	3.4				no real realization	
+n9_282	9	9	circle	1	fail	2.6				no real realization	
+n9_282	9	9	circle	2	fail	1.7				no real realization	
+n9_282	9	9	circle	3	fail	3.0				no real realization	
+n9_285	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	0.82	n9_285_maximal_degenerations.png		
+n9_285	9	7	maximal_degenerations	2	ok	2.0	maximal_degenerations	0.771			
+n9_285	9	7	maximal_degenerations	3	ok	1.7	maximal_degenerations	1.074			
+n9_285	9	7	circle	1	ok	0.4	circle	1.189	n9_285_circle.png		
+n9_285	9	7	circle	2	ok	0.4	circle	0.796			
+n9_285	9	7	circle	3	ok	0.4	circle	1.598			
+n9_288	9	7	maximal_degenerations	1	ok	2.4	maximal_degenerations	0.992	n9_288_maximal_degenerations.png		
+n9_288	9	7	maximal_degenerations	2	ok	1.1	maximal_degenerations	1.319			
+n9_288	9	7	maximal_degenerations	3	ok	1.2	maximal_degenerations	0.967			
+n9_288	9	7	circle	1	ok	0.6	circle	1.08	n9_288_circle.png		
+n9_288	9	7	circle	2	ok	0.7	circle	1.08			
+n9_288	9	7	circle	3	ok	0.8	circle	1.08			
+n9_291	9	7	maximal_degenerations	1	ok	5.2	maximal_degenerations	1.319	n9_291_maximal_degenerations.png		
+n9_291	9	7	maximal_degenerations	2	ok	1.0	maximal_degenerations	1.312			
+n9_291	9	7	maximal_degenerations	3	ok	2.5	maximal_degenerations	0.795			
+n9_291	9	7	circle	1	ok	5.7	exact	0.987	n9_291_circle.png		
+n9_291	9	7	circle	2	ok	4.6	exact	0.954			
+n9_291	9	7	circle	3	ok	5.9	exact	1.197			
+n9_294	9	7	maximal_degenerations	1	fail	3.1				not char-0 realizable	
+n9_294	9	7	maximal_degenerations	2	fail	4.0				not char-0 realizable	
+n9_294	9	7	maximal_degenerations	3	fail	3.1				not char-0 realizable	
+n9_294	9	7	circle	1	fail	3.8				not char-0 realizable	
+n9_294	9	7	circle	2	fail	2.5				not char-0 realizable	
+n9_294	9	7	circle	3	fail	2.5				not char-0 realizable	
+n9_297	9	3	maximal_degenerations	1	ok	3.5	maximal_degenerations	2.222	n9_297_maximal_degenerations.png		
+n9_297	9	3	maximal_degenerations	2	ok	2.0	maximal_degenerations	2.222			
+n9_297	9	3	maximal_degenerations	3	ok	1.9	maximal_degenerations	2.222			
+n9_297	9	3	circle	1	ok	0.5	circle	2.399	n9_297_circle.png		
+n9_297	9	3	circle	2	ok	0.5	circle	2.399			
+n9_297	9	3	circle	3	ok	0.5	circle	2.399			
+n9_300	9	4	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.632	n9_300_maximal_degenerations.png		
+n9_300	9	4	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.632			
+n9_300	9	4	maximal_degenerations	3	ok	0.7	maximal_degenerations	1.632			
+n9_300	9	4	circle	1	ok	0.5	circle	1.974	n9_300_circle.png		
+n9_300	9	4	circle	2	ok	0.4	circle	1.974			
+n9_300	9	4	circle	3	ok	0.3	circle	1.974			
+n9_303	9	5	maximal_degenerations	1	ok	2.2	maximal_degenerations	1.25	n9_303_maximal_degenerations.png		
+n9_303	9	5	maximal_degenerations	2	ok	6.2	maximal_degenerations	1.893			
+n9_303	9	5	maximal_degenerations	3	ok	2.0	maximal_degenerations	1.346			
+n9_303	9	5	circle	1	ok	0.6	circle	2.446	n9_303_circle.png		
+n9_303	9	5	circle	2	ok	0.5	circle	2.446			
+n9_303	9	5	circle	3	ok	0.6	circle	2.446			
+n9_306	9	5	maximal_degenerations	1	ok	0.7	maximal_degenerations	2.439	n9_306_maximal_degenerations.png		
+n9_306	9	5	maximal_degenerations	2	ok	2.7	maximal_degenerations	2.439			
+n9_306	9	5	maximal_degenerations	3	ok	0.6	maximal_degenerations	2.439			
+n9_306	9	5	circle	1	ok	0.5	circle	2.439	n9_306_circle.png		
+n9_306	9	5	circle	2	ok	0.4	circle	2.439			
+n9_306	9	5	circle	3	ok	0.5	circle	2.439			
+n9_309	9	3	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.836	n9_309_maximal_degenerations.png		
+n9_309	9	3	maximal_degenerations	2	ok	0.5	maximal_degenerations	1.836			
+n9_309	9	3	maximal_degenerations	3	ok	0.7	maximal_degenerations	1.836			
+n9_309	9	3	circle	1	ok	0.6	circle	1.572	n9_309_circle.png		
+n9_309	9	3	circle	2	ok	1.7	circle	1.572			
+n9_309	9	3	circle	3	ok	0.5	circle	1.572			
+n9_312	9	5	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.925	n9_312_maximal_degenerations.png		
+n9_312	9	5	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.925			
+n9_312	9	5	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.925			
+n9_312	9	5	circle	1	ok	0.4	circle	1.92	n9_312_circle.png		
+n9_312	9	5	circle	2	ok	0.4	circle	1.92			
+n9_312	9	5	circle	3	ok	0.4	circle	1.92			
+n9_315	9	5	maximal_degenerations	1	ok	0.8	maximal_degenerations	2.181	n9_315_maximal_degenerations.png		
+n9_315	9	5	maximal_degenerations	2	ok	1.4	maximal_degenerations	1.739			
+n9_315	9	5	maximal_degenerations	3	ok	0.8	maximal_degenerations	1.82			
+n9_315	9	5	circle	1	ok	0.4	circle	1.932	n9_315_circle.png		
+n9_315	9	5	circle	2	ok	0.3	circle	1.932			
+n9_315	9	5	circle	3	ok	0.3	circle	1.932			
+n9_318	9	6	maximal_degenerations	1	ok	0.5	maximal_degenerations	1.669	n9_318_maximal_degenerations.png		
+n9_318	9	6	maximal_degenerations	2	ok	1.0	maximal_degenerations	0.883			
+n9_318	9	6	maximal_degenerations	3	ok	2.3	maximal_degenerations	1.348			
+n9_318	9	6	circle	1	ok	0.5	circle	1.271	n9_318_circle.png		
+n9_318	9	6	circle	2	ok	0.5	circle	1.271			
+n9_318	9	6	circle	3	ok	0.5	circle	1.271			
+n9_321	9	6	maximal_degenerations	1	ok	0.8	maximal_degenerations	0.859	n9_321_maximal_degenerations.png		
+n9_321	9	6	maximal_degenerations	2	ok	0.8	maximal_degenerations	0.859			
+n9_321	9	6	maximal_degenerations	3	ok	1.1	maximal_degenerations	0.859			
+n9_321	9	6	circle	1	ok	1.5	circle	1.628	n9_321_circle.png		
+n9_321	9	6	circle	2	ok	0.4	circle	0.843			
+n9_321	9	6	circle	3	ok	0.4	circle	1.521			
+n9_324	9	7	maximal_degenerations	1	ok	2.4	maximal_degenerations	1.494	n9_324_maximal_degenerations.png		
+n9_324	9	7	maximal_degenerations	2	ok	2.1	maximal_degenerations	0.976			
+n9_324	9	7	maximal_degenerations	3	ok	1.3	maximal_degenerations	1.319			
+n9_324	9	7	circle	1	ok	1.5	circle	0.896	n9_324_circle.png		
+n9_324	9	7	circle	2	ok	0.7	circle	0.896			
+n9_324	9	7	circle	3	ok	0.7	circle	0.896			
+n9_327	9	7	maximal_degenerations	1	ok	1.1	circle	1.205	n9_327_maximal_degenerations.png		
+n9_327	9	7	maximal_degenerations	2	ok	1.0	circle	1.205			
+n9_327	9	7	maximal_degenerations	3	ok	1.6	circle	1.205			
+n9_327	9	7	circle	1	ok	0.5	circle	1.205	n9_327_circle.png		
+n9_327	9	7	circle	2	ok	0.7	circle	1.205			
+n9_327	9	7	circle	3	ok	0.7	circle	1.205			
+n9_330	9	7	maximal_degenerations	1	fail	3.7				not char-0 realizable	
+n9_330	9	7	maximal_degenerations	2	fail	4.4				not char-0 realizable	
+n9_330	9	7	maximal_degenerations	3	fail	4.6				not char-0 realizable	
+n9_330	9	7	circle	1	fail	2.3				not char-0 realizable	
+n9_330	9	7	circle	2	fail	3.0				not char-0 realizable	
+n9_330	9	7	circle	3	fail	3.2				not char-0 realizable	
+n9_333	9	5	maximal_degenerations	1	ok	1.0	maximal_degenerations	1.849	n9_333_maximal_degenerations.png		
+n9_333	9	5	maximal_degenerations	2	ok	1.0	maximal_degenerations	1.779			
+n9_333	9	5	maximal_degenerations	3	ok	4.4	maximal_degenerations	1.507			
+n9_333	9	5	circle	1	ok	0.5	circle	1.849	n9_333_circle.png		
+n9_333	9	5	circle	2	ok	1.9	circle	1.849			
+n9_333	9	5	circle	3	ok	0.4	circle	1.849			
+n9_336	9	7	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.67	n9_336_maximal_degenerations.png		
+n9_336	9	7	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.67			
+n9_336	9	7	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.67			
+n9_336	9	7	circle	1	ok	0.5	circle	1.67	n9_336_circle.png		
+n9_336	9	7	circle	2	ok	0.5	circle	1.67			
+n9_336	9	7	circle	3	ok	1.3	circle	1.67			
+n9_339	9	8	maximal_degenerations	1	fail	2.5				no real realization	
+n9_339	9	8	maximal_degenerations	2	fail	3.4				no real realization	
+n9_339	9	8	maximal_degenerations	3	fail	4.4				no real realization	
+n9_339	9	8	circle	1	fail	3.5				no real realization	
+n9_339	9	8	circle	2	fail	2.2				no real realization	
+n9_339	9	8	circle	3	fail	3.1				no real realization	
+n9_342	9	8	maximal_degenerations	1	fail	3.5				not char-0 realizable	
+n9_342	9	8	maximal_degenerations	2	fail	2.6				not char-0 realizable	
+n9_342	9	8	maximal_degenerations	3	fail	3.7				not char-0 realizable	
+n9_342	9	8	circle	1	fail	3.1				not char-0 realizable	
+n9_342	9	8	circle	2	fail	2.2				not char-0 realizable	
+n9_342	9	8	circle	3	fail	3.1				not char-0 realizable	
+n9_345	9	7	maximal_degenerations	1	ok	4.7	exact	0.632	n9_345_maximal_degenerations.png		
+n9_345	9	7	maximal_degenerations	2	ok	4.6	exact	0.99			
+n9_345	9	7	maximal_degenerations	3	ok	4.3	exact	0.217			
+n9_345	9	7	circle	1	ok	3.9	exact	0.99	n9_345_circle.png		
+n9_345	9	7	circle	2	ok	4.9	exact	0.99			
+n9_345	9	7	circle	3	ok	4.4	exact	0.99			
+n9_348	9	2	maximal_degenerations	1	ok	0.4	maximal_degenerations	2.241	n9_348_maximal_degenerations.png		
+n9_348	9	2	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.241			
+n9_348	9	2	maximal_degenerations	3	ok	1.4	maximal_degenerations	2.241			
+n9_348	9	2	circle	1	ok	0.4	circle	2.241	n9_348_circle.png		
+n9_348	9	2	circle	2	ok	0.4	circle	2.241			
+n9_348	9	2	circle	3	ok	0.4	circle	2.241			
+n9_351	9	3	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.992	n9_351_maximal_degenerations.png		
+n9_351	9	3	maximal_degenerations	2	ok	0.4	maximal_degenerations	1.992			
+n9_351	9	3	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.992			
+n9_351	9	3	circle	1	ok	0.3	circle	1.992	n9_351_circle.png		
+n9_351	9	3	circle	2	ok	0.3	circle	1.992			
+n9_351	9	3	circle	3	ok	0.3	circle	1.992			
+n9_354	9	4	maximal_degenerations	1	ok	0.4	maximal_degenerations	1.955	n9_354_maximal_degenerations.png		
+n9_354	9	4	maximal_degenerations	2	ok	1.3	maximal_degenerations	1.955			
+n9_354	9	4	maximal_degenerations	3	ok	0.4	maximal_degenerations	1.955			
+n9_354	9	4	circle	1	ok	0.4	circle	2.028	n9_354_circle.png		
+n9_354	9	4	circle	2	ok	0.4	circle	2.028			
+n9_354	9	4	circle	3	ok	0.4	circle	2.028			
+n9_357	9	4	maximal_degenerations	1	ok	0.8	maximal_degenerations	1.91	n9_357_maximal_degenerations.png		
+n9_357	9	4	maximal_degenerations	2	ok	0.7	maximal_degenerations	1.886			
+n9_357	9	4	maximal_degenerations	3	ok	2.3	maximal_degenerations	1.886			
+n9_357	9	4	circle	1	ok	0.5	circle	1.712	n9_357_circle.png		
+n9_357	9	4	circle	2	ok	0.6	circle	1.712			
+n9_357	9	4	circle	3	ok	0.6	circle	1.712			
+n9_360	9	4	maximal_degenerations	1	ok	0.6	maximal_degenerations	2.111	n9_360_maximal_degenerations.png		
+n9_360	9	4	maximal_degenerations	2	ok	0.5	maximal_degenerations	2.111			
+n9_360	9	4	maximal_degenerations	3	ok	0.5	maximal_degenerations	2.111			
+n9_360	9	4	circle	1	ok	0.5	circle	1.834	n9_360_circle.png		
+n9_360	9	4	circle	2	ok	0.5	circle	1.834			
+n9_360	9	4	circle	3	ok	1.6	circle	1.834			
+n9_363	9	5	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.698	n9_363_maximal_degenerations.png		
+n9_363	9	5	maximal_degenerations	2	ok	0.7	maximal_degenerations	1.698			
+n9_363	9	5	maximal_degenerations	3	ok	0.7	maximal_degenerations	1.698			
+n9_363	9	5	circle	1	ok	0.7	circle	1.698	n9_363_circle.png		
+n9_363	9	5	circle	2	ok	0.6	circle	1.698			
+n9_363	9	5	circle	3	ok	0.7	circle	1.698			
+n9_366	9	6	maximal_degenerations	1	ok	1.9	maximal_degenerations	1.319	n9_366_maximal_degenerations.png		
+n9_366	9	6	maximal_degenerations	2	ok	0.8	maximal_degenerations	1.886			
+n9_366	9	6	maximal_degenerations	3	ok	0.8	maximal_degenerations	1.208			
+n9_366	9	6	circle	1	ok	0.6	circle	1.414	n9_366_circle.png		
+n9_366	9	6	circle	2	ok	0.6	circle	1.414			
+n9_366	9	6	circle	3	ok	0.6	circle	1.414			
+n9_369	9	7	maximal_degenerations	1	ok	4.9	exact	1.192	n9_369_maximal_degenerations.png		
+n9_369	9	7	maximal_degenerations	2	ok	1.4	maximal_degenerations	1.196			
+n9_369	9	7	maximal_degenerations	3	ok	3.0	maximal_degenerations	1.319			
+n9_369	9	7	circle	1	ok	3.2	exact	1.269	n9_369_circle.png		
+n9_369	9	7	circle	2	ok	4.4	exact	1.319			
+n9_369	9	7	circle	3	ok	3.9	exact	0.99			
+n9_372	9	3	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.924	n9_372_maximal_degenerations.png		
+n9_372	9	3	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.924			
+n9_372	9	3	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.924			
+n9_372	9	3	circle	1	ok	0.5	circle	1.971	n9_372_circle.png		
+n9_372	9	3	circle	2	ok	0.5	circle	1.971			
+n9_372	9	3	circle	3	ok	1.7	circle	1.971			
+n9_375	9	2	maximal_degenerations	1	ok	0.6	maximal_degenerations	1.148	n9_375_maximal_degenerations.png		
+n9_375	9	2	maximal_degenerations	2	ok	0.6	maximal_degenerations	1.148			
+n9_375	9	2	maximal_degenerations	3	ok	0.6	maximal_degenerations	1.148			
+n9_375	9	2	circle	1	ok	0.5	circle	1.154	n9_375_circle.png		
+n9_375	9	2	circle	2	ok	0.5	circle	1.154			
+n9_375	9	2	circle	3	ok	0.5	circle	1.154			
+n9_378	9	2	maximal_degenerations	1	ok	0.8	maximal_degenerations	1.028	n9_378_maximal_degenerations.png		
+n9_378	9	2	maximal_degenerations	2	ok	1.9	maximal_degenerations	1.028			
+n9_378	9	2	maximal_degenerations	3	ok	0.8	maximal_degenerations	1.028			
+n9_378	9	2	circle	1	ok	0.6	circle	1.027	n9_378_circle.png		
+n9_378	9	2	circle	2	ok	0.5	circle	1.027			
+n9_378	9	2	circle	3	ok	0.5	circle	1.027			
+n9_381	9	2	maximal_degenerations	1	ok	0.7	maximal_degenerations	1.29	n9_381_maximal_degenerations.png		
+n9_381	9	2	maximal_degenerations	2	ok	0.7	maximal_degenerations	1.47			
+n9_381	9	2	maximal_degenerations	3	ok	1.7	maximal_degenerations	1.282			
+n9_381	9	2	circle	1	ok	0.6	circle	1.29	n9_381_circle.png		
+n9_381	9	2	circle	2	ok	0.6	circle	1.248			
+n9_381	9	2	circle	3	ok	0.6	circle	1.281			

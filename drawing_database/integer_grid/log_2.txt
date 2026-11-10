@@ -1,0 +1,1785 @@
+START grid2_n13 maximal_degenerations 1
+GKS: cannot open display - headless operation mode active
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 6.7097442539358494e-12,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 39.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid2_n13_maximal_degenerations.png
+START grid2_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.4194348169242346e-12,
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: ArgumentError: The start point does not realize the matroid: (valid = false, max_nonbasis_residual = 1.4840209030888928e-15, min_basis_absolute_determinant = 5.
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid2_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 5.883571514999332e-15, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 25.8 s, seed=3
+START grid2_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.514702751346602e-13, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 11.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid2_n13_circle.png
+START grid2_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.1310482594800247e-12,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 11.3 s, seed=2
+START grid2_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.0296347353416324e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 11.6 s, seed=3
+START grid4_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 2.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid4_n10_maximal_degenerations.png
+START grid4_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.0 s, seed=2
+START grid4_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 3.5 s, seed=3
+START grid4_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid4_n10_circle.png
+START grid4_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.6 s, seed=2
+START grid4_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.6 s, seed=3
+START grid6_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   56 maximal degenerations, 39 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.0 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid6_n10_maximal_degenerations.png
+START grid6_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   56 maximal degenerations, 39 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.4 s, seed=2
+START grid6_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   56 maximal degenerations, 39 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.7 s, seed=3
+START grid6_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid6_n10_circle.png
+START grid6_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=2
+START grid6_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=3
+START grid8_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   49 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid8_n11_maximal_degenerations.png
+START grid8_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   49 maximal degenerations, 27 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 5.7 s, seed=2
+START grid8_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   49 maximal degenerations, 27 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 4.3 s, seed=3
+START grid8_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid8_n11_circle.png
+START grid8_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=2
+START grid8_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=3
+START grid10_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 36 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 16.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid10_n13_maximal_degenerations.png
+START grid10_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 36 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 14.7 s, seed=2
+START grid10_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 36 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 17.4 s, seed=3
+START grid10_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 1.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid10_n13_circle.png
+START grid10_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 2.1 s, seed=2
+START grid10_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 1.5 s, seed=3
+START grid12_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid12_n10_maximal_degenerations.png
+START grid12_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=2
+START grid12_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.0 s, seed=3
+START grid12_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid12_n10_circle.png
+START grid12_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=2
+START grid12_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=3
+START grid14_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 43 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 14.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid14_n12_maximal_degenerations.png
+START grid14_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 43 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 6.0 s, seed=2
+START grid14_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 43 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 9.4 s, seed=3
+START grid14_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid14_n12_circle.png
+START grid14_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.0 s, seed=2
+START grid14_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.0 s, seed=3
+START grid16_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 9.0 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid16_n11_maximal_degenerations.png
+START grid16_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 5.4 s, seed=2
+START grid16_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   55 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 7.0 s, seed=3
+START grid16_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid16_n11_circle.png
+START grid16_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.5 s, seed=2
+START grid16_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.5 s, seed=3
+START grid18_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 7.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid18_n12_maximal_degenerations.png
+START grid18_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 6.0 s, seed=2
+START grid18_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 10.7 s, seed=3
+START grid18_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid18_n12_circle.png
+START grid18_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.7 s, seed=2
+START grid18_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.2 s, seed=3
+START grid20_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid20_n10_maximal_degenerations.png
+START grid20_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=2
+START grid20_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.0 s, seed=3
+START grid20_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid20_n10_circle.png
+START grid20_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.0 s, seed=2
+START grid20_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.0 s, seed=3
+START grid22_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.0 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid22_n11_maximal_degenerations.png
+START grid22_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 4.7 s, seed=2
+START grid22_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 31 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 5.1 s, seed=3
+START grid22_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid22_n11_circle.png
+START grid22_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=2
+START grid22_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.4 s, seed=3
+START grid24_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   53 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 5.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid24_n11_maximal_degenerations.png
+START grid24_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   53 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 8.4 s, seed=2
+START grid24_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   53 maximal degenerations, 34 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 8.6 s, seed=3
+START grid24_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid24_n11_circle.png
+START grid24_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.3 s, seed=2
+START grid24_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.6 s, seed=3
+START grid26_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 2.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid26_n11_maximal_degenerations.png
+START grid26_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 2.9 s, seed=2
+START grid26_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 31 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 10.3 s, seed=3
+START grid26_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid26_n11_circle.png
+START grid26_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=2
+START grid26_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=3
+START grid28_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.5341212078316252e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:exact in 12.3 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid28_n12_maximal_degenerations.png
+START grid28_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 8.076418847114627e-15, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:exact in 11.5 s, seed=2
+START grid28_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 11.2 s, seed=3
+START grid28_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 7.660147261385253e-15, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:exact in 7.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid28_n12_circle.png
+START grid28_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 5.6 s, seed=2
+START grid28_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.3433359050166174e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:exact in 7.8 s, seed=3
+START grid30_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   63 maximal degenerations, 44 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid30_n11_maximal_degenerations.png
+START grid30_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   63 maximal degenerations, 44 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 4.6 s, seed=2
+START grid30_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   63 maximal degenerations, 44 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 2.5 s, seed=3
+START grid30_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid30_n11_circle.png
+START grid30_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.9 s, seed=2
+START grid30_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.0 s, seed=3
+START grid32_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 2.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid32_n12_maximal_degenerations.png
+START grid32_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 1.9 s, seed=2
+START grid32_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 26 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 1.8 s, seed=3
+START grid32_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid32_n12_circle.png
+START grid32_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.5 s, seed=2
+START grid32_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.1 s, seed=3
+START grid34_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 45 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 13.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid34_n12_maximal_degenerations.png
+START grid34_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 45 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 11.7 s, seed=2
+START grid34_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 45 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 10.0 s, seed=3
+START grid34_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid34_n12_circle.png
+START grid34_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.1 s, seed=2
+START grid34_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.1 s, seed=3
+START grid36_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid36_n10_maximal_degenerations.png
+START grid36_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.8 s, seed=2
+START grid36_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 27 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.8 s, seed=3
+START grid36_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid36_n10_circle.png
+START grid36_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.7 s, seed=2
+START grid36_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.7 s, seed=3
+START grid38_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 37 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 9.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid38_n12_maximal_degenerations.png
+START grid38_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 37 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 11.1 s, seed=2
+START grid38_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 37 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 17.7 s, seed=3
+START grid38_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 3.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid38_n12_circle.png
+START grid38_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 6.0 s, seed=2
+START grid38_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.7 s, seed=3
+START grid40_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid40_n10_maximal_degenerations.png
+START grid40_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.4 s, seed=2
+START grid40_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.4 s, seed=3
+START grid40_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 234. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid40_n10_circle.png
+START grid40_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 234. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.2 s, seed=2
+START grid40_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 234. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.2 s, seed=3
+START grid42_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 21 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.3 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid42_n10_maximal_degenerations.png
+START grid42_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 21 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.3 s, seed=2
+START grid42_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   45 maximal degenerations, 21 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.5 s, seed=3
+START grid42_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid42_n10_circle.png
+START grid42_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=2
+START grid42_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=3
+START grid44_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   73 maximal degenerations, 53 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid44_n11_maximal_degenerations.png
+START grid44_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   73 maximal degenerations, 53 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 0.9 s, seed=2
+START grid44_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   73 maximal degenerations, 53 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.7 s, seed=3
+START grid44_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid44_n11_circle.png
+START grid44_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.4 s, seed=2
+START grid44_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.4 s, seed=3
+START grid46_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   41 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid46_n10_maximal_degenerations.png
+START grid46_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   41 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.9 s, seed=2
+START grid46_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   41 maximal degenerations, 23 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 0.5 s, seed=3
+START grid46_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 270. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid46_n10_circle.png
+START grid46_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 270. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=2
+START grid46_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Convergence reached at step 270. The point stopped moving.
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=3
+START grid48_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   44 maximal degenerations, 26 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid48_n11_maximal_degenerations.png
+START grid48_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   44 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 5.4 s, seed=2
+START grid48_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   44 maximal degenerations, 26 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 6.2 s, seed=3
+START grid48_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid48_n11_circle.png
+START grid48_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=2
+START grid48_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=3
+START grid50_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   71 maximal degenerations, 47 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 13.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid50_n13_maximal_degenerations.png
+START grid50_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   71 maximal degenerations, 47 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 18.2 s, seed=2
+START grid50_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   71 maximal degenerations, 47 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 17.6 s, seed=3
+START grid50_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 1.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid50_n13_circle.png
+START grid50_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 1.0 s, seed=2
+START grid50_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 1.0 s, seed=3
+START grid52_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 44 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 12.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid52_n11_maximal_degenerations.png
+START grid52_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 44 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 8.9 s, seed=2
+START grid52_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   60 maximal degenerations, 44 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 8.9 s, seed=3
+START grid52_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid52_n11_circle.png
+START grid52_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.2 s, seed=2
+START grid52_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.2 s, seed=3
+START grid54_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 28 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 1.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid54_n10_maximal_degenerations.png
+START grid54_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 28 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 2.8 s, seed=2
+START grid54_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   46 maximal degenerations, 28 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 2.3 s, seed=3
+START grid54_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid54_n10_circle.png
+START grid54_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=2
+START grid54_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 0.3 s, seed=3
+START grid56_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.0 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid56_n11_maximal_degenerations.png
+START grid56_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.7 s, seed=2
+START grid56_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 0.9 s, seed=3
+START grid56_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid56_n11_circle.png
+START grid56_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=2
+START grid56_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.4 s, seed=3
+START grid58_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 2.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid58_n12_maximal_degenerations.png
+START grid58_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 2.4 s, seed=2
+START grid58_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:maximal_degenerations in 2.1 s, seed=3
+START grid58_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid58_n12_circle.png
+START grid58_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.3 s, seed=2
+START grid58_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.3 s, seed=3
+START grid60_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 11.6 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid60_n12_maximal_degenerations.png
+START grid60_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 11.3 s, seed=2
+START grid60_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   48 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 8.6 s, seed=3
+START grid60_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid60_n12_circle.png
+START grid60_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.3 s, seed=2
+START grid60_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.9 s, seed=3
+START grid62_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 4.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid62_n11_maximal_degenerations.png
+START grid62_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.7 s, seed=2
+START grid62_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   54 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 4.8 s, seed=3
+START grid62_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid62_n11_circle.png
+START grid62_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=2
+START grid62_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=3
+START grid64_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   62 maximal degenerations, 41 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 10.7 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid64_n12_maximal_degenerations.png
+START grid64_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   62 maximal degenerations, 41 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 16.5 s, seed=2
+START grid64_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   62 maximal degenerations, 41 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 12.8 s, seed=3
+START grid64_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid64_n12_circle.png
+START grid64_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.8 s, seed=2
+START grid64_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 1.4 s, seed=3
+START grid66_n10 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 31 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 4.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid66_n10_maximal_degenerations.png
+START grid66_n10 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 31 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:maximal_degenerations in 4.6 s, seed=2
+START grid66_n10 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 31 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 4.2 s, seed=3
+START grid66_n10 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid66_n10_circle.png
+START grid66_n10 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.9 s, seed=2
+START grid66_n10 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 10 points from start=:circle in 1.1 s, seed=3
+START grid68_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 20 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.0 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid68_n11_maximal_degenerations.png
+START grid68_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 20 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.0 s, seed=2
+START grid68_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   42 maximal degenerations, 20 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 1.7 s, seed=3
+START grid68_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid68_n11_circle.png
+START grid68_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.9 s, seed=2
+START grid68_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.5 s, seed=3
+START grid70_n11 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 32 separating bases
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:maximal_degenerations in 3.3 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid70_n11_maximal_degenerations.png
+START grid70_n11 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 32 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 9.8 s, seed=2
+START grid70_n11 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   51 maximal degenerations, 32 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 8.9 s, seed=3
+START grid70_n11 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.8 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid70_n11_circle.png
+START grid70_n11 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 1.6 s, seed=2
+START grid70_n11 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 11 points from start=:circle in 0.7 s, seed=3
+START grid72_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.9645899871822838e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 17.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid72_n13_maximal_degenerations.png
+START grid72_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:circle in 21.8 s, seed=2
+START grid72_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 30 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.4854672825158416e-11,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 28.0 s, seed=3
+START grid72_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 3.279244699897399e-12, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 10.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid72_n13_circle.png
+START grid72_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 6.676155659266707e-15, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 10.5 s, seed=2
+START grid72_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.4357875925477305e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 9.4 s, seed=3
+START grid74_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 24 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.1974606969131985e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 18.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid74_n13_maximal_degenerations.png
+START grid74_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 24 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.0347481686941725e-13,
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: ArgumentError: The start point does not realize the matroid: (valid = false, max_nonbasis_residual = 1.5395077416975922e-15, min_basis_absolute_determinant = 2.
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid74_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   39 maximal degenerations, 24 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.12368555281589e-14, m
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 17.9 s, seed=3
+START grid74_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 3.746893747453014e-14, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 13.4 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid74_n13_circle.png
+START grid74_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.210773093469888e-14, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 10.1 s, seed=2
+START grid74_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.3379699071014465e-12,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 10.0 s, seed=3
+START grid76_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 29 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.5841171900517983e-13,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 20.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid76_n13_maximal_degenerations.png
+START grid76_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   40 maximal degenerations, 29 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.312540817821642e-15, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 17.9 s, seed=2
+START grid76_n13 maximal_degenerations 3
+START grid76_n13 circle 1
+GKS: cannot open display - headless operation mode active
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.592263165644866e-14, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 22.1 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid76_n13_circle.png
+START grid76_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.3642687761966486e-14,
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 11.6 s, seed=2
+START grid76_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 3.841042676532532e-14, 
+[draw_matroid] start=:exact
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 13 points from start=:exact in 10.8 s, seed=3
+START grid78_n13 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   43 maximal degenerations, 29 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 1.9143733859719577e-15,
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid78_n13 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   43 maximal degenerations, 29 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.155148833503948e-13, 
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid78_n13 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   43 maximal degenerations, 29 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 4.5782116686042025e-15,
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid78_n13 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 8.970242129868042e-14, 
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid78_n13 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 2.2750272335938593e-14,
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid78_n13 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] start=:circle failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: none. Last validation: (valid = false, max_nonbasis_residual = 7.27096531179985e-15, m
+[draw_matroid] start=:exact
+[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension
+[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking.
+START grid80_n12 maximal_degenerations 1
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 33 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=1); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 7.2 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid80_n12_maximal_degenerations.png
+START grid80_n12 maximal_degenerations 2
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 33 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=2); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 6.5 s, seed=2
+START grid80_n12 maximal_degenerations 3
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   50 maximal degenerations, 33 separating bases
+[draw_matroid] start=:maximal_degenerations failed: No drawing found after 5 attempts (seed=3); try another seed. Last error: The reduced Rabinowitsch projection did not converge.. Last validation: nothing.
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 7.0 s, seed=3
+START grid80_n12 circle 1
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.9 s, seed=1, saved /tmp/claude-1001/-home-fields-Documents-DrawingMatroids/440a980f-3e72-4a54-a359-6ecee2dfe92b/scratchpad/scan_rs/integer_grid/drawings/grid80_n12_circle.png
+START grid80_n12 circle 2
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.9 s, seed=2
+START grid80_n12 circle 3
+[draw_matroid] start=:circle
+Projecting guess onto manifold...
+--- Executing Dynamics Path ---
+[draw_matroid] Drew 12 points from start=:circle in 0.9 s, seed=3
+WORKER DONE

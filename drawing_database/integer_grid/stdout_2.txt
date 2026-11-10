@@ -1,0 +1,6 @@
+RESTART after grid76_n13 maximal_degenerations 3 (memory)
+[draw_matroid] start=:maximal_degenerations
+[draw_matroid]   4 maximal degenerations, 4 separating bases
+--- Executing Dynamics Path ---
+Convergence reached at step 135. The point stopped moving.
+[draw_matroid] Drew 4 points from start=:maximal_degenerations in 35.6 s, seed=1
