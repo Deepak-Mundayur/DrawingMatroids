@@ -1,5 +1,5 @@
 """
-    draw_poset(M::Matroid; seed=nothing, filename="matroid_poset.png", folder=nothing, per_row=4, edges=:routed, ...)
+    draw_poset(M::Matroid; seed=nothing, filename="matroid_poset.png", folder=nothing, edges=:routed, ...)
     draw_poset(Z::RealizationSpace; ...)
 
 Draw every component of the nonbasis variety of `M` at its place in RealizationSpaces'
@@ -9,13 +9,15 @@ variety instead to draw again without recomputing the decomposition.
 
 Nodes are labelled as in RealizationSpaces: `C_j` is `components(variety)[j]`, and `M` marks
 the input matroid. With `folder`, each drawn component is also saved there as `C_j.png`.
-A level with more than `per_row` nodes is wrapped into several rows. With `edges=:routed`,
-each cover relation is a line through the gaps between nodes, coloured by its upper node; with
-`edges=:labels`, each caption instead lists the nodes directly above it.
+Within each level, nodes are ordered to sit near the nodes they are joined to. With
+`edges=:routed`, each cover relation is a straight line, coloured by its upper node, that bends
+through the gap between nodes of any level it passes; with `edges=:labels`, each caption
+instead lists the nodes directly above it.
 
-Returns `(plot, poset, variety, labels, drawings, seed)`: `labels[i]` and `drawings[i]` belong
-to poset node `i`; a drawing is the `draw_matroid(C)` result, or a string saying why the node
-was not drawn. Other keywords (`attempts`, `tol`, optimizer settings) go to `draw_matroid(C)`.
+Returns a `PosetDrawing` with fields `plot`, `poset`, `variety`, `labels`, `drawings` and
+`seed`: `labels[i]` and `drawings[i]` belong to poset node `i`; a drawing is the
+`draw_matroid(C)` result, or a string saying why the node was not drawn. Other keywords
+(`attempts`, `tol`, `optimizer`, ...) go to `draw_matroid(C)`.
 """
 function draw_poset(M::Oscar.Matroid; kwargs...)
     # Without nonbases the nonbasis variety has no equations: the poset is M alone.
@@ -30,20 +32,20 @@ function draw_poset(Z::RealizationSpaces.RealizationSpace; kwargs...)
     return _draw_poset(RealizationSpaces.matroid(Z), Z; kwargs...)
 end
 
-function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=nothing, per_row::Int=4,
+function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=nothing,
                      edges::Symbol=:routed, show_labels::Bool=true, kwargs...)
     edges in (:routed, :labels) || throw(ArgumentError("edges must be :routed or :labels."))
     seed = Int(something(seed, rand(Random.RandomDevice(), UInt32)))
     components = isnothing(Z) ? RealizationSpaces.RealizationComponent[] : RealizationSpaces.components(Z)
 
-    # Check each component's stored matroid before the poset is built from them.
-    unchecked = Dict{Int,String}()
-    for (j, C) in enumerate(components)
+    # Each component's stored matroid, checked before the poset is built from them, or why the
+    # check failed.
+    checked = map(components) do C
         try
             _component_matroid!(C; tol=1e-7)
         catch err
             err isa InterruptException && rethrow()
-            unchecked[j] = sprint(showerror, err)
+            sprint(showerror, err)
         end
     end
     poset = isnothing(Z) ? RealizationSpaces.weak_order_poset(M, Oscar.Matroid[]) : RealizationSpaces.weak_order_poset(Z)
@@ -55,14 +57,15 @@ function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=no
         j > length(components) ? "M" : j in poset.input_indices ? "M = C_$j" : "C_$j"
     end
 
-    drawings = map(sources) do j
+    drawings = map(enumerate(sources)) do (i, j)
+        println("[DrawingMatroids] Drawing $(labels[i]) ($i/$(length(sources)))")
         try
             if j > length(components)
                 isempty(Oscar.nonbases(M)) || return "no component of the nonbasis variety has this matroid"
                 return draw_matroid(M; kwargs..., seed=seed, filename=nothing)
             end
-            haskey(unchecked, j) && return unchecked[j]
-            return draw_matroid(components[j]; kwargs..., seed=seed, filename=nothing)
+            checked[j] isa AbstractString && return checked[j]
+            return _draw_component(components[j], checked[j]; kwargs..., seed=seed, filename=nothing)
         catch err
             err isa InterruptException && rethrow()
             return sprint(showerror, err)
@@ -75,95 +78,90 @@ function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=no
             d isa AbstractString || savefig(d.plot, joinpath(folder, (j > length(components) ? "M" : "C_$j") * ".png"))
         end
     end
-    plt = _render_poset(poset, labels, drawings; per_row, edges, show_labels)
+    plt = _render_poset(poset, labels, drawings; edges, show_labels)
     isnothing(filename) || savefig(plt, String(filename))
-    return (plot=plt, poset=poset, variety=Z, labels=labels, drawings=drawings, seed=seed)
+    return PosetDrawing(plt, poset, Z, labels, drawings, seed)
+end
+
+# The result of draw_poset; the REPL shows a short summary.
+struct PosetDrawing
+    plot::Plot
+    poset
+    variety
+    labels::Vector{String}
+    drawings::Vector
+    seed::Int
+end
+
+Base.show(io::IO, p::PosetDrawing) = print(io, "PosetDrawing(", length(p.labels), " nodes, seed=", p.seed, ")")
+
+function Base.show(io::IO, ::MIME"text/plain", p::PosetDrawing)
+    levels = length(unique(RealizationSpaces._weak_order_levels(p.poset.covers)))
+    drawn = count(d -> d isa MatroidDrawing, p.drawings)
+    println(io, "Poset drawing: $(length(p.labels)) nodes on $levels levels, $drawn drawn, seed=$(p.seed)")
+    print(io, "  fields: plot, poset, variety, labels, drawings, seed")
+    for (label, d) in zip(p.labels, p.drawings)
+        d isa AbstractString && print(io, "\n  $label: not drawn: ", first(first(split(d, '\n')), 120))
+    end
 end
 
 # Break text into lines of at most `width` characters, between words.
-function _wrap(s, width)
-    lines = String[]
-    for paragraph in split(s, '\n')
-        line = ""
-        for word in split(paragraph)
-            if !isempty(line) && length(line) + 1 + length(word) > width
-                push!(lines, line); line = word
-            else
-                line = isempty(line) ? word : line * " " * word
-            end
-        end
-        push!(lines, line)
+_wrap(s, width) = rstrip(replace(s, Regex("(.{1,$width})(\\s+|\$)") => s"\1\n"))
+
+# Node positions: RealizationSpaces' poset levels as rows, bottom to top. Within a row, nodes
+# are sorted by the mean position of their neighbours in the row above, then in the row below
+# (barycenter ordering, a few rounds), which removes most edge crossings.
+function _poset_layout(poset; dx=1.6, level_gap=2.4)
+    levels = RealizationSpaces._weak_order_levels(poset.covers)
+    rows = [findall(==(l), levels) for l in sort(unique(levels))]
+    pairs = RealizationSpaces._cover_pairs(poset)                  # (i, j): node i lies below node j
+    above = [[j for (k, j) in pairs if k == i] for i in eachindex(levels)]
+    below = [[k for (k, j) in pairs if j == i] for i in eachindex(levels)]
+    X = zeros(length(levels))
+    place!(row) = (X[row] = dx .* ((1:length(row)) .- (length(row) + 1) / 2))
+    center(i, nodes) = isempty(nodes[i]) ? X[i] : sum(X[nodes[i]]) / length(nodes[i])
+    foreach(place!, rows)
+    for _ in 1:4
+        foreach(r -> place!(sort!(rows[r]; by=i -> center(i, above))), length(rows)-1:-1:1)
+        foreach(r -> place!(sort!(rows[r]; by=i -> center(i, below))), 2:length(rows))
     end
-    return join(lines, "\n")
+    Y = zeros(length(levels))
+    foreach(((r, row),) -> (Y[row] .= (r - 1) * level_gap), enumerate(rows))
+    return X, Y
 end
 
-# RealizationSpaces' poset levels, bottom to top. A level with more than `per_row` nodes is
-# wrapped into stacked sub-rows, packed closer than separate levels; returns the node
-# positions and the vertical extent of each wrapped level, which is shaded as one group.
-function _poset_layout(covers; per_row=4, dx=1.6, row_gap=2.0, level_gap=2.4)
-    levels = RealizationSpaces._weak_order_levels(covers)
-    X, Y = zeros(length(levels)), zeros(length(levels))
-    wrapped = Tuple{Float64,Float64}[]
-    y = 0.0
-    for level in sort(unique(levels))
-        rows = collect(Iterators.partition(findall(==(level), levels), per_row))
-        top = y + (length(rows) - 1) * row_gap
-        for (r, row) in enumerate(rows), (k, node) in enumerate(row)
-            X[node] = dx * (k - (length(row) + 1) / 2)
-            Y[node] = top - (r - 1) * row_gap
-        end
-        length(rows) > 1 && push!(wrapped, (y, top))
-        y = top + level_gap
-    end
-    return X, Y, wrapped
-end
-
-# Cover edges routed through white space only: from below the upper node's caption into the
-# gap under its row, across each row in between through the gap between boxes nearest to the
-# target, then down into the lower node. Edges of one upper node share a colour and an offset.
+# Cover edges as straight lines from below the upper node's caption to above the lower node's
+# loop markers; an edge passing a row bends through the gap between boxes nearest to its line.
+# Edges of one upper node share a colour.
 function _routed_edges!(plt, poset, X, Y, caption_gap)
-    rows = sort(unique(Y); rev=true)
-    row_of = Dict(y => r for (r, y) in enumerate(rows))
-    bottom(r) = rows[r] - 0.5 - caption_gap
-    channel(r) = (bottom(r) + rows[r + 1] + 0.65) / 2            # midway to the next row's loop markers
-    gutters = map(rows) do y
-        xs = sort(X[Y .== y])
-        [xs[1] - 0.8; (xs[1:end-1] .+ xs[2:end]) ./ 2; xs[end] + 0.8]
-    end
-    pairs = RealizationSpaces._cover_pairs(poset)               # (i, j): node i lies below node j
+    pairs = RealizationSpaces._cover_pairs(poset)
     uppers = sort(unique(last.(pairs)))
     colors = palette(:tab10)
     for (i, j) in pairs
-        k = findfirst(==(j), uppers)
-        offset = 0.05 * (mod1(k, 5) - 3)
-        a, b = row_of[Y[j]], row_of[Y[i]]
-        y = channel(a) + offset
-        xs, ys = [X[j], X[j]], [bottom(a), y]
-        for r in (a + 1):(b - 1)
-            g = gutters[r][argmin(abs.(gutters[r] .- X[i]))]
-            push!(xs, g, g); push!(ys, y, channel(r) + offset)
-            y = channel(r) + offset
+        xs, ys = [X[j]], [Y[j] - 0.5 - caption_gap]
+        for y in sort(unique(Y); rev=true)
+            Y[i] < y < Y[j] || continue
+            row = sort(X[Y .== y])
+            gaps = [row[1] - 0.8; (row[1:end-1] .+ row[2:end]) ./ 2; row[end] + 0.8]
+            x = X[j] + (X[i] - X[j]) * (Y[j] - y) / (Y[j] - Y[i])
+            g = gaps[argmin(abs.(gaps .- x))]
+            push!(xs, g, g); push!(ys, y + 0.8, y - 0.5 - caption_gap)
         end
-        push!(xs, X[i], X[i]); push!(ys, y, Y[i] + 0.5)
-        plot!(plt, xs, ys; color=colors[mod1(k, length(colors))], linewidth=1.2, label="")
+        push!(xs, X[i]); push!(ys, Y[i] + 0.75)
+        plot!(plt, xs, ys; color=colors[mod1(findfirst(==(j), uppers), length(colors))], linewidth=1.2, label="")
     end
     return plt
 end
 
 # Each node is a unit box with a caption below it.
-function _render_poset(poset, labels, drawings; per_row::Int, edges::Symbol, show_labels::Bool)
-    X, Y, wrapped = _poset_layout(poset.covers; per_row)
+function _render_poset(poset, labels, drawings; edges::Symbol, show_labels::Bool)
+    X, Y = _poset_layout(poset)
     caption_gap = 0.45
     xlims = (minimum(X) - 0.8, maximum(X) + 0.8)
     ylims = (minimum(Y) - 0.6 - caption_gap, maximum(Y) + 0.7)
     plt = plot(; legend=:outerbottom, grid=false, axis=false, ticks=false, aspect_ratio=:equal, xlims, ylims, dpi=200,
                size=(max(500, round(Int, 175 * (xlims[2] - xlims[1]))), max(450, round(Int, 175 * (ylims[2] - ylims[1])))))
 
-    for (bottom, top) in wrapped
-        plot!(plt, Shape([xlims[1], xlims[2], xlims[2], xlims[1]],
-                         [bottom - 0.5 - caption_gap, bottom - 0.5 - caption_gap, top + 0.6, top + 0.6]);
-              fillcolor=:gray, fillalpha=0.08, linewidth=0, label="")
-    end
     edges == :routed && _routed_edges!(plt, poset, X, Y, caption_gap)
 
     for (i, Mi) in enumerate(poset.elements)

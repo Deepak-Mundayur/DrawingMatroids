@@ -16,39 +16,3 @@ function drawing_system(M; separating_bases=Vector{Vector{Int}}())
     isempty(equations) && push!(equations, 0 * p[1])
     return System(equations; variables=[vec(p); u])
 end
-
-function circle_guess(
-    n_points::Int,
-    bounds;
-    phase::Real=0.0,
-    jitter::Real=0.0,
-)
-    (xmin, xmax), (ymin, ymax) = bounds
-    radius = 0.35 * min(xmax - xmin, ymax - ymin)
-    center_x = (xmin + xmax) / 2
-    center_y = (ymin + ymax) / 2
-
-    guess = Float64[]
-    for i in 1:n_points
-        angle = phase + 2pi * (i - 1) / n_points
-        x = center_x + radius * cos(angle)
-        y = center_y + radius * sin(angle)
-
-        if jitter > 0
-            x += jitter * radius * randn()
-            y += jitter * radius * randn()
-        end
-
-        push!(guess, x, y)
-    end
-
-    return guess
-end
-
-# Points evenly spaced on a horizontal line (one point: the centre), for ranks 0 to 2.
-function low_rank_default_coordinates(n_points::Int, bounds)
-    (xmin, xmax), (ymin, ymax) = bounds
-    n_points == 1 && return [(xmin + xmax) / 2, (ymin + ymax) / 2]
-    xs = range(xmin + 0.15 * (xmax - xmin), xmax - 0.15 * (xmax - xmin); length=n_points)
-    return [c for x in xs for c in (x, (ymin + ymax) / 2)]
-end

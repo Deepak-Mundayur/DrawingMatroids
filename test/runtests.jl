@@ -124,3 +124,17 @@ same_matroid(M1, M2) = Oscar.rank(M1) == Oscar.rank(M2) && Set(Oscar.nonbases(M1
     RSp._set_component_matroid!(C, matroid_from_nonbases([[1, 2, 3], [2, 3, 4], [2, 3, 5]], 5))
     @test_throws ErrorException DrawingMatroids._component_matroid!(C; tol=1e-7, attempts=0)
 end
+
+@testset "draw_matroid start chain" begin
+    # Fano has no drawing, and Oscar's exact realization space shows it is not realizable in
+    # characteristic 0.
+    err = try quiet(() -> draw_matroid(Oscar.fano_matroid(); filename=nothing, seed=1)) catch e; e end
+    @test occursin("not realizable over any field of characteristic 0", sprint(showerror, err))
+    r = quiet(() -> draw_matroid(Oscar.non_fano_matroid(); start=:exact, filename=nothing, seed=1))
+    @test RSp.satisfies_matroid(r.matrix, Oscar.non_fano_matroid(); tol=1e-7)
+    # On these 13 grid points Oscar's is_realizable runs for over 20 minutes; the exact start
+    # does not call it, and returns nothing (equations left in positive dimension).
+    P = [(2, 1), (0, 0), (1, 3), (1, 0), (0, 1), (2, 3), (3, 3), (3, 2), (3, 1), (0, 3), (1, 2), (2, 0), (2, 2)]
+    grid13 = Oscar.matroid_from_matrix_columns(Oscar.matrix(Oscar.QQ, reduce(hcat, [[1, x, y] for (x, y) in P])))
+    @test isnothing(DrawingMatroids.exact_real_realization(grid13))
+end

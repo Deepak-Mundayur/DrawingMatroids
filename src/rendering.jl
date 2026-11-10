@@ -1,5 +1,8 @@
 _group_label(labels) = length(labels) == 1 ? string(first(labels)) : "{" * join(string.(labels), ",") * "}"
 
+# A label of two or more characters is set smaller so it fits inside its marker.
+_marker_fontsize(label, fontsize) = length(label) == 1 ? fontsize : round(Int, 0.75 * fontsize)
+
 # Segment between the two outermost points of a line (flat), ordered along the line.
 function _line_segment(coords::AbstractVector, flat::Vector{Int})
     xs = [coords[2i - 1] for i in flat]
@@ -49,80 +52,12 @@ function _label_layout(coords, reduction, bounds)
     return layout
 end
 
-# Readability thresholds, as fractions of the box width.
-const _MIN_POINT_GAP = 0.10        # between two points
-const _MIN_LINE_GAP = 0.06         # between a point and a drawn line it is not on
-
 # Offset of the point p from its nearest point on the segment ab.
 function _segment_offset(px, py, ax, ay, bx, by)
     dx, dy = bx - ax, by - ay
     t = clamp(((px - ax) * dx + (py - ay) * dy) / (dx^2 + dy^2 + 1e-300), 0, 1)
     return px - ax - t * dx, py - ay - t * dy
 end
-
-# Readability of a drawing inside `bounds`: the smallest of (closest two points) / _MIN_POINT_GAP
-# and (closest point to a drawn line it is not on) / _MIN_LINE_GAP, in box widths; 0 if a label
-# leaves the box or overlaps a point or another label. A drawing is readable when this is >= 1.
-function _readability(coords, reduction, bounds)
-    width = bounds[1][2] - bounds[1][1]
-    k = length(reduction.parallel_classes)
-    point(i) = (coords[2i - 1], coords[2i])
-    score = Inf
-    for i in 1:k, j in (i + 1):k
-        score = min(score, hypot((point(i) .- point(j))...) / (_MIN_POINT_GAP * width))
-    end
-    for flat in rank_two_flats(reduction.simple_matroid)
-        (ax, bx), (ay, by) = _line_segment(coords, flat)
-        for p in 1:k
-            p in flat || (score = min(score, hypot(_segment_offset(point(p)..., ax, ay, bx, by)...) / (_MIN_LINE_GAP * width)))
-        end
-    end
-    boxes = [spot[5] for spot in values(_label_layout(coords, reduction, bounds))]
-    marker = 0.015 * width
-    for (a, b) in enumerate(boxes)
-        _box_outside(b, bounds) > 0 && return 0.0
-        any(_box_overlap(b, q) > 0 for q in boxes[(a + 1):end]) && return 0.0
-    end
-    # A label's own point sits 0.03 widths from its box; no point may come within a marker radius.
-    any(_box_distance(b, point(i)) < marker for b in boxes for i in 1:k) && return 0.0
-    return score
-end
-
-# A projective transformation keeps every line and every non-collinearity, so it turns a
-# drawing into another drawing of the same matroid; it acts by an invertible matrix on the left,
-# under which every component of a realization space is invariant, so it also stays on the
-# same component. A readable drawing is kept; otherwise the frame is chosen to maximize
-# `_readability` (random search, then local refinement), and used if it still validates.
-function _readable_frame(coords, reduction, bounds; tol, candidates=200, refinements=400)
-    k = length(reduction.parallel_classes)
-    k >= 2 || return coords
-    H = [ones(1, k); reshape(coords[1:2k], 2, k)]
-    function framed(G)
-        B = G * H
-        all(abs.(B[1, :]) .> 1e-6) || return nothing
-        return _fit_coordinates_to_bounds(vec(B[2:3, :] ./ B[1:1, :]), bounds)
-    end
-    score(c) = isnothing(c) ? -Inf : _readability(c, reduction, bounds)
-    original = score(framed(Matrix(1.0I, 3, 3)))
-    original >= 1 && return coords
-    best_G, best = Matrix(1.0I, 3, 3), original
-    for _ in 1:candidates
-        G = randn(3, 3)
-        s = score(framed(G))
-        s > best && ((best_G, best) = (G, s))
-    end
-    step = 0.3
-    for _ in 1:refinements
-        best >= 1.5 && break
-        G = best_G .+ step * sqrt(sum(abs2, best_G) / 9) .* randn(3, 3)
-        s = score(framed(G))
-        s > best ? ((best_G, best) = (G, s)) : (step *= 0.995)
-    end
-    best > original || return coords
-    c = framed(best_G)
-    return compute_drawing_validation(c, reduction; tol).valid ? c : coords
-end
-
 
 # Loops are shown in a row just above the drawing box.
 function _loop_positions(loop_count::Int, bounds)
@@ -145,7 +80,7 @@ function _draw_on!(plt, coords, reduction; bounds, show_boundary::Bool, show_lab
               linewidth=1.5, linestyle=:dash, color=:red, label="")
     end
 
-    for flat in rank_two_flats(reduction.simple_matroid)
+    for flat in reduction.lines
         line_x, line_y = _line_segment(coords, flat)
         plot!(plt, line_x, line_y; linewidth=1.5, alpha=0.55, color=:gray, label="")
     end
@@ -164,7 +99,7 @@ function _draw_on!(plt, coords, reduction; bounds, show_boundary::Bool, show_lab
                 lx, ly, halign, valign, _ = layout[i]
                 annotate!(plt, lx, ly, text(label, fontsize, :black, halign, valign))
             else
-                annotate!(plt, xs[i], ys[i], text(label, fontsize, :white, :center))
+                annotate!(plt, xs[i], ys[i], text(label, _marker_fontsize(label, fontsize), :white, :center))
             end
         end
     end
@@ -175,62 +110,25 @@ function _draw_on!(plt, coords, reduction; bounds, show_boundary::Bool, show_lab
                  markercolor=:orange, markerstrokecolor=:orange, label=legend ? "loops" : "")
         if show_labels
             for i in eachindex(loop_x)
-                annotate!(plt, loop_x[i], loop_y[i], text(string(loops[i]), fontsize, :black, :center))
+                annotate!(plt, loop_x[i], loop_y[i], text(string(loops[i]), _marker_fontsize(string(loops[i]), fontsize), :black, :center))
             end
         end
     end
     return plt
 end
 
-function render_drawing(
-    state::AbstractVector,
-    reduction;
-    bounds,
-    framestyle,
-    show_boundary::Bool,
-    show_labels::Bool,
-)
+# A drawing as a plot: the box `bounds`, room above it for loops, no axes.
+function render_drawing(state, reduction; bounds, framestyle, show_boundary, show_labels)
     (xmin, xmax), (ymin, ymax) = bounds
-    extra_top = isempty(Oscar.loops(reduction.matroid)) ? 0.5 : 1.5
-    plt = plot(
-        xlim=(xmin - 0.5, xmax + 0.5),
-        ylim=(ymin - 0.5, ymax + extra_top),
-        aspect_ratio=:equal,
-        legend=:outerbottom,
-        title="",
-        framestyle=framestyle,
-        xticks = false,
-        yticks= false
-    )
-    coords = state[1:(2 * length(reduction.parallel_classes))]
-    return _draw_on!(plt, coords, reduction; bounds, show_boundary, show_labels)
+    top = isempty(Oscar.loops(reduction.matroid)) ? 0.5 : 1.5
+    plt = plot(; xlim=(xmin - 0.5, xmax + 0.5), ylim=(ymin - 0.5, ymax + top), aspect_ratio=:equal,
+               legend=:outerbottom, framestyle, xticks=false, yticks=false)
+    return _draw_on!(plt, state[1:2length(reduction.parallel_classes)], reduction; bounds, show_boundary, show_labels)
 end
 
-function save_static_drawing(
-    state,
-    reduction;
-    filename::Union{Nothing,AbstractString},
-    style...,
-)
-    plt = render_drawing(state, reduction; style...)
-    if !isnothing(filename)
-        savefig(plt, String(filename))
-    end
-    return plt
-end
-
-function save_drawing_animation(
-    history::AbstractVector,
-    reduction;
-    filename::AbstractString,
-    fps::Int,
-    style...,
-)
+# A gif of the optimizer's path, one frame per state.
+function save_drawing_animation(history, reduction; filename, fps, style...)
     animation = Animation()
-    for state in history
-        frame(animation, render_drawing(state, reduction; style...))
-    end
-
-    gif(animation, filename; fps=fps)
-    return String(filename)
+    foreach(state -> frame(animation, render_drawing(state, reduction; style...)), history)
+    return gif(animation, filename; fps)
 end

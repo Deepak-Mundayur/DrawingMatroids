@@ -1,3 +1,22 @@
+# n points evenly spaced on a circle in the box, rotated by `phase`; with `jitter`, each is
+# moved by jitter × radius in a random direction.
+function circle_guess(n_points::Int, bounds; phase::Real=0.0, jitter::Real=0.0)
+    (xmin, xmax), (ymin, ymax) = bounds
+    radius = 0.35 * min(xmax - xmin, ymax - ymin)
+    angles = phase .+ 2pi .* (0:n_points-1) ./ n_points
+    P = [(xmin + xmax) / 2 .+ radius .* cos.(angles)'; (ymin + ymax) / 2 .+ radius .* sin.(angles)']
+    jitter > 0 && (P .+= jitter * radius .* [randn() for _ in 1:2, _ in 1:n_points])   # one draw per entry, x1, y1, x2, ...
+    return vec(P)
+end
+
+# Points evenly spaced on a horizontal line (one point: the centre), for ranks 0 to 2.
+function low_rank_default_coordinates(n_points::Int, bounds)
+    (xmin, xmax), (ymin, ymax) = bounds
+    n_points == 1 && return [(xmin + xmax) / 2, (ymin + ymax) / 2]
+    xs = range(xmin + 0.15 * (xmax - xmin), xmax - 0.15 * (xmax - xmin); length=n_points)
+    return [c for x in xs for c in (x, (ymin + ymax) / 2)]
+end
+
 # Affine drawing coordinates from a real sample of `C`.
 # Component samples are validated only after this normalization: a raw sample is an
 # arbitrary projective representative whose minors can be tiny purely from column scaling.
@@ -46,10 +65,10 @@ Maximal degenerations of `M` (rank 2 or 3) and a set of separating bases: bases 
 that every maximal degeneration makes at least one of them dependent. Nonvanishing of their
 determinants on the circuit variety therefore cuts out the realization space of `M`.
 """
-function maximal_degeneration_basis_transversal(M; n_procs::Int=Base.Threads.nthreads())
+function maximal_degeneration_basis_transversal(M)
     r = Oscar.rank(M)
     r in (2, 3) || error("Maximal-degeneration initialization supports ranks 2 and 3.")
-    degenerations = Maximat.maximal_degenerations(cyclic_flats_by_rank(M), length(M); S=1:r, n_procs=n_procs)
+    degenerations = Maximat.maximal_degenerations(cyclic_flats_by_rank(M), length(M); S=1:r, n_procs=Base.Threads.nthreads())
 
     bases = [Set(Int.(B)) for B in Oscar.bases(M)]
     killed = [Set(B for B in bases if degeneration_rank(B, N) < r) for N in degenerations]
@@ -58,55 +77,58 @@ function maximal_degeneration_basis_transversal(M; n_procs::Int=Base.Threads.nth
     return separating_bases, degenerations
 end
 
-"""
-    maximal_degeneration_start(reduction; bounds, attempts, tol)
-
-Exact real start point for a simple rank-three matroid: compute its maximal
-degenerations, choose a greedy transversal of separating bases, and project a circle
-guess onto the reduced Rabinowitsch system (one Rabinowitsch variable per separating
-basis instead of one per basis).
-"""
-function maximal_degeneration_start(reduction; bounds, attempts::Int, tol::Real)
-    simple = reduction.simple_matroid
-    point_count = length(simple)
-
-    println("[DrawingMatroids] Computing maximal degenerations with $(Base.Threads.nthreads()) Julia thread(s)...")
+# The reduced Rabinowitsch system of a simple rank-three matroid: its drawing system plus one
+# Rabinowitsch variable per separating basis (instead of one per basis).
+function rabinowitsch_system(simple)
     separating_bases, degenerations = maximal_degeneration_basis_transversal(simple)
-    println("[DrawingMatroids] Found $(length(degenerations)) maximal degenerations and $(length(separating_bases)) separating bases.")
+    println("[DrawingMatroids]   $(length(degenerations)) maximal degenerations, $(length(separating_bases)) separating bases")
+    return (system=drawing_system(simple; separating_bases), separating_bases)
+end
 
-    system = drawing_system(simple; separating_bases=separating_bases)
-    last_error = nothing
+# Project the circle guess onto the reduced Rabinowitsch system; return drawing coordinates
+# that realize the matroid, or throw.
+function project_rabinowitsch(rabinowitsch, coordinates, reduction; tol)
+    minors = [det(affine_points_matrix(coordinates)[:, B]) for B in rabinowitsch.separating_bases]
+    all(m -> abs(m) > 1e-10, minors) || error("The circle guess has a nearly zero separating basis determinant.")
+    point, converged = project_onto_manifold(rabinowitsch.system, [coordinates; inv.(minors)]; tol=1e-10, max_iters=100)
+    converged || error("The reduced Rabinowitsch projection did not converge.")
+    coordinates = Float64.(point[1:length(coordinates)])
+    validation = compute_drawing_validation(coordinates, reduction; tol)
+    validation.valid || error("The reduced Rabinowitsch projection does not realize the matroid: $validation")
+    return coordinates
+end
 
-    for attempt in 1:attempts
-        phase = attempt == 1 ? 0.0 : 2pi * rand()
-        jitter = 0.015 * (attempt - 1)
-
-        try
-            coordinates = circle_guess(point_count, bounds; phase=phase, jitter=jitter)
-            A = affine_points_matrix(coordinates)
-            minors = [det(A[:, B]) for B in separating_bases]
-            all(m -> abs(m) > 1e-10, minors) || error("The circle guess has a nearly zero separating basis determinant.")
-            guess = [coordinates; inv.(minors)]
-
-            println("[DrawingMatroids] Projecting onto the reduced Rabinowitsch system " *
-                    "(attempt $attempt/$attempts, $(length(separating_bases)) separating bases)...")
-
-            point, converged = project_onto_manifold(system, guess; tol=1e-10, max_iters=100)
-            if !converged
-                last_error = ErrorException("Reduced Rabinowitsch projection did not converge on attempt $attempt.")
-                continue
-            end
-
-            coordinates = Float64.(point[1:(2 * point_count)])
-            validation = compute_drawing_validation(coordinates, reduction; tol=tol)
-            validation.valid && return coordinates
-            last_error = ErrorException("Projected start point does not realize the matroid: $validation")
-        catch err
-            err isa InterruptException && rethrow()
-            last_error = err
+# A real point of Oscar's exact realization space of M, as a Float64 matrix.
+# - No variables: the realization is unique and rational.
+# - No equations left: the variables are free, so random rationals at which no inequation
+#   vanishes give an exact rational realization.
+# - Dimension 0: the real solutions are isolated exactly; none means no real realization.
+# Returns `nothing` when equations remain in positive dimension or no point was found, and a
+# string saying why when M has no real realization. It never calls Oscar's `is_realizable`
+# (a prime decomposition that can run for hours); it uses only what `realization_space`
+# already found.
+function exact_real_realization(M; tries::Int=100)
+    X = Oscar.realization_space(M; char=0)
+    Oscar.has_attribute(X, :is_realizable) && !Oscar.is_realizable(X) &&
+        return "it is not realizable over any field of characteristic 0"
+    A = Oscar.realization_matrix(X)
+    at(p) = [Float64(Oscar.evaluate(A[i, j], p)) for i in 1:Oscar.nrows(A), j in 1:Oscar.ncols(A)]
+    R = Oscar.ambient_ring(X)
+    R isa Oscar.MPolyRing || return [Float64(Oscar.QQ(A[i, j])) for i in 1:Oscar.nrows(A), j in 1:Oscar.ncols(A)]
+    I = Oscar.defining_ideal(X)
+    if Oscar.is_zero(I)
+        for _ in 1:tries
+            p = [Oscar.QQ(rand(-30:30), rand(1:7)) for _ in 1:Oscar.ngens(R)]
+            all(f -> !Oscar.is_zero(Oscar.evaluate(f, p)), Oscar.inequations(X)) || continue
+            return at(p)
         end
+        return nothing
     end
-
-    error("Could not obtain an exact real start point from the reduced Rabinowitsch system " *
-          "after $attempts attempts. Last error: $(sprint(showerror, last_error))")
+    Oscar.dim(I) == 0 || return nothing
+    for s in first(Oscar.real_solutions(I))
+        p = Float64.(s)
+        all(f -> abs(Oscar.evaluate(f, p)) > 1e-8, Oscar.inequations(X)) || continue
+        return at(p)
+    end
+    return "it has no real realization (Oscar's exact realization space is finite with no real point)"
 end
