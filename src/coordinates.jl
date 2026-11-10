@@ -3,7 +3,7 @@
 function drawing_reduction(M)
     n = length(M)
     sort(Int.(collect(Oscar.matroid_groundset(M)))) == 1:n ||
-        throw(ArgumentError("DrawingMatroids requires the matroid's ground set to be 1:$n."))
+        throw(ArgumentError("draw_matroid requires the matroid's ground set to be 1:$n."))
     loops = Set(Int.(Oscar.loops(M)))
     classes = unique([sort(setdiff(Int.(Oscar.closure(M, [i])), loops)) for i in 1:length(M) if !(i in loops)])
     representatives = first.(classes)

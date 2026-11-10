@@ -36,11 +36,11 @@ function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=no
                      edges::Symbol=:routed, show_labels::Bool=true, kwargs...)
     edges in (:routed, :labels) || throw(ArgumentError("edges must be :routed or :labels."))
     seed = Int(something(seed, rand(Random.RandomDevice(), UInt32)))
-    components = isnothing(Z) ? RealizationSpaces.RealizationComponent[] : RealizationSpaces.components(Z)
+    comps = isnothing(Z) ? RealizationSpaces.RealizationComponent[] : RealizationSpaces.components(Z)
 
     # Each component's stored matroid, checked before the poset is built from them, or why the
     # check failed.
-    checked = map(components) do C
+    checked = map(comps) do C
         try
             _component_matroid!(C; tol=1e-7)
         catch err
@@ -54,18 +54,18 @@ function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=no
     sources = [only(poset.element_indices[i]) for i in eachindex(poset.elements)]
     labels = map(eachindex(sources)) do i
         j = sources[i]
-        j > length(components) ? "M" : j in poset.input_indices ? "M = C_$j" : "C_$j"
+        j > length(comps) ? "M" : j in poset.input_indices ? "M = C_$j" : "C_$j"
     end
 
     drawings = map(enumerate(sources)) do (i, j)
-        println("[DrawingMatroids] Drawing $(labels[i]) ($i/$(length(sources)))")
+        println("[draw_poset] Drawing $(labels[i]) ($i/$(length(sources)))")
         try
-            if j > length(components)
+            if j > length(comps)
                 isempty(Oscar.nonbases(M)) || return "no component of the nonbasis variety has this matroid"
                 return draw_matroid(M; kwargs..., seed=seed, filename=nothing)
             end
             checked[j] isa AbstractString && return checked[j]
-            return _draw_component(components[j], checked[j]; kwargs..., seed=seed, filename=nothing)
+            return _draw_component(comps[j], checked[j]; kwargs..., seed=seed, filename=nothing)
         catch err
             err isa InterruptException && rethrow()
             return sprint(showerror, err)
@@ -75,7 +75,7 @@ function _draw_poset(M, Z; seed=nothing, filename="matroid_poset.png", folder=no
     if !isnothing(folder)
         mkpath(folder)
         for (j, d) in zip(sources, drawings)
-            d isa AbstractString || savefig(d.plot, joinpath(folder, (j > length(components) ? "M" : "C_$j") * ".png"))
+            d isa AbstractString || savefig(d.plot, joinpath(folder, (j > length(comps) ? "M" : "C_$j") * ".png"))
         end
     end
     plt = _render_poset(poset, labels, drawings; edges, show_labels)

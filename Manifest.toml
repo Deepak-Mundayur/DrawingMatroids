@@ -480,7 +480,7 @@ uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 version = "1.7.0"
 
 [[deps.DrawingMatroids]]
-deps = ["Combinatorics", "Constrained_Optimization", "HomotopyContinuation", "LinearAlgebra", "Oscar", "Plots", "Random", "RealizationSpaces"]
+deps = ["Combinatorics", "Constrained_Optimization", "HomotopyContinuation", "Ipopt", "JuMP", "LinearAlgebra", "Oscar", "Plots", "Random", "RealizationSpaces"]
 path = "."
 uuid = "38fc0881-6182-4acc-b8c8-cb573a097b26"
 version = "0.1.0"
@@ -1755,8 +1755,8 @@ uuid = "05236dd9-4125-5232-aa7c-9ec0c9b2c25a"
 version = "8.3.3+0"
 
 [[deps.RealizationSpaces]]
-deps = ["Combinatorics", "HomotopyContinuation", "LinearAlgebra", "Oscar", "Plots", "Printf"]
-path = "../NumericalRealizationSpaces/RealizationSpaces"
+deps = ["Combinatorics", "Constrained_Optimization", "HomotopyContinuation", "Ipopt", "JuMP", "LinearAlgebra", "Oscar", "Plots", "Printf", "Random"]
+path = "NumericalRealizationSpaces/RealizationSpaces"
 uuid = "65755c9d-dd0c-4dc9-b48e-7e0c28ede372"
 version = "0.2.0"
 

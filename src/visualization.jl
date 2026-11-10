@@ -98,7 +98,7 @@ function _draw_matroid(
         "or a realization matrix."
     ))
     rank_value = Oscar.rank(M)
-    rank_value <= 3 || error("DrawingMatroids only draws matroids of rank at most three (got rank $rank_value).")
+    rank_value <= 3 || error("draw_matroid only draws matroids of rank at most three (got rank $rank_value).")
 
     # Without nonbases the realization space is irreducible, so a generic circle works.
     start === :nid && isempty(Oscar.nonbases(M)) && (start = :circle)
@@ -110,34 +110,32 @@ function _draw_matroid(
     started = time()
     return _with_seed(seed) do
         reduction = drawing_reduction(M)
-        cannot_draw(why) = error("DrawingMatroids cannot draw $(something(component, M)): $why.")
+        cannot_draw(why) = error("draw_matroid cannot draw $(something(component, M)): $why.")
         last_error = nothing
         for s in chain
             s === :nid && s !== first(chain) && !autorun && !_confirm_nid() && break
-            println("[DrawingMatroids] start=$(repr(_start_label(s)))")
+            println("[draw_matroid] start=$(repr(_start_label(s)))")
             initial, member_of = s, component
             if s === :exact
                 initial = exact_real_realization(M)
                 initial isa AbstractString && cannot_draw(initial)
                 if isnothing(initial)
                     last_error = ErrorException("start=:exact found no start: Oscar's realization space has equations left in positive dimension.")
-                    println("[DrawingMatroids] start=:exact failed: Oscar's realization space has equations left in positive dimension")
+                    println("[draw_matroid] start=:exact failed: Oscar's realization space has equations left in positive dimension")
                     continue
                 end
             elseif s === :nid
-                components = RealizationSpaces.components(RealizationSpaces.realization_space(M))
-                isempty(components) && cannot_draw("it is not realizable over any field of characteristic 0")
-                initial = member_of = first(components)
+                initial = member_of = first(RealizationSpaces.components(RealizationSpaces.realization_space(M)))
             end
             final_state, history = try
                 _find_drawing(reduction, initial; attempts, seed, tol, bounds, settings, component=member_of)
             catch err
                 err isa InterruptException && rethrow()
                 last_error = err
-                println("[DrawingMatroids] start=$(repr(_start_label(s))) failed: $(_first_line(err))")
+                println("[draw_matroid] start=$(repr(_start_label(s))) failed: $(_first_line(err))")
                 continue
             end
-            println("[DrawingMatroids] Drew $(length(reduction.parallel_classes)) points from start=$(repr(_start_label(s))) in " *
+            println("[draw_matroid] Drew $(length(reduction.parallel_classes)) points from start=$(repr(_start_label(s))) in " *
                     "$(round(time() - started; digits=1)) s, seed=$seed" * (isnothing(filename) ? "" : ", saved $filename"))
             plt = render_drawing(final_state, reduction; style...)
             isnothing(filename) || savefig(plt, String(filename))
@@ -155,8 +153,8 @@ _first_line(err) = first(first(split(sprint(showerror, err), '\n')), 160)
 
 # Ask before start=:nid, which decomposes the realization space and can take long.
 function _confirm_nid()
-    isinteractive() || (println("[DrawingMatroids] Skipping start=:nid; pass autorun=true to run it without asking."); return false)
-    print("[DrawingMatroids] No drawing found yet. Try start=:nid (decomposes the realization space, can be slow)? [y/N] ")
+    isinteractive() || (println("[draw_matroid] Skipping start=:nid; pass autorun=true to run it without asking."); return false)
+    print("[draw_matroid] No drawing found yet. Try start=:nid (decomposes the realization space, can be slow)? [y/N] ")
     return lowercase(strip(readline())) in ("y", "yes")
 end
 

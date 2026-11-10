@@ -81,7 +81,7 @@ end
 # Rabinowitsch variable per separating basis (instead of one per basis).
 function rabinowitsch_system(simple)
     separating_bases, degenerations = maximal_degeneration_basis_transversal(simple)
-    println("[DrawingMatroids]   $(length(degenerations)) maximal degenerations, $(length(separating_bases)) separating bases")
+    println("[draw_matroid]   $(length(degenerations)) maximal degenerations, $(length(separating_bases)) separating bases")
     return (system=drawing_system(simple; separating_bases), separating_bases)
 end
 

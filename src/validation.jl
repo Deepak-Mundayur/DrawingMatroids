@@ -32,7 +32,9 @@ function compute_drawing_validation(state::AbstractVector, reduction; tol::Real=
     A = coordinates_to_matrix(state[1:(2 * length(reduction.parallel_classes))], reduction)
     diagnostics = RealizationSpaces.matroid_realization_diagnostics(A, reduction.matroid; tol=tol)
     component_member = _component_membership(A, component; tol=tol)
-    valid = diagnostics.valid && (isnothing(component) || component_member === true)
+    # Nonbases far less exact than the bases are clear: a near-degeneration, not a drawing.
+    separated = diagnostics.max_nonbasis_residual <= 1e-5 * diagnostics.min_basis_absolute_determinant
+    valid = diagnostics.valid && separated && (isnothing(component) || component_member === true)
     return merge(diagnostics, (; valid, component_member))
 end
 
